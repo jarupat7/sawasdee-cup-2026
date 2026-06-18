@@ -780,13 +780,11 @@
           if (!isDisabled && !isSelected) {
             if (cat.name.includes(t('catAmateur'))) {
               const sameAmateur = selectedEvents.some(se => se.type === ev.type && se.category.includes(t('catAmateur')));
-              const sameCombined = selectedEvents.some(se => se.type === ev.type && se.category.includes(t('catCombined')));
-              if (sameAmateur || sameCombined) isDisabled = true;
+              if (sameAmateur) isDisabled = true;
             }
             if (cat.name.includes(t('catCombined'))) {
               const sameCombined = selectedEvents.some(se => se.type === ev.type && se.category.includes(t('catCombined')));
-              const sameAmateur = selectedEvents.some(se => se.type === ev.type && se.category.includes(t('catAmateur')));
-              if (sameCombined || sameAmateur) isDisabled = true;
+              if (sameCombined) isDisabled = true;
             }
           }
           const labelClass = `event-label ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`;
@@ -829,12 +827,6 @@
                 alert(t('alertSameAmateur'));
                 return;
             }
-            const sameCombined = selectedEvents.find(ev => ev.type === type && ev.category.includes(t('catCombined')));
-            if (sameCombined) {
-                e.preventDefault();
-                alert(t('alertCross'));
-                return;
-            }
         }
 
         if (category.includes(t('catCombined'))) {
@@ -842,12 +834,6 @@
             if (sameCombined) {
                 e.preventDefault();
                 alert(currentLang === 'th' ? "⚠️ ไม่สามารถลงแข่งขันประเภทเดียวกันซ้ำในรุ่นรวมอายุ (Combined Age) ได้" : "⚠️ Cannot register for the same event type multiple times in Combined Age category.");
-                return;
-            }
-            const sameAmateur = selectedEvents.find(ev => ev.type === type && ev.category.includes(t('catAmateur')));
-            if (sameAmateur) {
-                e.preventDefault();
-                alert(t('alertCross'));
                 return;
             }
         }
