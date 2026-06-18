@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sawasdee Cup 2026 Registration</title>
+  <style>
+    /* ==========================================
+       Custom CSS - Tailwind Design Replica
+       ========================================== */
+    :root {
+      --blue-50: #eff6ff; --blue-100: #dbeafe; --blue-500: #3b82f6; --blue-600: #2563eb; --blue-700: #1d4ed8; --blue-800: #1e40af; --blue-900: #1e3a8a;
+      --gray-50: #f9fafb; --gray-100: #f3f4f6; --gray-200: #e5e7eb; --gray-300: #d1d5db; --gray-400: #9ca3af; --gray-500: #6b7280; --gray-600: #4b5563; --gray-700: #374151; --gray-800: #1f2937;
+      --green-50: #f0fdf4; --green-100: #dcfce7; --green-500: #22c55e; --green-600: #16a34a; --green-700: #15803d; --green-800: #166534;
+      --red-50: #fef2f2; --red-200: #fecaca; --red-500: #ef4444; --red-600: #dc2626; --red-800: #991b1b;
+      --orange-50: #fff7ed; --orange-500: #f97316; --orange-600: #ea580c; --orange-700: #c2410c; --orange-800: #9a3412;
+      --amber-50: #fffbeb; --amber-100: #fef3c7; --amber-500: #f59e0b; --amber-600: #d97706; --amber-800: #92400e;
+      --indigo-50: #eef2ff; --indigo-100: #e0e7ff; --indigo-500: #6366f1; --indigo-600: #4f46e5; --indigo-700: #4338ca; --indigo-800: #3730a3; --indigo-900: #312e81;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--gray-100); color: var(--gray-800); line-height: 1.5; padding: 2rem 1rem; }
+    
+    .max-w-3xl { max-width: 48rem; margin: 0 auto; }
+    
+    /* Utility Classes */
+    .flex { display: flex; } .items-center { align-items: center; } .justify-between { justify-content: space-between; } .justify-center { justify-content: center; } .flex-col { flex-direction: column; } .flex-wrap { flex-wrap: wrap; }
+    .grid { display: grid; } .gap-4 { gap: 1rem; } .gap-3 { gap: 0.75rem; }
+    .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+    @media (min-width: 640px) { .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (min-width: 768px) { .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (min-width: 1024px) { .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    
+    .w-full { width: 100%; } .h-full { height: 100%; }
+    .mt-1 { margin-top: 0.25rem; } .mt-2 { margin-top: 0.5rem; } .mt-4 { margin-top: 1rem; } .mt-6 { margin-top: 1.5rem; } .mt-8 { margin-top: 2rem; }
+    .mb-1 { margin-bottom: 0.25rem; } .mb-2 { margin-bottom: 0.5rem; } .mb-4 { margin-bottom: 1rem; } .mb-6 { margin-bottom: 1.5rem; } .mb-8 { margin-bottom: 2rem; }
+    .ml-2 { margin-left: 0.5rem; } .mr-2 { margin-right: 0.5rem; } .ml-3 { margin-left: 0.75rem; } .mr-3 { margin-right: 0.75rem; }
+    .p-2 { padding: 0.5rem; } .p-3 { padding: 0.75rem; } .p-4 { padding: 1rem; } .p-5 { padding: 1.25rem; } .p-6 { padding: 1.5rem; }
+    .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; } .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; } .px-4 { padding-left: 1rem; padding-right: 1rem; } .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; } .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; } .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+    
+    .text-center { text-align: center; } .text-left { text-align: left; }
+    .text-xs { font-size: 0.75rem; } .text-sm { font-size: 0.875rem; } .text-base { font-size: 1rem; } .text-lg { font-size: 1.125rem; } .text-xl { font-size: 1.25rem; } .text-2xl { font-size: 1.5rem; } .text-3xl { font-size: 1.875rem; } .text-4xl { font-size: 2.25rem; }
+    .font-normal { font-weight: 400; } .font-medium { font-weight: 500; } .font-semibold { font-weight: 600; } .font-bold { font-weight: 700; } .font-black { font-weight: 900; }
+    .uppercase { text-transform: uppercase; } .tracking-wider { letter-spacing: 0.05em; }
+    .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    
+    .rounded-md { border-radius: 0.375rem; } .rounded-lg { border-radius: 0.5rem; } .rounded-xl { border-radius: 0.75rem; } .rounded-full { border-radius: 9999px; }
+    .border { border: 1px solid var(--gray-200); } .border-b { border-bottom: 1px solid var(--gray-200); } .border-t { border-top: 1px solid var(--gray-200); }
+    .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); } .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); } .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+    
+    .cursor-pointer { cursor: pointer; } .cursor-not-allowed { cursor: not-allowed; }
+    .hidden { display: none !important; }
+    .opacity-50 { opacity: 0.5; }
+    
+    /* Components */
+    .card { background-color: white; border-radius: 0.75rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); padding: 1.5rem; }
+    @media (min-width: 640px) { .card { padding: 2rem; } }
+    
+    .btn { display: inline-flex; align-items: center; justify-content: center; font-weight: 500; border-radius: 0.375rem; transition: all 0.2s; border: none; cursor: pointer; }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .btn-primary { background-color: var(--blue-600); color: white; padding: 0.5rem 1.5rem; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+    .btn-primary:hover:not(:disabled) { background-color: var(--blue-700); }
+    .btn-success { background-color: var(--green-600); color: white; padding: 0.75rem 1.5rem; font-weight: 700; font-size: 1rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+    .btn-success:hover:not(:disabled) { background-color: var(--green-700); transform: scale(1.02); }
+    .btn-secondary { background-color: var(--gray-100); color: var(--gray-700); padding: 0.5rem 1rem; }
+    .btn-secondary:hover:not(:disabled) { background-color: var(--gray-200); }
+    
+    .input-field { width: 100%; padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; transition: all 0.2s; outline: none; font-family: inherit; }
+    .input-field:focus { border-color: var(--blue-500); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); }
+    
+    .alert-blue { background-color: var(--blue-50); border-left: 4px solid var(--blue-500); padding: 1rem; border-radius: 0.375rem; }
+    .alert-orange { background-color: var(--orange-50); border-left: 4px solid var(--orange-500); padding: 1rem; border-radius: 0.375rem; }
+    .alert-green { background-color: var(--green-50); border: 1px solid var(--green-200); border-radius: 0.5rem; overflow: hidden; }
+    
+    /* Progress Steps */
+    .step-wrapper { display: flex; align-items: center; justify-content: center; max-width: 28rem; margin: 0 auto; width: 100%; }
+    .step-item { display: flex; flex-direction: column; align-items: center; position: relative; z-index: 10; width: 4rem; }
+    .step-circle { width: 2.5rem; height: 2.5rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; transition: background-color 0.3s; }
+    .step-circle.active { background-color: var(--blue-600); }
+    .step-circle.inactive { background-color: var(--gray-300); }
+    .step-label { font-size: 0.75rem; margin-top: 0.5rem; font-weight: 500; color: var(--gray-600); text-align: center; }
+    .step-line { flex: 1; height: 0.25rem; margin: 0 0.5rem; transition: background-color 0.3s; transform: translateY(-0.75rem); }
+    .step-line.active { background-color: var(--blue-600); }
+    .step-line.inactive { background-color: var(--gray-300); }
+    
+    /* Event Card Options */
+    .event-label { display: flex; items-align: center; padding: 0.75rem; border: 1px solid var(--gray-200); border-radius: 0.375rem; cursor: pointer; transition: all 0.2s; background: white; }
+    .event-label:hover:not(.disabled) { background-color: var(--gray-50); }
+    .event-label.selected { background-color: var(--blue-50); border-color: var(--blue-500); box-shadow: 0 0 0 1px var(--blue-500); }
+    .event-label.disabled { opacity: 0.5; cursor: not-allowed; }
+    .event-checkbox { width: 1.25rem; height: 1.25rem; margin-right: 0.75rem; cursor: inherit; accent-color: var(--blue-600); }
+    
+    /* Language Toggle (Enlarged) */
+    .lang-toggle { display: inline-flex; align-items: center; background-color: white; border-radius: 0.5rem; box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1); border: 1px solid var(--gray-200); padding: 0.375rem; }
+    .lang-btn { padding: 0.5rem 1rem; font-size: 1rem; font-weight: 700; border-radius: 0.375rem; transition: all 0.2s; border: none; background: transparent; cursor: pointer; color: var(--gray-600); margin: 0 0.125rem; }
+    .lang-btn.active { background-color: var(--blue-100); color: var(--blue-800); }
+    .lang-btn:hover:not(.active) { background-color: var(--gray-100); }
+    
+    /* Loader */
+    .loader-spin { animation: spin 1s linear infinite; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .animate-fadeIn { animation: fadeIn 0.4s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Validation Error Styles */
+    .input-error {
+      border-color: var(--red-500) !important;
+      background-color: var(--red-50) !important;
+    }
+    .err-msg {
+      color: var(--red-500);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-top: 0.25rem;
+      display: block;
+      min-height: 1rem;
+    }
+
+    /* SVG Icons Utility */
+    .icon { width: 1.25rem; height: 1.25rem; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .icon-sm { width: 1rem; height: 1rem; }
+    .icon-lg { width: 1.75rem; height: 1.75rem; stroke-width: 2; }
+  </style>
+</head>
+<body>
+  <div class="max-w-3xl">
+    <!-- Header & Language Selector -->
+    <div class="flex justify-between items-center mb-6">
+      <div></div>
+      <div class="lang-toggle">
+        <svg class="icon icon-lg text-gray-500 mr-2 ml-2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <button class="lang-btn" onclick="setLang('th')">TH</button>
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('zh')">中文</button>
+      </div>
+    </div>
+
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-black uppercase tracking-wider" style="color: var(--blue-900);">Sawasdee Cup 2026</h1>
+      <h2 class="text-lg font-medium mt-1" style="color: var(--blue-700);">Pattaya International Badminton</h2>
+      <p class="text-sm mt-2" style="color: var(--gray-500);" data-i18n="title">Online Registration System</p>
+    </div>
+
+    <!-- Progress Steps -->
+    <div class="mb-8">
+      <div class="step-wrapper">
+        <div class="step-item">
+          <div id="circle-1" class="step-circle active">1</div>
+          <span class="step-label" data-i18n="step1">Player Info</span>
+        </div>
+        <div id="line-1" class="step-line inactive"></div>
+        <div class="step-item">
+          <div id="circle-2" class="step-circle inactive">2</div>
+          <span class="step-label" data-i18n="step2">Events</span>
+        </div>
+        <div id="line-2" class="step-line inactive"></div>
+        <div class="step-item">
+          <div id="circle-3" class="step-circle inactive">3</div>
+          <span class="step-label" data-i18n="step3">Payment</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Card Container -->
+    <div class="card relative">
+      
+      <!-- LOADING OVERLAY -->
+      <div id="loadingOverlay" class="absolute hidden" style="inset: 0; background: rgba(255,255,255,0.8); z-index: 50; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 0.75rem;">
+        <svg class="loader-spin text-blue-600 mb-2" style="width: 3rem; height: 3rem; color: var(--blue-600);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+        <p class="font-medium text-gray-700" data-i18n="checkingDb">Loading data...</p>
+      </div>
+
+      <!-- STEP 1: PLAYER INFO -->
+      <div id="step-1" class="animate-fadeIn block">
+        <div class="alert-blue mb-6">
+          <h3 class="font-bold" style="color: var(--blue-800);" data-i18n="step1">Player Info</h3>
+          <p class="text-sm mt-1" style="color: var(--blue-700);" data-i18n="infoDesc">Use Name and Email as your primary identification.</p>
+          <p class="text-xs font-bold mt-2" style="color: var(--red-600);" data-i18n="engOnly">* English Uppercase Only</p>
+        </div>
+
+        <form id="form-step-1" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- รวมช่องชื่อและนามสกุลเป็นช่องเดียว -->
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium mb-1"><span data-i18n="fname">Full Name</span> <span style="color: var(--red-500);">*</span></label>
+            <input type="text" id="fullName" class="input-field font-mono uppercase" placeholder="SOMCHAI JAIDEE" required oninput="this.value = this.value.toUpperCase().replace(/[^A-Z\s]/g, ''); clearError(this); updatePartnerReadonlyName()">
+            <span id="err-fullName" class="err-msg"></span>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1"><span data-i18n="country">Country</span> <span style="color: var(--red-500);">*</span></label>
+            <select id="nationality" class="input-field font-mono uppercase" required onchange="clearError(this)">
+              <option value="" data-i18n="selectCountry">-- Select Country --</option>
+              <option value="THAILAND">THAILAND</option>
+              <option value="MALAYSIA">MALAYSIA</option>
+              <option value="CHINA">CHINA</option>
+              <option value="JAPAN">JAPAN</option>
+              <option value="SOUTH KOREA">SOUTH KOREA</option>
+              <option value="INDONESIA">INDONESIA</option>
+              <option value="SINGAPORE">SINGAPORE</option>
+              <option value="TAIWAN">TAIWAN</option>
+              <option value="INDIA">INDIA</option>
+              <option value="HONG KONG">HONG KONG</option>
+              <option value="PHILIPPINES">PHILIPPINES</option>
+              <option value="VIETNAM">VIETNAM</option>
+              <option value="AUSTRALIA">AUSTRALIA</option>
+              <option value="USA">USA</option>
+              <option value="UK">UK</option>
+              <option value="OTHER">OTHER</option>
+            </select>
+            <span id="err-nationality" class="err-msg"></span>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1"><span data-i18n="idCard">ID Card / Passport</span> <span style="color: var(--red-500);">*</span></label>
+            <input type="text" id="idNumber" class="input-field font-mono" placeholder="1234567890123 / AA123456" required oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, ''); clearError(this)">
+            <span id="err-idNumber" class="err-msg"></span>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1"><span data-i18n="email">Email</span> <span style="color: var(--red-500);">*</span></label>
+            <input type="email" id="email" class="input-field" placeholder="example@email.com" required oninput="clearError(this)">
+            <span id="err-email" class="err-msg"></span>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" data-i18n="phone">Phone</label>
+            <input type="tel" id="phone" class="input-field" placeholder="089xxxxxxx" oninput="clearError(this)">
+            <span id="err-phone" class="err-msg"></span>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" data-i18n="gender">Gender</label>
+            <select id="gender" class="input-field" onchange="renderCategories(); clearError(this)">
+              <option value="M" data-i18n="male">Male</option>
+              <option value="F" data-i18n="female">Female</option>
+            </select>
+            <span id="err-gender" class="err-msg"></span>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1"><span data-i18n="tshirt">T-Shirt Size</span> <span style="color: var(--red-500);">*</span></label>
+            <select id="tshirt" class="input-field" required onchange="clearError(this)">
+              <option value="" data-i18n="tshirtSelect">-- Select Size --</option>
+              <option value="XS">XS (36")</option>
+              <option value="S">S (38")</option>
+              <option value="M">M (40")</option>
+              <option value="L">L (42")</option>
+              <option value="XL">XL (44")</option>
+              <option value="2XL">2XL (46")</option>
+              <option value="3XL">3XL (48")</option>
+            </select>
+            <span id="err-tshirt" class="err-msg"></span>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" data-i18n="birthYear">Birth Year (AD)</label>
+            <div class="flex" style="gap: 0.5rem;">
+              <input type="number" id="birthYear" class="input-field" value="1990" min="1930" max="2012" required oninput="updateAgeDisplay(); clearError(this)">
+              <div class="flex items-center whitespace-nowrap px-4 py-2 font-bold rounded-md" style="background-color: var(--green-100); color: var(--green-800);">
+                <span data-i18n="age">Age</span>&nbsp;<span id="ageDisplay">36</span>&nbsp;<span data-i18n="yearsOld">yrs</span>
+              </div>
+            </div>
+            <span id="err-birthYear" class="err-msg"></span>
+          </div>
+        </form>
+      </div>
+
+      <!-- STEP 2: EVENTS -->
+      <div id="step-2" class="animate-fadeIn hidden">
+        <div class="alert-orange flex justify-between items-center mb-6">
+          <h3 class="font-bold flex items-center" style="color: var(--orange-800);">
+            <svg class="icon mr-2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <span data-i18n="rule62">Rule 6.2: Max 2 events per player</span>
+          </h3>
+          <div class="text-center">
+            <span class="block text-xs uppercase font-bold" style="color: var(--orange-700);" data-i18n="selected">Selected</span>
+            <span id="selectedCountDisplay" class="text-2xl font-black" style="color: var(--orange-600);">0/2</span>
+          </div>
+        </div>
+
+        <div id="categoriesContainer" class="grid gap-6">
+          <!-- Categories injected here by JS -->
+        </div>
+
+        <div id="noEventsMessage" class="hidden text-center py-8" style="color: var(--gray-500);" data-i18n="noEvents">
+          No eligible events found for your age.
+        </div>
+
+        <!-- Partner Info Section -->
+        <div id="partnerSection" class="hidden mt-8 p-5 rounded-lg border animate-fadeIn" style="background-color: var(--indigo-50); border-color: var(--indigo-200);">
+          <h4 class="font-bold mb-2 flex items-center" style="color: var(--indigo-800);">
+            <svg class="icon mr-2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span data-i18n="partnerInfo">Partner / Team Information</span>
+          </h4>
+          <p class="text-xs font-bold mb-4" style="color: var(--red-600);" data-i18n="engOnly">* English Uppercase Only</p>
+
+          <div id="partnerFormsContainer" class="grid gap-4">
+            <!-- Partner forms injected here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: PAYMENT SUMMARY -->
+      <div id="step-3" class="animate-fadeIn hidden">
+        <div class="border rounded-lg shadow-sm overflow-hidden mb-6 bg-white">
+           <div class="px-4 py-3 border-b font-semibold flex items-center" style="background-color: var(--gray-50); color: var(--gray-700);">
+             <svg class="icon mr-2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> 
+             <span data-i18n="summary">Registration Summary</span>
+           </div>
+           <div class="p-4 grid md:grid-cols-2 gap-4 text-sm">
+              <div>
+                <span class="block" style="color: var(--gray-500);" data-i18n="pName">Full Name</span> 
+                <span id="summaryName" class="font-medium text-lg font-mono"></span>
+              </div>
+              <div>
+                <span class="block" style="color: var(--gray-500);" data-i18n="email">Email</span> 
+                <span id="summaryEmail" class="font-medium text-lg"></span>
+              </div>
+              <div class="md:col-span-2">
+                <span class="block mb-2" style="color: var(--gray-500);" data-i18n="step2">Events:</span>
+                <ul id="summaryEventsList" class="grid gap-3">
+                  <!-- Events list injected here -->
+                </ul>
+              </div>
+           </div>
+        </div>
+
+        <div class="border rounded-lg shadow-sm overflow-hidden" style="background-color: white; border-color: var(--green-200);">
+           <div class="px-4 py-3 border-b font-semibold flex items-center" style="background-color: var(--green-50); border-color: var(--green-200); color: var(--green-800);">
+             <svg class="icon mr-2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+             <span data-i18n="fee">Total Payment</span>
+           </div>
+           <div class="p-6 text-center">
+              <span class="font-medium mb-3 block" style="color: var(--gray-500);" data-i18n="feeNote">Individual 30 USD/person (Max 2 events) | 3x3 35 USD/team | PRO TEAM 40 USD/team</span>
+              <span id="summaryTotalFee" class="text-4xl font-black block mb-4" style="color: var(--green-700);">0 USD</span>
+              
+              <div class="text-sm font-bold p-3 rounded text-left mb-2 inline-block max-w-lg" style="color: var(--red-700); background-color: var(--red-50); border: 1px solid var(--red-200);" data-i18n="paymentPolicy">
+                 * Thai participants must complete the payment before the announcement date. Registration fees are non-refundable in any case.
+              </div>
+              
+              <div class="p-4 rounded-md inline-flex text-left max-w-lg mt-2" style="background-color: var(--blue-50); color: var(--blue-800);">
+                <svg class="icon-lg mr-3 mt-1" style="color: var(--blue-500); flex-shrink: 0;" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <div>
+                  <h4 class="font-bold mb-1" data-i18n="sentEmail">Details sent to email</h4>
+                  <p class="text-sm leading-relaxed" style="color: var(--blue-700);"><span data-i18n="sentEmailDesc">Payment instructions will be sent to your email after confirmation.</span> <span id="summaryConfirmEmail" class="font-bold"></span></p>
+                </div>
+              </div>
+           </div>
+        </div>
+        
+        <!-- Agreement Checkbox -->
+        <div class="mt-6 bg-white border rounded-lg shadow-sm p-5" style="border-color: var(--gray-300);">
+          <label class="flex items-start cursor-pointer">
+            <input type="checkbox" id="agreeRules" class="mt-1 w-5 h-5 rounded" style="accent-color: var(--blue-600);" onchange="document.getElementById('err-agreeRules').innerText = '';">
+            <span class="ml-3 text-sm font-medium" style="color: var(--gray-700);">
+              <span data-i18n="agreeRulesText">I have read and agree to the tournament rules, and confirm I am physically fit to compete.</span>
+              <span style="color: var(--red-500);">*</span>
+            </span>
+          </label>
+          <span id="err-agreeRules" class="err-msg ml-8 mt-1"></span>
+        </div>
+      </div>
+
+      <!-- STEP 4: SUCCESS SCREEN (TAG ID) -->
+      <div id="step-4" class="animate-fadeIn hidden text-center py-8">
+        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full mb-6" style="background-color: var(--green-100); color: var(--green-600);">
+          <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h2 class="text-3xl font-black mb-2" style="color: var(--green-700);" data-i18n="regSuccess">Registration Successful!</h2>
+        <p class="mb-8" style="color: var(--gray-600);" data-i18n="regSuccessDesc">Your information has been saved successfully.</p>
+        
+        <div class="bg-white border-2 border-dashed rounded-xl p-6 mb-8 max-w-md mx-auto shadow-sm" style="border-color: var(--green-400);">
+          <p class="text-sm font-bold uppercase tracking-wider mb-2" style="color: var(--gray-500);" data-i18n="yourTagId">YOUR TAG ID</p>
+          <div id="displayTagId" class="text-3xl sm:text-4xl font-mono font-black tracking-widest" style="color: var(--green-800);">SC2026-XXX-XXXXXX</div>
+        </div>
+
+        <div class="text-left p-6 rounded-lg max-w-lg mx-auto mb-8 border" style="background-color: var(--blue-50); border-color: var(--blue-100);">
+          <h3 class="font-bold flex items-center mb-3" style="color: var(--blue-800);"><svg class="icon mr-2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> <span data-i18n="nextSteps">Next Steps</span></h3>
+          <ol class="list-decimal list-inside text-sm space-y-2 ml-2" style="color: var(--blue-700);">
+            <li data-i18n="stepEmail">Check your email for payment details.</li>
+            <li data-i18n="stepTransfer">Transfer the fee and include your TAG ID in the memo.</li>
+            <li data-i18n="stepSlip">Reply to the email with your payment slip.</li>
+          </ol>
+        </div>
+        
+        <button onclick="window.location.reload()" class="btn btn-primary px-8 py-3"><span data-i18n="backHome">Back to Home</span></button>
+      </div>
+
+      <!-- Footer Buttons -->
+      <div id="footerButtons" class="mt-8 flex justify-between items-center border-t pt-6">
+        <button id="btnBack" class="btn btn-secondary flex items-center" onclick="changeStep(-1)" disabled>
+          <svg class="icon-sm mr-1" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> <span data-i18n="back">Back</span>
+        </button>
+        <button id="btnNext" class="btn btn-primary flex items-center" onclick="changeStep(1)">
+          <span data-i18n="next">Next</span> <svg class="icon-sm ml-1" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+        <button id="btnSubmit" class="btn btn-success flex items-center hidden" onclick="submitForm()">
+          <span data-i18n="submit">Confirm & Receive Email</span> <svg class="icon-sm ml-2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // ==========================================
+    // Core Logic & State Management (Vanilla JS)
+    // ==========================================
+    
+    // กำหนด URL ของ API ที่เพิ่ง Deploy มา (Google Apps Script Web App URL)
+    const API_CONFIG = {
+      GAS_URL: 'https://script.google.com/macros/s/AKfycbwOv1kmiALv9H3fSybiEPwvvojMdcnbNapnYAXrzOWl5qvUFuEIRpWcNljDNnQ-YvfA/exec' // <<<< แก้ไขตรงนี้ (เอา URL จาก Apps Script มาใส่)
+    };
+
+    // Translations Object
+    const locales = {
+      th: {
+        title: "ระบบรับสมัครออนไลน์", step1: "ข้อมูลส่วนตัว", step2: "เลือกรุ่น", step3: "ยืนยันยอด",
+        infoDesc: "ใช้ชื่อ-นามสกุล และ อีเมล เป็นข้อมูลหลักในการยืนยันตัวตน", engOnly: "* บังคับภาษาอังกฤษตัวพิมพ์ใหญ่เท่านั้น (EN Uppercase Only)",
+        fname: "ชื่อ-นามสกุล (Full Name)", email: "อีเมล (Email)", phone: "เบอร์โทรศัพท์ (Phone)", gender: "เพศ (Gender)", male: "ชาย (Male)", female: "หญิง (Female)",
+        country: "ประเทศ (Country)", selectCountry: "-- เลือกประเทศ (Select) --", player1: "ผู้เล่นคนที่ 1",
+        idCard: "รหัสประชาชน/พาสปอร์ต (ID/Passport)", tshirt: "ไซส์เสื้อ (T-Shirt Size)", tshirtSelect: "-- เลือกไซส์ (Select Size) --",
+        birthYear: "ปีเกิด ค.ศ. (Birth Year)", age: "อายุ", yearsOld: "ปี", rule62: "กติกาข้อ 6.2: สมัครเข้าแข่งขันได้ไม่เกิน 2 รุ่น", selected: "เลือกแล้ว",
+        partnerInfo: "ข้อมูลผู้ร่วมทีม / ชื่อทีม (Partner / Team Info)", pName: "ชื่อ-นามสกุล", pEmail: "อีเมล (ไม่บังคับ)", pYear: "ปีเกิด ค.ศ.",
+        hwNote: "* รุ่นสามี-ภรรยา ใช้อายุสามีเป็นหลัก และต้องแสดงสำเนาทะเบียนสมรส", summary: "สรุปข้อมูลการสมัคร", fee: "ยอดรวมการชำระเงิน",
+        next: "ถัดไป", back: "ย้อนกลับ", submit: "ยืนยันการสมัครและรับอีเมล", noEvents: "ไม่พบรุ่นที่สามารถลงแข่งขันได้ กรุณาตรวจสอบอายุของท่าน",
+        successMsg: "🎉 สมัครแข่งขันเรียบร้อยแล้ว!\n\nระบบได้ทำการบันทึกข้อมูลและส่งรายละเอียดการชำระเงินไปที่อีเมล:",
+        alertMax: "⚠️ กติกาข้อ 6.2: ผู้เข้าแข่งขันสามารถสมัครได้ไม่เกิน 2 รุ่นเท่านั้น", alertDup: "⚠️ ตรวจพบข้อมูลซ้ำ: ชื่อ-นามสกุล หรือ อีเมลนี้ ได้ทำการลงทะเบียนในระบบไปแล้ว",
+        alertReq: "กรุณากรอกข้อมูลให้ครบถ้วนในช่องที่ทำแถบสีแดงไว้", alertCross: "⚠️ กติกาข้อ 6.5: ห้ามลงเล่นประเภทเดียวกัน ซ้ำซ้อนระหว่างรุ่นอายุและรุ่นรวมอายุ",
+        alertReqField: "กรุณากรอกข้อมูล", alertEmail: "รูปแบบอีเมลไม่ถูกต้อง", alertSameAmateur: "⚠️ กติกา: ไม่สามารถเลือกลงแข่งขันประเภทเดียวกันซ้ำ ในกลุ่มรุ่นอายุ (Amateur) ได้",
+        hwDesc: "สามี-ภรรยา (HW)", team3x3: "3x3 รวมอายุ (ชาย2 หญิง1)", partner1: "ผู้เล่นคนที่ 2 (Partner)", partner2: "ผู้เล่นคนที่ 3 (เฉพาะ 3x3)",
+        catOpenTeam: "ประเภททีมทั่วไป (PRO TEAM) ชิง 100,000.-", catOpenPro: "รุ่นทั่วไป (PRO)", catAmateur: "รุ่นอายุ (Amateur)", catCombined: "รุ่นรวมอายุ (Combined Age)",
+        ms: "ชายเดี่ยว (MS)", ws: "หญิงเดี่ยว (WS)", md: "ชายคู่ (MD)", wd: "หญิงคู่ (WD)", xd: "คู่ผสม (XD)", combStr: "รวม", minStr: "อายุขั้นต่ำ",
+        openTeamDesc: "PRO TEAM (ชายไม่เกิน 5 หญิงไม่เกิน 2)", teamName: "ชื่อทีม (Team Name)", teamMgrEmail: "อีเมลผู้จัดการทีม (Manager Email)", playerName: "ชื่อนักกีฬา",
+        teamNote: "* นักกีฬาชายไม่เกิน 5 คน / หญิงไม่เกิน 2 คน", sentEmail: "ส่งรายละเอียดไปยังอีเมลแล้ว", sentEmailDesc: "ระบบจะทำการส่งรายละเอียดวิธีการชำระเงินไปที่อีเมล ทันทีหลังจากกดยืนยัน",
+        feeNote: "บุคคล 1,000 บาท/คน (ลงได้สูงสุด 2 รุ่น) | 3x3 1,200 บาท/ทีม | ทีมทั่วไป 1,500 บาท/ทีม", currency: "THB", checkingDb: "กำลังโหลดข้อมูลจากระบบ...", savingData: "กำลังบันทึกข้อมูล...",
+        partnerRequired: "กรุณากรอกปีเกิดของคู่แข่งขันในรายการ:", partnerAgeError: "⚠️ ผิดกติกา: อายุคู่แข่งขัน", mustMin: "ต้องไม่ต่ำกว่า", totalAgeError: "⚠️ ผิดกติกา: อายุรวมของคู่คือ", notReach: "ยังไม่ถึงเกณฑ์",
+        regSuccess: "ลงทะเบียนสำเร็จ!", regSuccessDesc: "ข้อมูลของคุณถูกบันทึกเรียบร้อยแล้ว", yourTagId: "รหัสประจำตัวของคุณ (TAG ID)", nextSteps: "ขั้นตอนต่อไป", stepEmail: "ตรวจสอบอีเมลของคุณเพื่อดูรายละเอียดการชำระเงิน", stepTransfer: "โอนเงินและระบุ TAG ID ในช่องบันทึกช่วยจำ (Memo)", stepSlip: "ตอบกลับอีเมลพร้อมแนบสลิปเพื่อยืนยันการชำระเงิน", backHome: "กลับหน้าแรก",
+        agreeRulesText: "ฉันได้อ่านและยอมรับกฎกติกาการแข่งขัน และยืนยันว่ามีสุขภาพร่างกายพร้อมสำหรับการแข่งขัน",
+        paymentPolicy: "* คนไทยต้องโอนชำระค่าสมัครก่อนวันประกาศรายชื่อเท่านั้น และจะไม่คืนค่าสมัครทุกกรณี"
+      },
+      en: {
+        title: "Online Registration System", step1: "Player Info", step2: "Events", step3: "Payment",
+        infoDesc: "Use Name and Email as your primary identification.", engOnly: "* English Uppercase Only",
+        fname: "Full Name", email: "Email", phone: "Phone", gender: "Gender", male: "Male", female: "Female",
+        country: "Country", selectCountry: "-- Select Country --", player1: "Player 1",
+        idCard: "ID Card / Passport", tshirt: "T-Shirt Size", tshirtSelect: "-- Select Size --",
+        birthYear: "Birth Year (AD)", age: "Age", yearsOld: "yrs", rule62: "Rule 6.2: Max 2 events per player", selected: "Selected",
+        partnerInfo: "Partner / Team Information", pName: "Full Name", pEmail: "Email (Optional)", pYear: "Birth Year",
+        hwNote: "* Husband-Wife category uses husband's age. Marriage cert required.", summary: "Registration Summary", fee: "Total Payment",
+        next: "Next", back: "Back", submit: "Confirm & Receive Email", noEvents: "No eligible events found for your age.",
+        successMsg: "🎉 Registration Complete!\n\nPayment details have been sent to your email:",
+        alertMax: "⚠️ Rule 6.2: Maximum of 2 events allowed.", alertDup: "⚠️ Duplicate detected: This Name or Email is already registered.",
+        alertReq: "Please fill in all required fields highlighted in red.", alertCross: "⚠️ Rule 6.5: Cannot play the same event type in both age and combined brackets.",
+        alertReqField: "This field is required", alertEmail: "Invalid email format", alertSameAmateur: "⚠️ Rule: Cannot register for the same event type across multiple Amateur age groups.",
+        hwDesc: "Husband-Wife (HW)", team3x3: "3x3 Combined Age (2M 1F)", partner1: "Player 2 (Partner)", partner2: "Player 3 (for 3x3)",
+        catOpenTeam: "PRO TEAM - 100,000 THB Prize", catOpenPro: "Professional (PRO)", catAmateur: "Amateur Category", catCombined: "Combined Age",
+        ms: "Men's Singles (MS)", ws: "Women's Singles (WS)", md: "Men's Doubles (MD)", wd: "Women's Doubles (WD)", xd: "Mixed Doubles (XD)", combStr: "Combined", minStr: "Min Age",
+        openTeamDesc: "PRO TEAM (Max 5 Men, 2 Women)", teamName: "Team Name", teamMgrEmail: "Manager Email", playerName: "Player Name",
+        teamNote: "* Max 5 male athletes / Max 2 female athletes.", sentEmail: "Details sent to email", sentEmailDesc: "Payment instructions will be sent to your email after confirmation.",
+        feeNote: "Individual 30 USD/person (Max 2 events) | 3x3 35 USD/team | PRO TEAM 40 USD/team", currency: "USD", checkingDb: "Loading data...", savingData: "Saving your data...",
+        partnerRequired: "Please enter partner's birth year for:", partnerAgeError: "⚠️ Age rule violation in:", mustMin: "must be at least", totalAgeError: "⚠️ Combined age violation in:", notReach: "does not meet requirements",
+        regSuccess: "Registration Successful!", regSuccessDesc: "Your information has been saved successfully.", yourTagId: "YOUR TAG ID", nextSteps: "Next Steps", stepEmail: "Check your email for payment details.", stepTransfer: "Transfer the fee and include your TAG ID in the memo.", stepSlip: "Reply to the email with your payment slip.", backHome: "Back to Home",
+        agreeRulesText: "I have read and agree to the tournament rules, and confirm I am physically fit to compete.",
+        paymentPolicy: "* Thai participants must complete the payment before the announcement date. Registration fees are non-refundable in any case."
+      },
+      zh: {
+        title: "在线报名系统", step1: "个人信息", step2: "比赛项目", step3: "支付确认",
+        infoDesc: "请使用姓名和电子邮箱作为主要身份验证信息", engOnly: "* 仅限英文大写字母 (EN Uppercase Only)",
+        fname: "全名 (Full Name)", email: "电子邮箱 (Email)", phone: "电话 (Phone)", gender: "性别 (Gender)", male: "男 (Male)", female: "女 (Female)",
+        country: "国家 (Country)", selectCountry: "-- 选择国家 (Select) --", player1: "第一名球员",
+        idCard: "身份证 / 护照 (ID/Passport)", tshirt: "T恤尺码 (T-Shirt Size)", tshirtSelect: "-- 选择尺码 (Select Size) --",
+        birthYear: "出生年份 (AD)", age: "年龄", yearsOld: "岁", rule62: "规则 6.2：每位选手最多报名 2 项", selected: "已选",
+        partnerInfo: "搭档 / 团队信息", pName: "全名", pEmail: "邮箱 (选填)", pYear: "出生年份",
+        hwNote: "* 夫妻组以丈夫年龄为准，需提供结婚证", summary: "报名摘要", fee: "总费用",
+        next: "下一步", back: "返回", submit: "确认并接收邮件", noEvents: "未找到符合您年龄的项目",
+        successMsg: "🎉 报名成功！\n\n付款详情已发送至您的邮箱：",
+        alertMax: "⚠️ 规则 6.2：最多只能报名2项比赛", alertDup: "⚠️ 检测到重复信息：该姓名或邮箱已注册",
+        alertReq: "请填写所有红色标记的必填项", alertCross: "⚠️ 规则 6.5：禁止在年龄组和总年龄组中参加相同类型的比赛",
+        alertReqField: "此字段为必填项", alertEmail: "电子邮件格式无效", alertSameAmateur: "⚠️ 规则：不能在业余组中参加多个相同类型的比赛。",
+        hwDesc: "夫妻 (HW)", team3x3: "3x3 总年龄 (两男一女)", partner1: "搭档 / 队员 2", partner2: "队员 3 (针对 3x3)",
+        catOpenTeam: "公开组团队 (PRO TEAM) - 奖金 100,000 泰铢", catOpenPro: "公开组 (PRO)", catAmateur: "业余组 (Amateur)", catCombined: "总年龄组 (Combined Age)",
+        ms: "男单 (MS)", ws: "女单 (WS)", md: "男双 (MD)", wd: "女双 (WD)", xd: "混双 (XD)", combStr: "总和", minStr: "最小年龄",
+        openTeamDesc: "PRO TEAM (最多5男2女)", teamName: "队伍名称 (Team Name)", teamMgrEmail: "领队电子邮箱 (Manager Email)", playerName: "运动员姓名",
+        teamNote: "* 最多 5 名男运动员 / 2 名女运动员", sentEmail: "详情已发送至邮箱", sentEmailDesc: "付款说明将在确认后发送至您的电子邮箱",
+        feeNote: "个人 30 USD/人 (最多两项) | 3x3 35 USD/队 | PRO TEAM 40 USD/队", currency: "USD", checkingDb: "加载数据中...", savingData: "正在保存数据...",
+        partnerRequired: "请输入搭档的出生年份：", partnerAgeError: "⚠️ 年龄违规：", mustMin: "最小年龄必须为", totalAgeError: "⚠️ 总年龄违规：", notReach: "未达到要求",
+        regSuccess: "报名成功！", regSuccessDesc: "您的信息已成功保存。", yourTagId: "您的专属ID (TAG ID)", nextSteps: "下一步", stepEmail: "检查您的电子邮件以获取付款详情。", stepTransfer: "转账并在备注中注明您的 TAG ID。", stepSlip: "回复邮件并附上付款凭证以确认付款。", backHome: "返回首页",
+        agreeRulesText: "我已阅读并同意比赛规则，并确认身体健康适合参加比赛。",
+        paymentPolicy: "* 泰国籍参赛者必须在公布名单前完成缴费，报名费在任何情况下均不退还。"
+      }
+    };
+
+    let currentLang = 'en'; // ตั้งค่าเริ่มต้นเป็น EN
+    let currentStep = 1;
+    let selectedEvents = [];
+    let registeredUsers = []; 
+    let currentPartnerErrors = {}; 
+
+    function clearError(el) {
+      el.classList.remove('input-error');
+      const errSpan = document.getElementById('err-' + el.id);
+      if (errSpan) errSpan.innerText = '';
+    }
+
+    function updatePartnerReadonlyName() {
+       const fullName = document.getElementById('fullName').value.trim();
+       document.querySelectorAll('.readonly-p1-name').forEach(el => {
+           el.value = fullName;
+       });
+    }
+
+    function setLang(lang) {
+      currentLang = lang;
+      
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        if(btn.textContent.toLowerCase().includes(lang) || (lang==='zh' && btn.textContent.includes('中文'))) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      const t_texts = locales[currentLang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t_texts[key]) el.innerHTML = t_texts[key];
+      });
+
+      const allCats = getAvailableCategories();
+      selectedEvents = selectedEvents.map(ev => {
+         for(let cat of allCats) {
+             const found = cat.events.find(e => e.id === ev.id);
+             if(found) {
+                 return { ...ev, name: found.name, category: cat.name };
+             }
+         }
+         return ev;
+      });
+
+      if(currentStep === 2) { renderCategories(); renderPartnerForms(); }
+      if(currentStep === 3) { updateSummary(); }
+    }
+
+    function t(key) { return locales[currentLang][key]; }
+
+    window.onload = () => {
+      document.getElementById('loadingOverlay').classList.remove('hidden');
+      setTimeout(() => {
+        registeredUsers = []; 
+        document.getElementById('loadingOverlay').classList.add('hidden');
+        renderCategories();
+      }, 1000);
+      
+      setLang('en'); 
+    };
+
+    function getCurrentAge() {
+      const year = parseInt(document.getElementById('birthYear').value) || 0;
+      return 2026 - year;
+    }
+
+    function updateAgeDisplay() {
+      const age = getCurrentAge();
+      document.getElementById('ageDisplay').innerText = age;
+      renderCategories(); 
+      selectedEvents = []; 
+      currentPartnerErrors = {};
+      updateEventCount();
+      renderPartnerForms();
+    }
+
+    function changeStep(dir) {
+      if (dir === 1 && !validateStep(currentStep)) return;
+      
+      document.getElementById(`step-${currentStep}`).classList.add('hidden');
+      document.getElementById(`circle-${currentStep}`).classList.remove('active');
+      document.getElementById(`circle-${currentStep}`).classList.add('inactive');
+      
+      if(currentStep < 3 && dir === 1) {
+        document.getElementById(`line-${currentStep}`).classList.add('active');
+        document.getElementById(`line-${currentStep}`).classList.remove('inactive');
+      } else if (dir === -1) {
+        document.getElementById(`line-${currentStep-1}`).classList.remove('active');
+        document.getElementById(`line-${currentStep-1}`).classList.add('inactive');
+      }
+
+      currentStep += dir;
+      
+      document.getElementById(`step-${currentStep}`).classList.remove('hidden');
+      document.getElementById(`circle-${currentStep}`).classList.add('active');
+      document.getElementById(`circle-${currentStep}`).classList.remove('inactive');
+
+      document.getElementById('btnBack').disabled = currentStep === 1;
+      if (currentStep === 3) {
+        document.getElementById('btnNext').classList.add('hidden');
+        document.getElementById('btnSubmit').classList.remove('hidden');
+        updateSummary();
+      } else {
+        document.getElementById('btnNext').classList.remove('hidden');
+        document.getElementById('btnSubmit').classList.add('hidden');
+      }
+
+      if(currentStep === 2) renderCategories();
+    }
+
+    function validateStep(step) {
+      document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
+      document.querySelectorAll('.err-msg').forEach(el => el.innerText = '');
+
+      if (step === 1) {
+        let valid = true;
+        const requiredFields = ['fullName', 'nationality', 'idNumber', 'email', 'tshirt', 'birthYear'];
+        
+        requiredFields.forEach(id => {
+           const el = document.getElementById(id);
+           if (!el || !el.value.trim()) {
+               if (el) el.classList.add('input-error');
+               const errSpan = document.getElementById('err-' + id);
+               if (errSpan) errSpan.innerText = t('alertReqField');
+               valid = false;
+           }
+        });
+
+        const emailEl = document.getElementById('email');
+        if (emailEl && emailEl.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
+            emailEl.classList.add('input-error');
+            const errSpan = document.getElementById('err-email');
+            if (errSpan) errSpan.innerText = t('alertEmail');
+            valid = false;
+        }
+
+        if (!valid) {
+          alert(t('alertReq')); 
+          return false;
+        }
+        
+        const fName = document.getElementById('fullName').value.trim();
+        const email = emailEl.value.trim();
+        const isDup = registeredUsers.some(u => 
+          (u.fullName === fName) || (u.email.toLowerCase() === email.toLowerCase())
+        );
+        if (isDup) { alert(t('alertDup')); return false; }
+      }
+      
+      if (step === 2) {
+        let valid = true;
+        selectedEvents.forEach(e => {
+          const checkEvField = (field, domId) => {
+              if (!e[field] || e[field].trim() === '') {
+                  const el = document.getElementById(domId);
+                  if (el) el.classList.add('input-error');
+                  valid = false;
+              }
+          };
+
+          if (['MD', 'WD', 'XD', 'HW'].includes(e.type)) {
+            checkEvField('partnerName', `p1Name_${e.id}`);
+            checkEvField('partnerNat', `p1Nat_${e.id}`);
+            checkEvField('partnerId', `p1Id_${e.id}`);
+            checkEvField('partnerTshirt', `p1Tshirt_${e.id}`);
+            if(e.id.startsWith('comb_') || e.type==='HW') checkEvField('partnerBirthYear', `p1Year_${e.id}`);
+          }
+          if (e.type === '3x3') {
+            checkEvField('partnerName', `p1Name_${e.id}`);
+            checkEvField('partnerNat', `p1Nat_${e.id}`);
+            checkEvField('partnerId', `p1Id_${e.id}`);
+            checkEvField('partnerTshirt', `p1Tshirt_${e.id}`);
+            checkEvField('partnerBirthYear', `p1Year_${e.id}`);
+
+            checkEvField('partner2Name', `p2Name_${e.id}`);
+            checkEvField('partner2Nat', `p2Nat_${e.id}`);
+            checkEvField('partner2Id', `p2Id_${e.id}`);
+            checkEvField('partner2Tshirt', `p2Tshirt_${e.id}`);
+            checkEvField('partner2BirthYear', `p2Year_${e.id}`);
+          }
+          if (e.type === 'TEAM') {
+            checkEvField('teamName', `teamName_${e.id}`);
+            checkEvField('teamManagerEmail', `teamMgrEmail_${e.id}`);
+          }
+        });
+
+        if (!valid) { 
+          alert(t('alertReq')); 
+          return false; 
+        }
+
+        for (const evId in currentPartnerErrors) {
+            if (currentPartnerErrors[evId]) {
+                const ev = selectedEvents.find(e => e.id === evId);
+                alert(`${t('alertReq')}\n-> ${ev ? ev.name : ''} : ${currentPartnerErrors[evId]}`);
+                return false;
+            }
+        }
+      }
+      return true;
+    }
+
+    function getAvailableCategories() {
+      const age = getCurrentAge();
+      const gender = document.getElementById('gender').value;
+      const categories = [];
+
+      categories.push({ name: t('catOpenTeam'), isTrophy: true, events: [{ id: 'pro_team_event', name: t('openTeamDesc'), type: 'TEAM', gender: 'ALL', feeThb: 1500, feeUsd: 40 }] });
+
+      const pro2034Events = [];
+      if (age >= 20) {
+        pro2034Events.push({ id: 'pro_ms_2034', name: `MS Pro (20-34)`, type: 'MS', gender: 'M', feeThb: 1000, feeUsd: 30 });
+        pro2034Events.push({ id: 'pro_ws_2034', name: `WS Pro (20-34)`, type: 'WS', gender: 'F', feeThb: 1000, feeUsd: 30 });
+        pro2034Events.push({ id: 'pro_md_2034', name: `MD Pro (20-34)`, type: 'MD', gender: 'M', feeThb: 1000, feeUsd: 30 });
+        pro2034Events.push({ id: 'pro_wd_2034', name: `WD Pro (20-34)`, type: 'WD', gender: 'F', feeThb: 1000, feeUsd: 30 });
+        pro2034Events.push({ id: 'pro_xd_2034', name: `XD Pro (20-34)`, type: 'XD', gender: 'ALL', feeThb: 1000, feeUsd: 30 });
+      }
+      if (pro2034Events.length > 0) categories.push({ name: `${t('catOpenPro')} (20-34)`, events: pro2034Events });
+
+      const pro35Events = [];
+      if (age >= 35) {
+        pro35Events.push({ id: 'pro_ms_35', name: `MS Pro (35+)`, type: 'MS', gender: 'M', feeThb: 1000, feeUsd: 30 });
+        pro35Events.push({ id: 'pro_md_35', name: `MD Pro (35+)`, type: 'MD', gender: 'M', feeThb: 1000, feeUsd: 30 });
+        pro35Events.push({ id: 'pro_xd_35', name: `XD Pro (35+)`, type: 'XD', gender: 'ALL', feeThb: 1000, feeUsd: 30 });
+      }
+      if (pro35Events.length > 0) categories.push({ name: `${t('catOpenPro')} (35+)`, events: pro35Events });
+
+      const allAmateurBrackets = [
+        { min: 20, label: "20-24" }, { min: 25, label: "25-29" }, { min: 30, label: "30-34" },
+        { min: 35, label: "35-39" }, { min: 40, label: "40-44" }, { min: 45, label: "45-49" },
+        { min: 50, label: "50-54" }, { min: 55, label: "55-59" }, { min: 60, label: "60-64" },
+        { min: 65, label: "65-69" }, { min: 70, label: "70-74" }, { min: 75, label: "75-79" },
+        { min: 80, label: "80-84" }
+      ];
+      
+      [...allAmateurBrackets].reverse().forEach(b => {
+        if (age >= b.min) {
+          const evList = [];
+          if (b.min <= 80) evList.push({ id: `am_ms_${b.label}`, name: t('ms'), type: 'MS', gender: 'M', feeThb: 1000, feeUsd: 30 });
+          if (b.min <= 65) evList.push({ id: `am_ws_${b.label}`, name: t('ws'), type: 'WS', gender: 'F', feeThb: 1000, feeUsd: 30 });
+          if (b.min <= 80) evList.push({ id: `am_md_${b.label}`, name: t('md'), type: 'MD', gender: 'M', feeThb: 1000, feeUsd: 30 });
+          if (b.min <= 75) evList.push({ id: `am_wd_${b.label}`, name: t('wd'), type: 'WD', gender: 'F', feeThb: 1000, feeUsd: 30 });
+          if (b.min <= 75) evList.push({ id: `am_xd_${b.label}`, name: t('xd'), type: 'XD', gender: 'ALL', feeThb: 1000, feeUsd: 30 });
+          if (b.min >= 25 && b.min <= 70) evList.push({ id: `am_hw_${b.label}`, name: t('hwDesc'), type: 'HW', gender: 'ALL', feeThb: 1000, feeUsd: 30 });
+          
+          categories.push({ name: `${t('catAmateur')} (${b.label})`, events: evList });
+        }
+      });
+
+      const comb = [];
+      const combinedBracketMap = [
+          { min: 40, sum: 100 }, { min: 45, sum: 110 }, { min: 50, sum: 120 },
+          { min: 55, sum: 130 }, { min: 60, sum: 140 }, { min: 65, sum: 150 }
+      ];
+
+      combinedBracketMap.forEach(b => {
+          if (age >= b.min) {
+              comb.push({ id: `comb_md_${b.sum}`, name: `${t('md')} ${b.sum} (${t('minStr')} ${b.min})`, type: 'MD', gender: 'M', feeThb: 1000, feeUsd: 30 });
+              comb.push({ id: `comb_wd_${b.sum}`, name: `${t('wd')} ${b.sum} (${t('minStr')} ${b.min})`, type: 'WD', gender: 'F', feeThb: 1000, feeUsd: 30 });
+              comb.push({ id: `comb_xd_${b.sum}`, name: `${t('xd')} ${b.sum} (${t('minStr')} ${b.min})`, type: 'XD', gender: 'ALL', feeThb: 1000, feeUsd: 30 });
+          }
+      });
+
+      if(age >= 60) comb.push({ id: '3x3_200', name: `${t('team3x3')} 200 (${t('minStr')} 60)`, type: '3x3', gender: 'ALL', feeThb: 1200, feeUsd: 35 });
+      if(age >= 70) comb.push({ id: '3x3_220', name: `${t('team3x3')} 220 (${t('minStr')} 70)`, type: '3x3', gender: 'ALL', feeThb: 1200, feeUsd: 35 });
+
+      if (comb.length > 0) categories.push({ name: t('catCombined'), events: comb });
+
+      return categories.map(cat => ({
+        ...cat, events: cat.events.filter(e => e.gender === 'ALL' || e.gender === gender)
+      })).filter(cat => cat.events.length > 0);
+    }
+
+    function renderCategories() {
+      const container = document.getElementById('categoriesContainer');
+      const msg = document.getElementById('noEventsMessage');
+      const cats = getAvailableCategories();
+      
+      container.innerHTML = '';
+      if (cats.length === 0) { msg.classList.remove('hidden'); return; }
+      msg.classList.add('hidden');
+
+      cats.forEach(cat => {
+        const bgClass = cat.isTrophy ? 'background-color: var(--amber-500);' : 'background-color: var(--blue-600);';
+        const iconHtml = cat.isTrophy ? `<svg class="icon mr-2" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path></svg>` : '';
+        
+        let eventsHtml = '';
+        cat.events.forEach(ev => {
+          const isSelected = selectedEvents.some(se => se.id === ev.id);
+          const isDisabled = !isSelected && selectedEvents.length >= 2;
+          const labelClass = `event-label ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`;
+          
+          const safeEvName = ev.name.replace(/'/g, "\\'");
+          const safeCatName = cat.name.replace(/'/g, "\\'");
+
+          eventsHtml += `
+            <label class="${labelClass}">
+              <input type="checkbox" class="event-checkbox" ${isSelected ? 'checked' : ''} ${isDisabled ? 'disabled' : ''} onclick="toggleEvent(event, '${ev.id}', '${safeEvName}', '${safeCatName}', '${ev.type}', ${ev.feeThb}, ${ev.feeUsd})">
+              <span class="font-medium text-sm" style="color: var(--gray-700);">${ev.name}</span>
+            </label>
+          `;
+        });
+
+        const card = document.createElement('div');
+        card.className = 'border rounded-lg overflow-hidden shadow-sm bg-white';
+        card.innerHTML = `
+          <div class="px-4 py-3 font-semibold text-white flex items-center" style="${bgClass}">${iconHtml} ${cat.name}</div>
+          <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">${eventsHtml}</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function toggleEvent(e, id, name, category, type, feeThb, feeUsd) {
+      const existingIdx = selectedEvents.findIndex(ev => ev.id === id);
+      
+      if (existingIdx === -1) {
+        if (selectedEvents.length >= 2) { 
+            e.preventDefault(); 
+            alert(t('alertMax')); 
+            return; 
+        }
+        
+        if (category.includes(t('catAmateur'))) {
+            const sameAmateur = selectedEvents.find(ev => ev.type === type && ev.category.includes(t('catAmateur')));
+            if (sameAmateur) {
+                e.preventDefault(); 
+                alert(t('alertSameAmateur'));
+                return;
+            }
+        }
+
+        selectedEvents.push({ id, name, category, type, feeThb, feeUsd, partnerName: '', partnerNat: '', partnerId: '', partnerEmail: '', partnerBirthYear: '', partnerTshirt: '', partner2Name: '', partner2Nat: '', partner2Id: '', partner2Email: '', partner2BirthYear: '', partner2Tshirt: '', teamName: '', teamManagerEmail: '' });
+      } else {
+        selectedEvents.splice(existingIdx, 1);
+        delete currentPartnerErrors[id]; 
+      }
+      
+      updateEventCount();
+      renderCategories(); 
+      renderPartnerForms();
+    }
+
+    function updateEventCount() {
+      const el = document.getElementById('selectedCountDisplay');
+      el.innerText = `${selectedEvents.length}/2`;
+      el.style.color = selectedEvents.length === 2 ? 'var(--red-600)' : 'var(--orange-600)';
+    }
+
+    function handlePartnerChange(id, field, val, inputElem = null) {
+      let finalVal = val;
+      
+      if (['partnerName', 'partner2Name', 'partnerNat', 'partner2Nat'].includes(field) || field.startsWith('player')) {
+        finalVal = val.toUpperCase().replace(/[^A-Z\s]/g, '');
+        if (inputElem) inputElem.value = finalVal;
+      } else if (['teamName'].includes(field)) {
+        finalVal = val.toUpperCase().replace(/[^A-Z\s0-9]/g, '');
+        if (inputElem) inputElem.value = finalVal;
+      } else if (['partnerId', 'partner2Id'].includes(field)) {
+        finalVal = val.toUpperCase().replace(/[^A-Z0-9]/g, '');
+        if (inputElem) inputElem.value = finalVal;
+      }
+
+      const ev = selectedEvents.find(e => e.id === id);
+      if(ev) ev[field] = finalVal;
+
+      validatePartnerRules(id);
+    }
+
+    function validatePartnerRules(id) {
+       const ev = selectedEvents.find(e => e.id === id);
+       if (!ev) return;
+       const errDiv = document.getElementById(`error-${id}`);
+       if (!errDiv) return;
+
+       const p1Age = getCurrentAge();
+       const p2Age = ev.partnerBirthYear ? 2026 - parseInt(ev.partnerBirthYear) : 0;
+       const p3Age = ev.partner2BirthYear ? 2026 - parseInt(ev.partner2BirthYear) : 0;
+
+       let errorMsg = '';
+
+       if (ev.id.startsWith('comb_') && ev.partnerBirthYear) {
+          let minAge = 0, comb = 0;
+          if(ev.id.includes('_100')){minAge=40;comb=100;} else if(ev.id.includes('_110')){minAge=45;comb=110;} else if(ev.id.includes('_120')){minAge=50;comb=120;}
+          else if(ev.id.includes('_130')){minAge=55;comb=130;} else if(ev.id.includes('_140')){minAge=60;comb=140;} else if(ev.id.includes('_150')){minAge=65;comb=150;}
+
+          if(p2Age < minAge) errorMsg = `${t('partnerAgeError')} ${p2Age} ${t('yearsOld')} (${t('mustMin')} ${minAge})`;
+          else if((p1Age + p2Age) < comb) errorMsg = `${t('totalAgeError')} ${p1Age+p2Age} ${t('yearsOld')} (${t('notReach')} ${comb})`;
+       }
+
+       if (ev.type === '3x3' && ev.partnerBirthYear && ev.partner2BirthYear) {
+          let minAge = 0, comb = 0;
+          if(ev.id==='3x3_200'){minAge=60;comb=200;} else if(ev.id==='3x3_220'){minAge=70;comb=220;}
+          if(p2Age < minAge || p3Age < minAge) errorMsg = `${t('partnerAgeError')} (${t('mustMin')} ${minAge} ${t('yearsOld')})`;
+          else if((p1Age + p2Age + p3Age) < comb) errorMsg = `${t('totalAgeError')} ${p1Age+p2Age+p3Age} ${t('yearsOld')} (${t('notReach')} ${comb})`;
+       }
+
+       if (errorMsg) {
+          errDiv.innerText = errorMsg;
+          errDiv.classList.remove('hidden');
+          currentPartnerErrors[id] = errorMsg; 
+       } else {
+          errDiv.classList.add('hidden');
+          delete currentPartnerErrors[id];
+       }
+    }
+
+    function getCountryOptions(selectedVal) {
+      return `
+        <option value="">${t('selectCountry')}</option>
+        <option value="THAILAND" ${selectedVal==='THAILAND'?'selected':''}>THAILAND</option>
+        <option value="MALAYSIA" ${selectedVal==='MALAYSIA'?'selected':''}>MALAYSIA</option>
+        <option value="CHINA" ${selectedVal==='CHINA'?'selected':''}>CHINA</option>
+        <option value="JAPAN" ${selectedVal==='JAPAN'?'selected':''}>JAPAN</option>
+        <option value="SOUTH KOREA" ${selectedVal==='SOUTH KOREA'?'selected':''}>SOUTH KOREA</option>
+        <option value="INDONESIA" ${selectedVal==='INDONESIA'?'selected':''}>INDONESIA</option>
+        <option value="SINGAPORE" ${selectedVal==='SINGAPORE'?'selected':''}>SINGAPORE</option>
+        <option value="TAIWAN" ${selectedVal==='TAIWAN'?'selected':''}>TAIWAN</option>
+        <option value="INDIA" ${selectedVal==='INDIA'?'selected':''}>INDIA</option>
+        <option value="HONG KONG" ${selectedVal==='HONG KONG'?'selected':''}>HONG KONG</option>
+        <option value="PHILIPPINES" ${selectedVal==='PHILIPPINES'?'selected':''}>PHILIPPINES</option>
+        <option value="VIETNAM" ${selectedVal==='VIETNAM'?'selected':''}>VIETNAM</option>
+        <option value="AUSTRALIA" ${selectedVal==='AUSTRALIA'?'selected':''}>AUSTRALIA</option>
+        <option value="USA" ${selectedVal==='USA'?'selected':''}>USA</option>
+        <option value="UK" ${selectedVal==='UK'?'selected':''}>UK</option>
+        <option value="OTHER" ${selectedVal==='OTHER'?'selected':''}>OTHER</option>
+      `;
+    }
+
+    function renderPartnerForms() {
+      const section = document.getElementById('partnerSection');
+      const container = document.getElementById('partnerFormsContainer');
+      
+      const requiresPartner = selectedEvents.filter(e => ['MD', 'WD', 'XD', 'HW', '3x3', 'TEAM'].includes(e.type));
+      if (requiresPartner.length === 0) { section.classList.add('hidden'); return; }
+      
+      const currentP1Name = document.getElementById('fullName').value.trim();
+
+      section.classList.remove('hidden');
+      container.innerHTML = '';
+
+      requiresPartner.forEach(ev => {
+        let html = `<div class="bg-white p-4 rounded-md border shadow-sm" style="border-color: var(--indigo-100);"><p class="font-semibold mb-3" style="color: var(--indigo-900); border-bottom: 1px solid var(--indigo-100); padding-bottom: 0.5rem;">${ev.category} - ${ev.name}</p>`;
+        
+        if (ev.type === 'TEAM') {
+          html += `
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+              <div><label class="block text-xs font-bold mb-1" style="color: var(--indigo-700);">${t('teamName')} <span style="color: var(--red-500);">*</span></label><input type="text" id="teamName_${ev.id}" class="input-field font-mono uppercase text-sm" placeholder="TEAM NAME" value="${ev.teamName}" oninput="handlePartnerChange('${ev.id}','teamName',this.value, this); clearError(this)" required></div>
+              <div><label class="block text-xs font-bold mb-1" style="color: var(--indigo-700);">${t('teamMgrEmail')} <span style="color: var(--red-500);">*</span></label><input type="email" id="teamMgrEmail_${ev.id}" class="input-field text-sm" placeholder="manager@email.com" value="${ev.teamManagerEmail}" oninput="handlePartnerChange('${ev.id}','teamManagerEmail',this.value, this); clearError(this)" required></div>
+            </div>
+            <div class="p-3 rounded border mt-2" style="background-color: var(--indigo-50); border-color: var(--indigo-100);">
+              <label class="block text-xs font-bold mb-2" style="color: var(--indigo-800);">${t('playerName')} 7 ${t('engOnly')}</label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">`;
+          for(let i=1; i<=7; i++) { html += `<input type="text" class="input-field text-xs font-mono uppercase" placeholder="Player ${i}" value="${ev['player'+i]||''}" oninput="handlePartnerChange('${ev.id}','player${i}',this.value, this)">`; }
+          html += `</div><p class="text-xs font-medium mt-2" style="color: var(--indigo-500);">${t('teamNote')}</p></div>`;
+        }
+
+        if (['MD', 'WD', 'XD', 'HW', '3x3'].includes(ev.type)) {
+          if(ev.type==='HW') html += `<p class="text-xs mb-3" style="color: var(--gray-600);">${t('hwNote')}</p>`;
+          html += `
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-3">
+              <div><label class="block text-xs font-bold mb-1" style="color: var(--gray-500);">${t('player1')} (Registrant)</label>
+              <input type="text" class="input-field font-mono uppercase text-sm bg-gray-100 readonly-p1-name" style="color: var(--gray-500); cursor: not-allowed;" value="${currentP1Name}" readonly></div>
+              
+              <div><label class="block text-xs font-bold mb-1" style="color: var(--indigo-700);"><span style="color: var(--indigo-600); font-weight: bold;">P2</span> ${t('partner1')} <span style="color: var(--red-500);">*</span></label><input type="text" id="p1Name_${ev.id}" class="input-field font-mono uppercase text-sm" placeholder="${t('engOnly')}" value="${ev.partnerName}" oninput="handlePartnerChange('${ev.id}','partnerName',this.value, this); clearError(this)" required></div>
+              
+              <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P2</span> ${t('country')} <span style="color: var(--red-500);">*</span></label>
+              <select id="p1Nat_${ev.id}" class="input-field text-sm font-mono" onchange="handlePartnerChange('${ev.id}','partnerNat',this.value, this); clearError(this)" required>
+                ${getCountryOptions(ev.partnerNat)}
+              </select></div>
+              
+              <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P2</span> ${t('idCard')} <span style="color: var(--red-500);">*</span></label><input type="text" id="p1Id_${ev.id}" class="input-field font-mono text-sm" placeholder="ID / Passport" value="${ev.partnerId || ''}" oninput="handlePartnerChange('${ev.id}','partnerId',this.value, this); clearError(this)" required></div>
+              
+              <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P2</span> ${t('pEmail')}</label><input type="email" id="p1Email_${ev.id}" class="input-field text-sm" placeholder="email@example.com (Optional)" value="${ev.partnerEmail}" oninput="handlePartnerChange('${ev.id}','partnerEmail',this.value, this); clearError(this)"></div>
+              
+              <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P2</span> ${t('tshirt')} <span style="color: var(--red-500);">*</span></label>
+              <select id="p1Tshirt_${ev.id}" class="input-field text-sm" onchange="handlePartnerChange('${ev.id}','partnerTshirt',this.value, this); clearError(this)" required>
+                <option value="">${t('tshirtSelect')}</option>
+                <option value="XS" ${ev.partnerTshirt==='XS'?'selected':''}>XS (36")</option>
+                <option value="S" ${ev.partnerTshirt==='S'?'selected':''}>S (38")</option>
+                <option value="M" ${ev.partnerTshirt==='M'?'selected':''}>M (40")</option>
+                <option value="L" ${ev.partnerTshirt==='L'?'selected':''}>L (42")</option>
+                <option value="XL" ${ev.partnerTshirt==='XL'?'selected':''}>XL (44")</option>
+                <option value="2XL" ${ev.partnerTshirt==='2XL'?'selected':''}>2XL (46")</option>
+                <option value="3XL" ${ev.partnerTshirt==='3XL'?'selected':''}>3XL (48")</option>
+              </select></div>
+              ${ev.id.startsWith('comb_') || ev.id.startsWith('3x3_') || ev.type==='HW' ? `<div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P2</span> ${t('pYear')} <span style="color: var(--red-500);">*</span></label><input type="number" id="p1Year_${ev.id}" class="input-field text-sm" placeholder="1980" value="${ev.partnerBirthYear}" oninput="handlePartnerChange('${ev.id}','partnerBirthYear',this.value, this); clearError(this)" required></div>` : ''}
+            </div>
+          `;
+        }
+
+        if (ev.type === '3x3') {
+          html += `
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-4 border-t mt-2" style="border-style: dashed; border-color: var(--indigo-200);">
+              <div><label class="block text-xs font-bold mb-1" style="color: var(--indigo-700);"><span style="color: var(--indigo-600); font-weight: bold;">P3</span> ${t('partner2')} <span style="color: var(--red-500);">*</span></label><input type="text" id="p2Name_${ev.id}" class="input-field font-mono uppercase text-sm" placeholder="${t('engOnly')}" value="${ev.partner2Name}" oninput="handlePartnerChange('${ev.id}','partner2Name',this.value, this); clearError(this)" required></div>
+              
+              <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P3</span> ${t('country')} <span style="color: var(--red-500);">*</span></label>
+              <select id="p2Nat_${ev.id}" class="input-field text-sm font-mono" onchange="handlePartnerChange('${ev.id}','partner2Nat',this.value, this); clearError(this)" required>
+                ${getCountryOptions(ev.partner2Nat)}
+              </select></div>
+              
+              <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P3</span> ${t('idCard')} <span style="color: var(--red-500);">*</span></label><input type="text" id="p2Id_${ev.id}" class="input-field font-mono text-sm" placeholder="ID / Passport" value="${ev.partner2Id || ''}" oninput="handlePartnerChange('${ev.id}','partner2Id',this.value, this); clearError(this)" required></div>
+              
+              <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P3</span> ${t('pEmail')}</label><input type="email" id="p2Email_${ev.id}" class="input-field text-sm" placeholder="email@example.com (Optional)" value="${ev.partner2Email}" oninput="handlePartnerChange('${ev.id}','partner2Email',this.value, this); clearError(this)"></div>
+              
+              <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P3</span> ${t('tshirt')} <span style="color: var(--red-500);">*</span></label>
+              <select id="p2Tshirt_${ev.id}" class="input-field text-sm" onchange="handlePartnerChange('${ev.id}','partner2Tshirt',this.value, this); clearError(this)" required>
+                <option value="">${t('tshirtSelect')}</option>
+                <option value="XS" ${ev.partner2Tshirt==='XS'?'selected':''}>XS (36")</option>
+                <option value="S" ${ev.partner2Tshirt==='S'?'selected':''}>S (38")</option>
+                <option value="M" ${ev.partner2Tshirt==='M'?'selected':''}>M (40")</option>
+                <option value="L" ${ev.partner2Tshirt==='L'?'selected':''}>L (42")</option>
+                <option value="XL" ${ev.partner2Tshirt==='XL'?'selected':''}>XL (44")</option>
+                <option value="2XL" ${ev.partner2Tshirt==='2XL'?'selected':''}>2XL (46")</option>
+                <option value="3XL" ${ev.partner2Tshirt==='3XL'?'selected':''}>3XL (48")</option>
+              </select></div>
+              <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P3</span> ${t('pYear')} <span style="color: var(--red-500);">*</span></label><input type="number" id="p2Year_${ev.id}" class="input-field text-sm" placeholder="1980" value="${ev.partner2BirthYear}" oninput="handlePartnerChange('${ev.id}','partner2BirthYear',this.value, this); clearError(this)" required></div>
+            </div>
+          `;
+        }
+        
+        html += `<div id="error-${ev.id}" class="text-xs font-bold mt-3 hidden p-2 rounded border" style="color: var(--red-600); background-color: var(--red-50); border-color: var(--red-200);"></div>`;
+        html += `</div>`;
+        
+        container.insertAdjacentHTML('beforeend', html);
+      });
+    }
+
+    function updateSummary() {
+      if(currentStep !== 3) return;
+
+      document.getElementById('summaryName').innerText = document.getElementById('fullName').value;
+      document.getElementById('summaryEmail').innerText = document.getElementById('email').value;
+      document.getElementById('summaryConfirmEmail').innerText = document.getElementById('email').value;
+
+      const list = document.getElementById('summaryEventsList');
+      list.innerHTML = '';
+      
+      let uniquePlayers = new Set();
+      uniquePlayers.add(document.getElementById('idNumber').value.trim());
+
+      let has3x3 = false;
+      let hasTeam = false;
+
+      selectedEvents.forEach(e => {
+        let det = '';
+        if(e.type === 'TEAM') {
+            hasTeam = true;
+            det = `<div class="mt-2 text-sm p-3 rounded border w-full bg-white" style="color: var(--amber-800); border-color: var(--amber-200);"><div class="font-bold flex items-center mb-1"><svg class="icon-sm mr-2" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path></svg>${t('teamName')}: <span class="ml-1 font-mono" style="color: var(--amber-600);">${e.teamName}</span></div><div>${t('teamMgrEmail')}: <span class="font-semibold">${e.teamManagerEmail}</span></div></div>`;
+        } else if (e.type === '3x3') {
+            has3x3 = true;
+            det = `<div class="mt-2 text-sm p-2 rounded border w-fit bg-white flex items-center" style="color: var(--gray-600); border-color: var(--blue-100);"><svg class="icon-sm mr-2" style="color: var(--indigo-500);" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> P2: <span class="ml-1 font-bold font-mono text-gray-800">${e.partnerName}</span> <span class="ml-3">P3: </span><span class="ml-1 font-bold font-mono text-gray-800">${e.partner2Name}</span></div>`;
+        } else if (e.partnerName) {
+            if (e.partnerId) uniquePlayers.add(e.partnerId.trim());
+            det = `<div class="mt-2 text-sm p-2 rounded border w-fit bg-white flex items-center" style="color: var(--gray-600); border-color: var(--blue-100);"><svg class="icon-sm mr-2" style="color: var(--indigo-500);" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Partner: <span class="ml-1 font-bold font-mono text-gray-800">${e.partnerName}</span></div>`;
+        }
+
+        list.innerHTML += `<li class="flex flex-col p-3 rounded border" style="background-color: var(--blue-50); color: var(--blue-700); border-color: var(--blue-100);"><div class="flex items-center"><svg class="icon-sm mr-2 flex-shrink-0" style="color: var(--blue-500);" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> <span class="font-medium">${e.category} - ${e.name}</span></div>${det}</li>`;
+      });
+
+      let feeThb = 0;
+      let feeUsd = 0;
+
+      if (selectedEvents.some(e => e.type !== '3x3' && e.type !== 'TEAM')) {
+         feeThb += uniquePlayers.size * 1000;
+         feeUsd += uniquePlayers.size * 30;
+      }
+      
+      if (has3x3) { feeThb += 1200; feeUsd += 35; }
+      if (hasTeam) { feeThb += 1500; feeUsd += 40; }
+
+      const totalFee = currentLang === 'th' ? feeThb : feeUsd;
+      document.getElementById('summaryTotalFee').innerText = `${totalFee.toLocaleString()} ${t('currency')}`;
+    }
+
+    async function submitForm() {
+      const agreeRules = document.getElementById('agreeRules');
+      if (!agreeRules.checked) {
+        document.getElementById('err-agreeRules').innerText = t('alertReqField');
+        alert(t('alertReq'));
+        return;
+      }
+
+      const loader = document.getElementById('loadingOverlay');
+      loader.classList.remove('hidden');
+      loader.querySelector('p').innerText = t('savingData');
+
+      const payload = {
+         personal: {
+            fullName: document.getElementById('fullName').value,
+            nationality: document.getElementById('nationality').value,
+            idNumber: document.getElementById('idNumber').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            gender: document.getElementById('gender').value,
+            tshirt: document.getElementById('tshirt').value,
+            birthYear: document.getElementById('birthYear').value
+         },
+         events: selectedEvents,
+         totalFeeText: document.getElementById('summaryTotalFee').innerText
+      };
+
+      try {
+         const response = await fetch(API_CONFIG.GAS_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'text/plain;charset=utf-8',
+            },
+            body: JSON.stringify({ action: 'register', data: payload })
+         });
+         
+         const responseText = await response.text();
+         let result;
+
+         try {
+             result = JSON.parse(responseText);
+         } catch (parseError) {
+             throw new Error("Backend Error (Please check Deployment Version or Sheet ID): " + responseText.substring(0, 100));
+         }
+
+         if (result.success) {
+            loader.classList.add('hidden');
+            document.getElementById('step-3').classList.add('hidden');
+            document.getElementById('footerButtons').classList.add('hidden');
+            document.querySelector('.step-wrapper').parentElement.classList.add('hidden');
+            
+            document.getElementById('displayTagId').innerText = result.tagID;
+            document.getElementById('step-4').classList.remove('hidden');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+         } else {
+            alert('เกิดข้อผิดพลาดในการบันทึกข้อมูล: ' + result.error);
+            loader.classList.add('hidden');
+         }
+      } catch (err) {
+         alert('การเชื่อมต่อขัดข้อง: ' + err.message);
+         loader.classList.add('hidden');
+         console.error(err);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+═══════════════════════════════════════════════════════════════════════════════
+                  SAWASDEE CUP 2026 REGISTRATION SYSTEM
+                           COMPLETE ARCHITECTURE
+═══════════════════════════════════════════════════════════════════════════════
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LAYER 1: FRONTEND (User Interaction)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+                              🌐 NETLIFY HOSTING
+                        https://sawasdee-cup-2026.netlify.app
+
+    ┌─────────────────────────────────────────────────────────┐
+    │                   FRONTEND APPLICATION                  │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  📄 index.html (Registration Form)                     │
+    │     ├─ Personal Info Section                           │
+    │     │  └─ Name, Email, DOB, Gender, T-Shirt Size      │
+    │     ├─ Category Selection Section                      │
+    │     │  └─ Single/Double/Mixed Doubles                 │
+    │     ├─ Contact Information                             │
+    │     │  └─ Phone, Email, Team Name                     │
+    │     └─ Terms Agreement                                 │
+    │                                                         │
+    │  🎨 CSS/style.css (Styling)                            │
+    │     ├─ Responsive Design (Desktop & Mobile)            │
+    │     ├─ Form Validation Display                         │
+    │     └─ Error Message Styling                           │
+    │                                                         │
+    │  ⚙️ JavaScript (app.js, validation.js, form-handler.js) │
+    │     ├─ Client-side Form Validation                     │
+    │     │  └─ Email format, Age verification              │
+    │     ├─ Category Auto-population                        │
+    │     ├─ Fee Calculation                                 │
+    │     ├─ Form Submission                                 │
+    │     └─ Confirmation Page Display                       │
+    │                                                         │
+    │  📄 confirmation.html (Success Page)                   │
+    │     └─ Displays: Tag ID, Next Steps, Payment Info      │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+                              │
+                              │ HTTPS POST
+                              ↓
+                    (JSON form data)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LAYER 2: BACKEND (Business Logic)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+                        🔧 GOOGLE APPS SCRIPT (GAS)
+            https://script.google.com/macros/d/{ID}/usercache
+
+    ┌─────────────────────────────────────────────────────────┐
+    │                    BACKEND API SERVER                   │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  📋 server.gs (HTTP Endpoints)                         │
+    │     ├─ POST /register → RegistrationService            │
+    │     ├─ GET /categories → getCategories()               │
+    │     ├─ GET /registration/{tagID}                       │
+    │     └─ POST /confirmPayment (admin)                    │
+    │                                                         │
+    │  ✅ validation.gs (Input Validation)                    │
+    │     ├─ Email format check                              │
+    │     ├─ Age eligibility verification                    │
+    │     ├─ Duplicate email detection                       │
+    │     ├─ Category conflict detection                     │
+    │     └─ Required fields validation                      │
+    │                                                         │
+    │  🎫 tagGenerator.gs (Unique ID Generation)              │
+    │     └─ Format: SC2026-[000-999]-[RANDOM6CHARS]         │
+    │        Example: SC2026-001-ABC123                      │
+    │                                                         │
+    │  📧 emailService.gs (Email Sending)                     │
+    │     ├─ sendConfirmation() → Registration email         │
+    │     └─ sendPaymentConfirmation() → Payment email       │
+    │                                                         │
+    │  🔐 registration.gs (Business Logic)                    │
+    │     ├─ Validate input                                  │
+    │     ├─ Generate Tag ID                                 │
+    │     ├─ Calculate fees                                  │
+    │     ├─ Save to database                                │
+    │     └─ Trigger emails                                  │
+    │                                                         │
+    │  💾 database.gs (Database Operations)                   │
+    │     ├─ addRegistration(data)                           │
+    │     ├─ findByEmail(email)                              │
+    │     ├─ findByTagID(tagID)                              │
+    │     ├─ updateStatus(tagID, status)                     │
+    │     ├─ getCategories()                                 │
+    │     ├─ logEmail()                                      │
+    │     └─ getAllRegistrations()                           │
+    │                                                         │
+    │  ⚙️ config.gs (Configuration)                          │
+    │     ├─ SHEET_ID                                        │
+    │     ├─ EMAIL settings                                  │
+    │     ├─ FEE structure                                   │
+    │     └─ TOURNAMENT details                              │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+                              │
+                              │ Google Sheets API
+                              ↓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LAYER 3: DATABASE (Data Storage)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+                           📊 GOOGLE SHEETS
+              https://docs.google.com/spreadsheets/d/{SHEET_ID}
+
+    ┌──────────────────────────────────────────────────────────┐
+    │  Sheet 1: REGISTRATIONS (Main Data)                      │
+    ├──────────────────────────────────────────────────────────┤
+    │ Timestamp | Tag_ID | First_Name | Last_Name | ID_Number │
+    │ DOB | Gender | T_Shirt | Email | Phone | Team           │
+    │ Category_1 | Category_2 | Fee | Status | Notes          │
+    │                                                          │
+    │ Row 1: SC2026-001-ABC | John | Doe | 1234567890...     │
+    │ Row 2: SC2026-002-XYZ | Jane | Smith | 0987654321...   │
+    │ ...                                                      │
+    └──────────────────────────────────────────────────────────┘
+
+    ┌──────────────────────────────────────────────────────────┐
+    │  Sheet 2: CATEGORIES (Reference Data)                    │
+    ├──────────────────────────────────────────────────────────┤
+    │ Category_ID | Category_Name | Division | Age_Group      │
+    │ Gender | Min_Age | Max_Age | Fee                        │
+    │                                                          │
+    │ 1 | Men's Singles 20-24 | Amateur | 20-24 | M | 20 | 24 │
+    │ 2 | Men's Singles 25-29 | Amateur | 25-29 | M | 25 | 29 │
+    │ 3 | Men's Doubles 100   | Amateur | Combined | - | 40... │
+    │ ... (all categories from tournament rules)              │
+    └──────────────────────────────────────────────────────────┘
+
+    ┌──────────────────────────────────────────────────────────┐
+    │  Sheet 3: EMAIL_LOG (Audit Trail)                        │
+    ├──────────────────────────────────────────────────────────┤
+    │ Timestamp | Tag_ID | Email | Email_Type | Status | ...  │
+    │                                                          │
+    │ 2026-01-15 | SC2026-001-ABC | john@... | Confirmation   │
+    │ 2026-01-16 | SC2026-001-ABC | john@... | Payment_Conf   │
+    └──────────────────────────────────────────────────────────┘
+
+    ┌──────────────────────────────────────────────────────────┐
+    │  Sheet 4: PAYMENT_TRACKING (Admin Verification)          │
+    ├──────────────────────────────────────────────────────────┤
+    │ Tag_ID | Amount | Received | Receipt_Date | Verified_By │
+    │ Notes                                                    │
+    │                                                          │
+    │ SC2026-001-ABC | 1500 | Yes | 2026-01-16 | Admin        │
+    │ SC2026-002-XYZ | 2000 | Yes | 2026-01-17 | Admin        │
+    └──────────────────────────────────────────────────────────┘
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LAYER 4: EXTERNAL SERVICES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    ┌──────────────┐           ┌──────────────┐          ┌────────────┐
+    │   🔑 Gmail   │           │   🏦 Bank    │          │   📱 Email │
+    │   API / App  │           │   Transfer   │          │   Player   │
+    └──────────────┘           └──────────────┘          └────────────┘
+          ↑                           │                         ↑
+          │                           │ Manual                  │
+          │ Send Email                │ Transfer                │ Receives
+          │                           ↓                         │
+    ┌─────────────────────────────────────────────────────────────────┐
+    │  📧 EMAIL FLOW                                                  │
+    ├─────────────────────────────────────────────────────────────────┤
+    │                                                                 │
+    │  Email 1: Confirmation (Auto-sent by Backend)                  │
+    │  ────────────────────────────────────────────────────────────  │
+    │  From: noreply@sawasdee-cup.com                                │
+    │  To: player@email.com                                          │
+    │  Subject: [Sawasdee Cup 2026] Registration Confirmed - SC2026  │
+    │  Content: Tag ID, Fee, Bank Details, Payment Instructions      │
+    │  Timing: Immediately after registration                        │
+    │                                                                 │
+    │  Email 2: Payment Confirmation (Sent by Admin)                 │
+    │  ────────────────────────────────────────────────────────────  │
+    │  From: noreply@sawasdee-cup.com                                │
+    │  To: player@email.com                                          │
+    │  Subject: [Sawasdee Cup 2026] Payment Confirmed - SC2026       │
+    │  Content: Payment verified, registration confirmed             │
+    │  Timing: When admin marks payment verified in Google Sheet     │
+    │                                                                 │
+    └─────────────────────────────────────────────────────────────────┘
+
+
+═══════════════════════════════════════════════════════════════════════════════
+DATA FLOW SEQUENCE
+═══════════════════════════════════════════════════════════════════════════════
+
+    STEP 1: PLAYER REGISTRATION
+    ──────────────────────────
+    Player fills form on Netlify
+           ↓
+    [Click Submit]
+           ↓
+    Browser sends HTTPS POST
+           ↓
+
+    STEP 2: BACKEND PROCESSING
+    ──────────────────────────
+    GAS receives form data
+           ↓
+    validation.gs: Validates input ✓
+           ↓
+    tagGenerator.gs: Generates Tag ID ✓
+           ↓
+    database.gs: Saves to Google Sheet ✓
+           ↓
+    emailService.gs: Sends confirmation email ✓
+           ↓
+
+    STEP 3: EMAIL CONFIRMATION
+    ──────────────────────────
+    Player receives email with:
+    - Tag ID: SC2026-001-ABC123
+    - Fee amount: 1,500 THB
+    - Bank account details
+    - Instructions: Use Tag ID as payment reference
+           ↓
+
+    STEP 4: PLAYER PAYMENT
+    ─────────────────────
+    Player goes to bank
+           ↓
+    Transfers money to: Sawasdee Cup 2026 account
+           ↓
+    Uses Tag ID as reference/note
+           ↓
+    Takes screenshot/receipt
+           ↓
+
+    STEP 5: PAYMENT EMAIL
+    ───────────────────
+    Player emails receipt to: finance.jadesport@gmail.com
+           ↓
+    Subject: [SC2026-001-ABC123] Payment Slip
+    Attachment: Bank transfer screenshot
+           ↓
+
+    STEP 6: ADMIN VERIFICATION
+    ──────────────────────────
+    Admin receives email with receipt
+           ↓
+    Admin opens: Google Sheet → PAYMENT_TRACKING
+           ↓
+    Finds row with: SC2026-001-ABC123
+           ↓
+    Updates:
+    - Payment_Received: Yes
+    - Receipt_Date: 2026-01-16
+    - Payment_Verified: Yes
+    - Verified_By: Admin Name
+           ↓
+    GAS detects change (onEdit trigger)
+           ↓
+
+    STEP 7: AUTO CONFIRMATION EMAIL
+    ──────────────────────────────
+    System automatically sends:
+    - To: player@email.com
+    - Subject: Payment Confirmed!
+    - Content: Registration confirmed, ready to compete
+           ↓
+
+    STEP 8: SUCCESS
+    ──────────────
+    ✓ Player is REGISTERED & PAID
+    ✓ Status: CONFIRMED
+    ✓ Ready to compete in tournament
+
+
+═══════════════════════════════════════════════════════════════════════════════
+TECHNOLOGY STACK VISUALIZATION
+═══════════════════════════════════════════════════════════════════════════════
+
+    ┌─────────────────────────────────────────────────────────────┐
+    │                     FRONTEND LAYER                          │
+    │  ┌─────────────────────────────────────────────────────┐   │
+    │  │ Netlify (Free Hosting)                              │   │
+    │  │ - HTML5 + CSS3 + JavaScript (ES6+)                  │   │
+    │  │ - Form Validation (Client-side)                     │   │
+    │  │ - Responsive Design (Mobile + Desktop)              │   │
+    │  └─────────────────────────────────────────────────────┘   │
+    └─────────────────────────────────────────────────────────────┘
+                              ↓
+    ┌─────────────────────────────────────────────────────────────┐
+    │                     BACKEND LAYER                           │
+    │  ┌─────────────────────────────────────────────────────┐   │
+    │  │ Google Apps Script (Free, Cloud-based)              │   │
+    │  │ - JavaScript runtime                                │   │
+    │  │ - Built-in Google Sheet access                      │   │
+    │  │ - Built-in Gmail API integration                    │   │
+    │  │ - Event-driven (onEdit triggers)                    │   │
+    │  │ - No server maintenance needed                      │   │
+    │  └─────────────────────────────────────────────────────┘   │
+    └─────────────────────────────────────────────────────────────┘
+                              ↓
+    ┌─────────────────────────────────────────────────────────────┐
+    │                     DATABASE LAYER                          │
+    │  ┌─────────────────────────────────────────────────────┐   │
+    │  │ Google Sheets (Free, Cloud-based)                   │   │
+    │  │ - Real-time collaborative editing                   │   │
+    │  │ - Built-in access controls                          │   │
+    │  │ - Auto-backup by Google                             │   │
+    │  │ - Easy admin access (no special tools needed)        │   │
+    │  │ - Can share with multiple admins                    │   │
+    │  └─────────────────────────────────────────────────────┘   │
+    └─────────────────────────────────────────────────────────────┘
+
+
+═══════════════════════════════════════════════════════════════════════════════
+KEY COMPONENTS & RESPONSIBILITIES
+═══════════════════════════════════════════════════════════════════════════════
+
+    🎨 FRONTEND (Netlify)
+    ├─ User Interface
+    ├─ Form Display & Interaction
+    ├─ Input Validation (client-side)
+    ├─ Error Message Display
+    ├─ Loading indicators
+    └─ Confirmation page display
+
+    ⚙️ BACKEND (Google Apps Script)
+    ├─ Receive form submissions
+    ├─ Validate data (server-side)
+    ├─ Generate unique Tag IDs
+    ├─ Calculate registration fees
+    ├─ Save registrations to database
+    ├─ Log all activities
+    ├─ Send confirmation emails
+    ├─ Monitor payment status
+    └─ Trigger payment confirmation emails
+
+    💾 DATABASE (Google Sheets)
+    ├─ Store registrations
+    ├─ Store category definitions
+    ├─ Log email send history
+    ├─ Track payment verification
+    └─ Provide admin access
+
+    📧 EMAIL (Gmail)
+    ├─ Send confirmation emails
+    ├─ Send payment reminders (future)
+    ├─ Send payment confirmation
+    └─ Send tournament updates (future)
+
+    🏦 MANUAL PAYMENT (Bank Transfer)
+    ├─ Players transfer fee to bank account
+    ├─ Include Tag ID as reference
+    └─ Admin verifies receipt
+
+
+═══════════════════════════════════════════════════════════════════════════════
+SYSTEM RELIABILITY & SCALABILITY
+═══════════════════════════════════════════════════════════════════════════════
+
+    Capacity:
+    ├─ Google Sheets: 10 million cells per sheet ✓
+    ├─ GAS: 300 second timeout per request ✓
+    ├─ Gmail: 100 emails/day free tier ✓
+    │         (Upgrade to 10,000/day if needed)
+    ├─ Netlify: Unlimited free tier ✓
+    └─ Expected: 50-200 registrations ✓
+
+    Reliability:
+    ├─ Google infrastructure (99.9% uptime)
+    ├─ Netlify CDN (global distribution)
+    ├─ Automatic backups (Google)
+    ├─ Multiple admin access
+    └─ Audit trail (email log)
+
+    Security:
+    ├─ HTTPS only (Netlify auto)
+    ├─ Google authentication (admin access)
+    ├─ Duplicate prevention
+    ├─ Manual payment verification
+    ├─ No stored credit cards
+    └─ All data encrypted in transit
+
+
+═══════════════════════════════════════════════════════════════════════════════
+FILE STRUCTURE
+═══════════════════════════════════════════════════════════════════════════════
+
+sawasdee-cup-2026/
+│
+├── 📄 README.md
+│   └─ Project overview & summary
+│
+├── 📄 01-System-Architecture-Design.md
+│   └─ Detailed architecture, database schema, API endpoints
+│
+├── 📄 02-Implementation-Guide.md
+│   └─ Complete code for all components
+│
+├── 📄 03-Admin-Payment-System.md
+│   └─ Payment verification process & templates
+│
+├── 📄 04-QUICK-START.md
+│   └─ 5-step launch guide
+│
+├── 📄 SYSTEM-DIAGRAM.txt
+│   └─ This file - visual architecture
+│
+├── 🔧 backend/
+│   ├─ src/
+│   │  ├─ config.gs
+│   │  ├─ server.gs
+│   │  ├─ database.gs
+│   │  ├─ registration.gs
+│   │  ├─ tagGenerator.gs
+│   │  ├─ emailService.gs
+│   │  ├─ validation.gs
+│   │  └─ utils.gs
+│   └─ appsscript.json
+│
+├── 🌐 frontend/
+│   ├─ public/
+│   │  ├─ index.html
+│   │  ├─ confirmation.html
+│   │  ├─ css/
+│   │  │  └─ style.css
+│   │  ├─ js/
+│   │  │  ├─ app.js
+│   │  │  ├─ constants.js
+│   │  │  ├─ form-handler.js
+│   │  │  └─ validation.js
+│   │  ├─ assets/
+│   │  └─ admin/
+│   │     └─ index.html
+│   ├─ netlify.toml
+│   └─ package.json
+│
+└── 📊 Deployment Info
+    ├─ Google Sheet ID: [SAVED HERE]
+    ├─ GAS Deployment URL: [SAVED HERE]
+    └─ Netlify Site URL: [SAVED HERE]
+
+
+═══════════════════════════════════════════════════════════════════════════════
+COST ANALYSIS
+═══════════════════════════════════════════════════════════════════════════════
+
+    Component               Cost        Limit           Upgrade Path
+    ──────────────────────────────────────────────────────────────────
+    Google Sheets          $0/month    10M cells       Unlimited
+    Google Apps Script     $0/month    40M/month       Unlimited
+    Gmail API              $0/month    100/day         10,000/day free
+    Netlify Hosting        $0/month    Unlimited       Plus: $19/month
+    GitHub Repository      $0/month    Unlimited       Team plan: $4/user
+    Domain (optional)      $12/year    1 domain        Additional: $12 each
+    ──────────────────────────────────────────────────────────────────
+    TOTAL COST             $0/year     ✓ Suitable       Scalable
+                                       for 50-200
+                                       registrations
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                          READY TO LAUNCH!
+═══════════════════════════════════════════════════════════════════════════════
+
+Next Steps:
+1. Read 04-QUICK-START.md
+2. Follow 5-step setup guide
+3. Test with sample data
+4. Go live!
+
+Time to implement: 2-3 weeks
+Complexity: Medium
+Support: See documentation files
+
+Good luck! 🏸
+
+═══════════════════════════════════════════════════════════════════════════════
