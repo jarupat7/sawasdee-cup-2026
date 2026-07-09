@@ -187,8 +187,30 @@
           </div>
           <div>
             <label class="block text-sm font-medium mb-1"><span data-i18n="country">Country</span> <span style="color: var(--red-500);">*</span></label>
-            <input type="text" id="nationality" class="input-field font-mono uppercase" placeholder="THAILAND" required oninput="this.value = this.value.toUpperCase().replace(/[^A-Z\s]/g, ''); clearError(this)">
+            <select id="nationality" class="input-field font-mono uppercase" required onchange="toggleOtherCountry(this, 'otherNationalityContainer'); clearError(this)">
+              <option value="" data-i18n="selectCountry">-- Select Country --</option>
+              <option value="THAILAND">THAILAND</option>
+              <option value="MALAYSIA">MALAYSIA</option>
+              <option value="CHINA">CHINA</option>
+              <option value="JAPAN">JAPAN</option>
+              <option value="SOUTH KOREA">SOUTH KOREA</option>
+              <option value="INDONESIA">INDONESIA</option>
+              <option value="SINGAPORE">SINGAPORE</option>
+              <option value="TAIWAN">TAIWAN</option>
+              <option value="INDIA">INDIA</option>
+              <option value="HONG KONG">HONG KONG</option>
+              <option value="PHILIPPINES">PHILIPPINES</option>
+              <option value="VIETNAM">VIETNAM</option>
+              <option value="AUSTRALIA">AUSTRALIA</option>
+              <option value="USA">USA</option>
+              <option value="UK">UK</option>
+              <option value="OTHER">OTHER</option>
+            </select>
             <span id="err-nationality" class="err-msg"></span>
+            <div id="otherNationalityContainer" class="hidden mt-2">
+              <input type="text" id="otherNationality" class="input-field font-mono uppercase" placeholder="PLEASE SPECIFY COUNTRY" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z\s]/g, ''); clearError(this)">
+              <span id="err-otherNationality" class="err-msg"></span>
+            </div>
           </div>
           <div>
             <label class="block text-sm font-medium mb-1"><span data-i18n="idCard">ID Card / Passport</span> <span style="color: var(--red-500);">*</span></label>
@@ -602,6 +624,16 @@
            }
         });
 
+        if (document.getElementById('nationality').value === 'OTHER') {
+           const otherEl = document.getElementById('otherNationality');
+           if (!otherEl || !otherEl.value.trim()) {
+               if (otherEl) otherEl.classList.add('input-error');
+               const errSpan = document.getElementById('err-otherNationality');
+               if (errSpan) errSpan.innerText = t('alertReqField');
+               valid = false;
+           }
+        }
+
         const emailEl = document.getElementById('email');
         if (emailEl && emailEl.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
             emailEl.classList.add('input-error');
@@ -637,6 +669,9 @@
           if (['MD', 'WD', 'XD', 'HW'].includes(e.type)) {
             checkEvField('partnerName', `p1Name_${e.id}`);
             checkEvField('partnerNat', `p1Nat_${e.id}`);
+            if (e.partnerNat === 'OTHER') {
+              checkEvField('partnerNatOther', `p1NatOther_${e.id}`);
+            }
             checkEvField('partnerId', `p1Id_${e.id}`);
             checkEvField('partnerTshirt', `p1Tshirt_${e.id}`);
             if(e.id.startsWith('comb_') || e.type==='HW') checkEvField('partnerBirthYear', `p1Year_${e.id}`);
@@ -644,12 +679,18 @@
           if (e.type === '3x3') {
             checkEvField('partnerName', `p1Name_${e.id}`);
             checkEvField('partnerNat', `p1Nat_${e.id}`);
+            if (e.partnerNat === 'OTHER') {
+              checkEvField('partnerNatOther', `p1NatOther_${e.id}`);
+            }
             checkEvField('partnerId', `p1Id_${e.id}`);
             checkEvField('partnerTshirt', `p1Tshirt_${e.id}`);
             checkEvField('partnerBirthYear', `p1Year_${e.id}`);
 
             checkEvField('partner2Name', `p2Name_${e.id}`);
             checkEvField('partner2Nat', `p2Nat_${e.id}`);
+            if (e.partner2Nat === 'OTHER') {
+              checkEvField('partner2NatOther', `p2NatOther_${e.id}`);
+            }
             checkEvField('partner2Id', `p2Id_${e.id}`);
             checkEvField('partner2Tshirt', `p2Tshirt_${e.id}`);
             checkEvField('partner2BirthYear', `p2Year_${e.id}`);
@@ -900,6 +941,40 @@
        }
     }
 
+    function toggleOtherCountry(selectEl, containerId) {
+      const container = document.getElementById(containerId);
+      const inputEl = container.querySelector('input');
+      if (selectEl.value === 'OTHER') {
+        container.classList.remove('hidden');
+        inputEl.required = true;
+      } else {
+        container.classList.add('hidden');
+        inputEl.required = false;
+        inputEl.value = '';
+        const errSpan = document.getElementById('err-' + inputEl.id);
+        if (errSpan) errSpan.innerText = '';
+        inputEl.classList.remove('input-error');
+      }
+    }
+
+    function toggleOtherPartnerCountry(selectEl, containerId, evId, field) {
+      const container = document.getElementById(containerId);
+      const inputEl = container.querySelector('input');
+      
+      handlePartnerChange(evId, field, selectEl.value);
+      
+      if (selectEl.value === 'OTHER') {
+        container.classList.remove('hidden');
+        inputEl.required = true;
+      } else {
+        container.classList.add('hidden');
+        inputEl.required = false;
+        inputEl.value = '';
+        handlePartnerChange(evId, field + 'Other', '');
+        inputEl.classList.remove('input-error');
+      }
+    }
+
     function getCountryOptions(selectedVal) {
       return `
         <option value="">${t('selectCountry')}</option>
@@ -960,7 +1035,12 @@
               <div><label class="block text-xs font-bold mb-1" style="color: var(--indigo-700);"><span style="color: var(--indigo-600); font-weight: bold;">P2</span> ${t('partner1')} <span style="color: var(--red-500);">*</span></label><input type="text" id="p1Name_${ev.id}" class="input-field font-mono uppercase text-sm" placeholder="${t('engOnly')}" value="${ev.partnerName}" oninput="handlePartnerChange('${ev.id}','partnerName',this.value, this); clearError(this)" required></div>
               
               <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P2</span> ${t('country')} <span style="color: var(--red-500);">*</span></label>
-              <input type="text" id="p1Nat_${ev.id}" class="input-field font-mono uppercase text-sm" placeholder="THAILAND" value="${ev.partnerNat || ''}" oninput="handlePartnerChange('${ev.id}','partnerNat',this.value, this); clearError(this)" required></div>
+              <select id="p1Nat_${ev.id}" class="input-field text-sm font-mono" onchange="toggleOtherPartnerCountry(this, 'p1NatOtherContainer_${ev.id}', '${ev.id}', 'partnerNat'); clearError(this)" required>
+                ${getCountryOptions(ev.partnerNat)}
+              </select>
+              <div id="p1NatOtherContainer_${ev.id}" class="${ev.partnerNat === 'OTHER' ? '' : 'hidden'} mt-2">
+                <input type="text" id="p1NatOther_${ev.id}" class="input-field font-mono uppercase text-xs" placeholder="SPECIFY COUNTRY" value="${ev.partnerNatOther || ''}" oninput="handlePartnerChange('${ev.id}','partnerNatOther',this.value, this); clearError(this)">
+              </div></div>
               
               <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P2</span> ${t('idCard')} <span style="color: var(--red-500);">*</span></label><input type="text" id="p1Id_${ev.id}" class="input-field font-mono text-sm" placeholder="ID / Passport" value="${ev.partnerId || ''}" oninput="handlePartnerChange('${ev.id}','partnerId',this.value, this); clearError(this)" required></div>
               
@@ -988,7 +1068,12 @@
               <div><label class="block text-xs font-bold mb-1" style="color: var(--indigo-700);"><span style="color: var(--indigo-600); font-weight: bold;">P3</span> ${t('partner2')} <span style="color: var(--red-500);">*</span></label><input type="text" id="p2Name_${ev.id}" class="input-field font-mono uppercase text-sm" placeholder="${t('engOnly')}" value="${ev.partner2Name}" oninput="handlePartnerChange('${ev.id}','partner2Name',this.value, this); clearError(this)" required></div>
               
               <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P3</span> ${t('country')} <span style="color: var(--red-500);">*</span></label>
-              <input type="text" id="p2Nat_${ev.id}" class="input-field font-mono uppercase text-sm" placeholder="THAILAND" value="${ev.partner2Nat || ''}" oninput="handlePartnerChange('${ev.id}','partner2Nat',this.value, this); clearError(this)" required></div>
+              <select id="p2Nat_${ev.id}" class="input-field text-sm font-mono" onchange="toggleOtherPartnerCountry(this, 'p2NatOtherContainer_${ev.id}', '${ev.id}', 'partner2Nat'); clearError(this)" required>
+                ${getCountryOptions(ev.partner2Nat)}
+              </select>
+              <div id="p2NatOtherContainer_${ev.id}" class="${ev.partner2Nat === 'OTHER' ? '' : 'hidden'} mt-2">
+                <input type="text" id="p2NatOther_${ev.id}" class="input-field font-mono uppercase text-xs" placeholder="SPECIFY COUNTRY" value="${ev.partner2NatOther || ''}" oninput="handlePartnerChange('${ev.id}','partner2NatOther',this.value, this); clearError(this)">
+              </div></div>
               
               <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P3</span> ${t('idCard')} <span style="color: var(--red-500);">*</span></label><input type="text" id="p2Id_${ev.id}" class="input-field font-mono text-sm" placeholder="ID / Passport" value="${ev.partner2Id || ''}" oninput="handlePartnerChange('${ev.id}','partner2Id',this.value, this); clearError(this)" required></div>
               
@@ -1076,10 +1161,13 @@
       loader.classList.remove('hidden');
       loader.querySelector('p').innerText = t('savingData');
 
+      const natSelectVal = document.getElementById('nationality').value;
+      const nationalityVal = natSelectVal === 'OTHER' ? document.getElementById('otherNationality').value.trim() : natSelectVal;
+
       const payload = {
          personal: {
             fullName: document.getElementById('fullName').value,
-            nationality: document.getElementById('nationality').value,
+            nationality: nationalityVal,
             idNumber: document.getElementById('idNumber').value,
             email: document.getElementById('email').value,
             phone: document.getElementById('phone').value,
@@ -1088,7 +1176,15 @@
             tshirt: document.getElementById('tshirt').value,
             birthYear: document.getElementById('birthYear').value
          },
-         events: selectedEvents,
+         events: selectedEvents.map(ev => {
+            const partnerNatFinal = ev.partnerNat === 'OTHER' ? (ev.partnerNatOther || '').trim() : ev.partnerNat;
+            const partner2NatFinal = ev.partner2Nat === 'OTHER' ? (ev.partner2NatOther || '').trim() : ev.partner2Nat;
+            return {
+               ...ev,
+               partnerNat: partnerNatFinal,
+               partner2Nat: partner2NatFinal
+            };
+         }),
          totalFeeText: document.getElementById('summaryTotalFee').innerText
       };
 
