@@ -187,25 +187,7 @@
           </div>
           <div>
             <label class="block text-sm font-medium mb-1"><span data-i18n="country">Country</span> <span style="color: var(--red-500);">*</span></label>
-            <select id="nationality" class="input-field font-mono uppercase" required onchange="clearError(this)">
-              <option value="" data-i18n="selectCountry">-- Select Country --</option>
-              <option value="THAILAND">THAILAND</option>
-              <option value="MALAYSIA">MALAYSIA</option>
-              <option value="CHINA">CHINA</option>
-              <option value="JAPAN">JAPAN</option>
-              <option value="SOUTH KOREA">SOUTH KOREA</option>
-              <option value="INDONESIA">INDONESIA</option>
-              <option value="SINGAPORE">SINGAPORE</option>
-              <option value="TAIWAN">TAIWAN</option>
-              <option value="INDIA">INDIA</option>
-              <option value="HONG KONG">HONG KONG</option>
-              <option value="PHILIPPINES">PHILIPPINES</option>
-              <option value="VIETNAM">VIETNAM</option>
-              <option value="AUSTRALIA">AUSTRALIA</option>
-              <option value="USA">USA</option>
-              <option value="UK">UK</option>
-              <option value="OTHER">OTHER</option>
-            </select>
+            <input type="text" id="nationality" class="input-field font-mono uppercase" placeholder="THAILAND" required oninput="this.value = this.value.toUpperCase().replace(/[^A-Z\s]/g, ''); clearError(this)">
             <span id="err-nationality" class="err-msg"></span>
           </div>
           <div>
