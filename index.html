@@ -218,10 +218,15 @@
             <input type="email" id="email" class="input-field" placeholder="example@email.com" required oninput="clearError(this)">
             <span id="err-email" class="err-msg"></span>
           </div>
-          <div>
+           <div>
             <label class="block text-sm font-medium mb-1" data-i18n="phone">Phone</label>
             <input type="tel" id="phone" class="input-field" placeholder="089xxxxxxx" oninput="clearError(this)">
             <span id="err-phone" class="err-msg"></span>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" data-i18n="teamClub">Team / Club Name</label>
+            <input type="text" id="teamClub" class="input-field font-mono uppercase" placeholder="FYC CLUB" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9\s]/g, ''); clearError(this)">
+            <span id="err-teamClub" class="err-msg"></span>
           </div>
           <div>
             <label class="block text-sm font-medium mb-1" data-i18n="gender">Gender</label>
@@ -410,7 +415,7 @@
       th: {
         title: "ระบบรับสมัครออนไลน์", step1: "ข้อมูลส่วนตัว", step2: "เลือกรุ่น", step3: "ยืนยันยอด",
         infoDesc: "ใช้ชื่อ-นามสกุล และ อีเมล เป็นข้อมูลหลักในการยืนยันตัวตน", engOnly: "* บังคับภาษาอังกฤษตัวพิมพ์ใหญ่เท่านั้น (EN Uppercase Only)",
-        fname: "ชื่อ-นามสกุล (Full Name)", email: "อีเมล (Email)", phone: "เบอร์โทรศัพท์ (Phone)", gender: "เพศ (Gender)", male: "ชาย (Male)", female: "หญิง (Female)",
+        fname: "ชื่อ-นามสกุล (Full Name)", email: "อีเมล (Email)", phone: "เบอร์โทรศัพท์ (Phone)", teamClub: "สังกัดทีม / สโมสร (Team/Club Name)", gender: "เพศ (Gender)", male: "ชาย (Male)", female: "หญิง (Female)",
         country: "ประเทศ (Country)", selectCountry: "-- เลือกประเทศ (Select) --", player1: "ผู้เล่นคนที่ 1",
         idCard: "รหัสประชาชน/พาสปอร์ต (ID/Passport)", tshirt: "ไซส์เสื้อ (T-Shirt Size)", tshirtSelect: "-- เลือกไซส์ (Select Size) --",
         birthYear: "ปีเกิด ค.ศ. (Birth Year)", age: "อายุ", yearsOld: "ปี", rule62: "กติกาข้อ 6.2: สมัครเข้าแข่งขันได้ไม่เกิน 2 รุ่น", selected: "เลือกแล้ว",
@@ -435,7 +440,7 @@
       en: {
         title: "Online Registration System", step1: "Player Info", step2: "Events", step3: "Payment",
         infoDesc: "Use Name and Email as your primary identification.", engOnly: "* English Uppercase Only",
-        fname: "Full Name", email: "Email", phone: "Phone", gender: "Gender", male: "Male", female: "Female",
+        fname: "Full Name", email: "Email", phone: "Phone", teamClub: "Team / Club Name", gender: "Gender", male: "Male", female: "Female",
         country: "Country", selectCountry: "-- Select Country --", player1: "Player 1",
         idCard: "ID Card / Passport", tshirt: "T-Shirt Size", tshirtSelect: "-- Select Size --",
         birthYear: "Birth Year (AD)", age: "Age", yearsOld: "yrs", rule62: "Rule 6.2: Max 2 events per player", selected: "Selected",
@@ -460,7 +465,7 @@
       zh: {
         title: "在线报名系统", step1: "个人信息", step2: "比赛项目", step3: "支付确认",
         infoDesc: "请使用姓名和电子邮箱作为主要身份验证信息", engOnly: "* 仅限英文大写字母 (EN Uppercase Only)",
-        fname: "全名 (Full Name)", email: "电子邮箱 (Email)", phone: "电话 (Phone)", gender: "性别 (Gender)", male: "男 (Male)", female: "女 (Female)",
+        fname: "全名 (Full Name)", email: "电子邮箱 (Email)", phone: "电话 (Phone)", teamClub: "俱乐部 / 队伍名称 (Team / Club)", gender: "性别 (Gender)", male: "男 (Male)", female: "女 (Female)",
         country: "国家 (Country)", selectCountry: "-- 选择国家 (Select) --", player1: "第一名球员",
         idCard: "身份证 / 护照 (ID/Passport)", tshirt: "T恤尺码 (T-Shirt Size)", tshirtSelect: "-- 选择尺码 (Select Size) --",
         birthYear: "出生年份 (AD)", age: "年龄", yearsOld: "岁", rule62: "规则 6.2：每位选手最多报名 2 项", selected: "已选",
@@ -1100,6 +1105,7 @@
             idNumber: document.getElementById('idNumber').value,
             email: document.getElementById('email').value,
             phone: document.getElementById('phone').value,
+            teamName: document.getElementById('teamClub').value,
             gender: document.getElementById('gender').value,
             tshirt: document.getElementById('tshirt').value,
             birthYear: document.getElementById('birthYear').value
