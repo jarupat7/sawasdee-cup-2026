@@ -960,9 +960,7 @@
               <div><label class="block text-xs font-bold mb-1" style="color: var(--indigo-700);"><span style="color: var(--indigo-600); font-weight: bold;">P2</span> ${t('partner1')} <span style="color: var(--red-500);">*</span></label><input type="text" id="p1Name_${ev.id}" class="input-field font-mono uppercase text-sm" placeholder="${t('engOnly')}" value="${ev.partnerName}" oninput="handlePartnerChange('${ev.id}','partnerName',this.value, this); clearError(this)" required></div>
               
               <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P2</span> ${t('country')} <span style="color: var(--red-500);">*</span></label>
-              <select id="p1Nat_${ev.id}" class="input-field text-sm font-mono" onchange="handlePartnerChange('${ev.id}','partnerNat',this.value, this); clearError(this)" required>
-                ${getCountryOptions(ev.partnerNat)}
-              </select></div>
+              <input type="text" id="p1Nat_${ev.id}" class="input-field font-mono uppercase text-sm" placeholder="THAILAND" value="${ev.partnerNat || ''}" oninput="handlePartnerChange('${ev.id}','partnerNat',this.value, this); clearError(this)" required></div>
               
               <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P2</span> ${t('idCard')} <span style="color: var(--red-500);">*</span></label><input type="text" id="p1Id_${ev.id}" class="input-field font-mono text-sm" placeholder="ID / Passport" value="${ev.partnerId || ''}" oninput="handlePartnerChange('${ev.id}','partnerId',this.value, this); clearError(this)" required></div>
               
@@ -990,9 +988,7 @@
               <div><label class="block text-xs font-bold mb-1" style="color: var(--indigo-700);"><span style="color: var(--indigo-600); font-weight: bold;">P3</span> ${t('partner2')} <span style="color: var(--red-500);">*</span></label><input type="text" id="p2Name_${ev.id}" class="input-field font-mono uppercase text-sm" placeholder="${t('engOnly')}" value="${ev.partner2Name}" oninput="handlePartnerChange('${ev.id}','partner2Name',this.value, this); clearError(this)" required></div>
               
               <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P3</span> ${t('country')} <span style="color: var(--red-500);">*</span></label>
-              <select id="p2Nat_${ev.id}" class="input-field text-sm font-mono" onchange="handlePartnerChange('${ev.id}','partner2Nat',this.value, this); clearError(this)" required>
-                ${getCountryOptions(ev.partner2Nat)}
-              </select></div>
+              <input type="text" id="p2Nat_${ev.id}" class="input-field font-mono uppercase text-sm" placeholder="THAILAND" value="${ev.partner2Nat || ''}" oninput="handlePartnerChange('${ev.id}','partner2Nat',this.value, this); clearError(this)" required></div>
               
               <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P3</span> ${t('idCard')} <span style="color: var(--red-500);">*</span></label><input type="text" id="p2Id_${ev.id}" class="input-field font-mono text-sm" placeholder="ID / Passport" value="${ev.partner2Id || ''}" oninput="handlePartnerChange('${ev.id}','partner2Id',this.value, this); clearError(this)" required></div>
               
