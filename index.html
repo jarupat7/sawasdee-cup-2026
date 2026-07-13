@@ -228,8 +228,8 @@
             <span id="err-phone" class="err-msg"></span>
           </div>
           <div>
-            <label class="block text-sm font-medium mb-1" data-i18n="teamClub">Team / Club Name</label>
-            <input type="text" id="teamClub" class="input-field font-mono uppercase" placeholder="FYC CLUB" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9\s]/g, ''); clearError(this)">
+            <label class="block text-sm font-medium mb-1"><span data-i18n="teamClub">Team / Club Name</span> <span style="color: var(--red-500);">*</span></label>
+            <input type="text" id="teamClub" class="input-field font-mono uppercase" placeholder="FYC CLUB" required oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9\s]/g, ''); clearError(this)">
             <span id="err-teamClub" class="err-msg"></span>
           </div>
           <div>
@@ -612,7 +612,7 @@
 
       if (step === 1) {
         let valid = true;
-        const requiredFields = ['fullName', 'nationality', 'idNumber', 'email', 'tshirt', 'birthYear'];
+        const requiredFields = ['fullName', 'nationality', 'idNumber', 'email', 'teamClub', 'tshirt', 'birthYear'];
         
         requiredFields.forEach(id => {
            const el = document.getElementById(id);
