@@ -724,15 +724,15 @@
 
       categories.push({ name: t('catOpenTeam'), isTrophy: true, events: [{ id: 'pro_team_event', name: t('openTeamDesc'), type: 'TEAM', gender: 'ALL', feeThb: 1500, feeUsd: 40 }] });
 
-      const pro2034Events = [];
-      if (age >= 20) {
-        pro2034Events.push({ id: 'pro_ms_2034', name: `MS Pro (20-34)`, type: 'MS', gender: 'M', feeThb: 1000, feeUsd: 30 });
-        pro2034Events.push({ id: 'pro_ws_2034', name: `WS Pro (20-34)`, type: 'WS', gender: 'F', feeThb: 1000, feeUsd: 30 });
-        pro2034Events.push({ id: 'pro_md_2034', name: `MD Pro (20-34)`, type: 'MD', gender: 'M', feeThb: 1000, feeUsd: 30 });
-        pro2034Events.push({ id: 'pro_wd_2034', name: `WD Pro (20-34)`, type: 'WD', gender: 'F', feeThb: 1000, feeUsd: 30 });
-        pro2034Events.push({ id: 'pro_xd_2034', name: `XD Pro (20-34)`, type: 'XD', gender: 'ALL', feeThb: 1000, feeUsd: 30 });
+      const pro1834Events = [];
+      if (age >= 18) {
+        pro1834Events.push({ id: 'pro_ms_1834', name: `MS Pro (18-34)`, type: 'MS', gender: 'M', feeThb: 1000, feeUsd: 30 });
+        pro1834Events.push({ id: 'pro_ws_1834', name: `WS Pro (18-34)`, type: 'WS', gender: 'F', feeThb: 1000, feeUsd: 30 });
+        pro1834Events.push({ id: 'pro_md_1834', name: `MD Pro (18-34)`, type: 'MD', gender: 'M', feeThb: 1000, feeUsd: 30 });
+        pro1834Events.push({ id: 'pro_wd_1834', name: `WD Pro (18-34)`, type: 'WD', gender: 'F', feeThb: 1000, feeUsd: 30 });
+        pro1834Events.push({ id: 'pro_xd_1834', name: `XD Pro (18-34)`, type: 'XD', gender: 'ALL', feeThb: 1000, feeUsd: 30 });
       }
-      if (pro2034Events.length > 0) categories.push({ name: `${t('catOpenPro')} (20-34)`, events: pro2034Events });
+      if (pro1834Events.length > 0) categories.push({ name: `${t('catOpenPro')} (18-34)`, events: pro1834Events });
 
       const pro35Events = [];
       if (age >= 35) {
