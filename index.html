@@ -389,7 +389,8 @@
            </div>
            <div class="p-6 text-center">
               <span class="font-medium mb-3 block" style="color: var(--gray-500);" data-i18n="feeNote">Individual 30 USD/person (Max 2 events) | 3x3 35 USD/team | PRO TEAM 40 USD/team</span>
-              <span id="summaryTotalFee" class="text-4xl font-black block mb-4" style="color: var(--green-700);">0 USD</span>
+              <span id="summaryTotalFee" class="text-4xl font-black block mb-2" style="color: var(--green-700);">0 USD</span>
+               <div id="summaryPromoBadge" class="hidden text-xs font-bold px-3 py-1 rounded-full mb-3 inline-flex items-center gap-1" style="background-color: var(--green-100); color: var(--green-800);"></div>
               
               <div class="text-sm font-bold p-3 rounded text-left mb-2 inline-block max-w-lg" style="color: var(--red-700); background-color: var(--red-50); border: 1px solid var(--red-200);" data-i18n="paymentPolicy">
                  * Thai participants must complete the payment before the announcement date. Registration fees are non-refundable in any case.
@@ -466,7 +467,7 @@
 
     const locales = {
       th: {
-        title: "ระบบรับสมัครออนไลน์", regTypeIndividual: "สมัครประเภทบุคคล / คู่ (Individual / Doubles)", regTypeTeam: "สมัครประเภททีม (PRO TEAM)", proTeamRoster: "รายชื่อนักกีฬาในทีม 7 คน (PRO TEAM Roster - ชาย 5 หญิง 2)", step1: "ข้อมูลส่วนตัว", step2: "เลือกรุ่น", step3: "ยืนยันยอด",
+        title: "ระบบรับสมัครออนไลน์", promo70Applied: "🎉 ได้รับสิทธิ์เล่นฟรีสำหรับผู้สูงอายุ (อายุ 70 ปีขึ้นไป ในรุ่น Amateur)", regTypeIndividual: "สมัครประเภทบุคคล / คู่ (Individual / Doubles)", regTypeTeam: "สมัครประเภททีม (PRO TEAM)", proTeamRoster: "รายชื่อนักกีฬาในทีม 7 คน (PRO TEAM Roster - ชาย 5 หญิง 2)", step1: "ข้อมูลส่วนตัว", step2: "เลือกรุ่น", step3: "ยืนยันยอด",
         infoDesc: "ใช้ชื่อ-นามสกุล และ อีเมล เป็นข้อมูลหลักในการยืนยันตัวตน", engOnly: "* บังคับภาษาอังกฤษตัวพิมพ์ใหญ่เท่านั้น (EN Uppercase Only)",
         fname: "ชื่อ-นามสกุล (Full Name)", email: "อีเมล (Email)", phone: "เบอร์โทรศัพท์ (Phone)", teamClub: "สังกัดทีม / สโมสร (Team/Club Name)", gender: "เพศ (Gender)", male: "ชาย (Male)", female: "หญิง (Female)",
         country: "ประเทศ (Country)", selectCountry: "-- เลือกประเทศ (Select) --", player1: "ผู้เล่นคนที่ 1",
@@ -491,7 +492,7 @@
         paymentPolicy: "* คนไทยต้องโอนชำระค่าสมัครก่อนวันประกาศรายชื่อเท่านั้น และจะไม่คืนค่าสมัครทุกกรณี"
       },
       en: {
-        title: "Online Registration System", regTypeIndividual: "Individual / Doubles Registration", regTypeTeam: "Team Registration (PRO TEAM)", proTeamRoster: "PRO TEAM Roster - 7 Players (Max 5 Men, 2 Women)", step1: "Player Info", step2: "Events", step3: "Payment",
+        title: "Online Registration System", promo70Applied: "🎉 70+ Age Promotion Applied (Free Entry for Amateur Categories)", regTypeIndividual: "Individual / Doubles Registration", regTypeTeam: "Team Registration (PRO TEAM)", proTeamRoster: "PRO TEAM Roster - 7 Players (Max 5 Men, 2 Women)", step1: "Player Info", step2: "Events", step3: "Payment",
         infoDesc: "Use Name and Email as your primary identification.", engOnly: "* English Uppercase Only",
         fname: "Full Name", email: "Email", phone: "Phone", teamClub: "Team / Club Name", gender: "Gender", male: "Male", female: "Female",
         country: "Country", selectCountry: "-- Select Country --", player1: "Player 1",
@@ -516,7 +517,7 @@
         paymentPolicy: "* Thai participants must complete the payment before the announcement date. Registration fees are non-refundable in any case."
       },
       zh: {
-        title: "在线报名系统", regTypeIndividual: "个人 / 双打报名 (Individual / Doubles)", regTypeTeam: "团队报名 (PRO TEAM)", proTeamRoster: "PRO TEAM 7名队员名单 (最多5男2女)", step1: "个人信息", step2: "比赛项目", step3: "支付确认",
+        title: "在线报名系统", promo70Applied: "🎉 70岁以上业余组免费优惠已应用", regTypeIndividual: "个人 / 双打报名 (Individual / Doubles)", regTypeTeam: "团队报名 (PRO TEAM)", proTeamRoster: "PRO TEAM 7名队员名单 (最多5男2女)", step1: "个人信息", step2: "比赛项目", step3: "支付确认",
         infoDesc: "请使用姓名和电子邮箱作为主要身份验证信息", engOnly: "* 仅限英文大写字母 (EN Uppercase Only)",
         fname: "全名 (Full Name)", email: "电子邮箱 (Email)", phone: "电话 (Phone)", teamClub: "俱乐部 / 队伍名称 (Team / Club)", gender: "性别 (Gender)", male: "男 (Male)", female: "女 (Female)",
         country: "国家 (Country)", selectCountry: "-- 选择国家 (Select) --", player1: "第一名球员",
@@ -1270,10 +1271,67 @@
 
       let feeThb = 0;
       let feeUsd = 0;
+      let hasFreePlayer = false;
 
       if (selectedEvents.some(e => e.type !== '3x3' && e.type !== 'TEAM')) {
-         feeThb += uniquePlayers.size * 1000;
-         feeUsd += uniquePlayers.size * 30;
+         let p1Id = document.getElementById('idNumber').value.trim();
+         let chargedPlayersCount = 0;
+         
+         uniquePlayers.forEach(pid => {
+            let is70Plus = false;
+            let playsPro = false;
+            let playsIndividual = false;
+            
+            if (pid === p1Id) {
+               playsIndividual = selectedEvents.some(e => e.type !== '3x3' && e.type !== 'TEAM');
+               is70Plus = (getCurrentAge() >= 70);
+               playsPro = selectedEvents.some(e => e.type !== '3x3' && e.type !== 'TEAM' && e.id.startsWith('pro_'));
+            } else {
+               // Partner
+               const partnerEvents = selectedEvents.filter(e => e.type !== '3x3' && e.type !== 'TEAM' && e.partnerId && e.partnerId.trim() === pid);
+               if (partnerEvents.length > 0) {
+                  playsIndividual = true;
+                  playsPro = partnerEvents.some(e => e.id.startsWith('pro_'));
+                  
+                  is70Plus = partnerEvents.some(e => {
+                     if (e.id.startsWith('comb_') || e.type === 'HW') {
+                        const pYear = parseInt(e.partnerBirthYear) || 0;
+                        if (pYear > 0 && (2026 - pYear) >= 70) return true;
+                     }
+                     if (e.id.startsWith('am_')) {
+                        const parts = e.id.split('_');
+                        if (parts.length >= 3) {
+                           const ageRange = parts[2];
+                           const minAge = parseInt(ageRange.split('-')[0]) || 0;
+                           if (minAge >= 70) return true;
+                        }
+                     }
+                     return false;
+                  });
+               }
+            }
+            
+            if (playsIndividual) {
+               if (is70Plus && !playsPro) {
+                  hasFreePlayer = true;
+               } else {
+                  chargedPlayersCount++;
+               }
+            }
+         });
+         
+         feeThb += chargedPlayersCount * 1000;
+         feeUsd += chargedPlayersCount * 30;
+      }
+      
+      const promoBadge = document.getElementById('summaryPromoBadge');
+      if (promoBadge) {
+         if (hasFreePlayer) {
+            promoBadge.classList.remove('hidden');
+            promoBadge.innerHTML = t('promo70Applied');
+         } else {
+            promoBadge.classList.add('hidden');
+         }
       }
       
       if (has3x3) { feeThb += 1200; feeUsd += 35; }
