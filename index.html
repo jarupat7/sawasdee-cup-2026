@@ -854,7 +854,9 @@
       const gender = document.getElementById('gender').value;
       const categories = [];
 
-      categories.push({ name: t('catOpenTeam'), isTrophy: true, events: [{ id: 'pro_team_event', name: t('openTeamDesc'), type: 'TEAM', gender: 'ALL', feeThb: 1500, feeUsd: 40 }] });
+      if (registrationType !== 'individual') {
+        categories.push({ name: t('catOpenTeam'), isTrophy: true, events: [{ id: 'pro_team_event', name: t('openTeamDesc'), type: 'TEAM', gender: 'ALL', feeThb: 1500, feeUsd: 40 }] });
+      }
 
       const pro1534Events = [];
       if (age >= 15) {
