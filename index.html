@@ -178,6 +178,18 @@
           <p class="text-xs font-bold mt-2" style="color: var(--red-600);" data-i18n="engOnly">* English Uppercase Only</p>
         </div>
 
+        <!-- REGISTRATION TYPE SELECTOR -->
+        <div class="mb-6 p-4 rounded-lg border flex flex-col sm:flex-row gap-4 justify-around bg-gray-50" style="border-color: var(--indigo-100);">
+          <label class="flex items-center gap-2 cursor-pointer font-semibold" style="color: var(--indigo-900);">
+            <input type="radio" name="regType" value="individual" checked class="form-radio text-indigo-600 focus:ring-indigo-500" onchange="toggleRegType(this.value)">
+            <span data-i18n="regTypeIndividual">สมัครประเภทบุคคล / คู่ (Individual / Doubles)</span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer font-semibold" style="color: var(--indigo-900);">
+            <input type="radio" name="regType" value="team" class="form-radio text-indigo-600 focus:ring-indigo-500" onchange="toggleRegType(this.value)">
+            <span data-i18n="regTypeTeam">สมัครประเภททีม (PRO TEAM)</span>
+          </label>
+        </div>
+
         <form id="form-step-1" class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <!-- รวมช่องชื่อและนามสกุลเป็นช่องเดียว -->
           <div class="md:col-span-2">
@@ -263,6 +275,49 @@
               </div>
             </div>
             <span id="err-birthYear" class="err-msg"></span>
+          </div>
+
+          <!-- PRO TEAM DETAILS CONTAINER -->
+          <div id="proTeamDetailsContainer" class="hidden md:col-span-2 p-4 rounded-lg border mt-2" style="background-color: var(--indigo-50); border-color: var(--indigo-100);">
+            <h4 class="font-bold text-sm mb-3" style="color: var(--indigo-800);"><span data-i18n="proTeamRoster">รายชื่อนักกีฬาในทีม 7 คน (PRO TEAM Roster - Max 5 Men, 2 Women)</span> <span style="color: var(--red-500);">*</span></h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              <div>
+                <label class="block text-xs font-semibold mb-1 text-gray-700">Player 1 <span style="color: var(--red-500);">*</span></label>
+                <input type="text" id="proPlayer1" class="input-field text-xs font-mono uppercase" placeholder="PLAYER 1 NAME (EN)" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z\s]/g, ''); clearError(this)">
+                <span id="err-proPlayer1" class="err-msg"></span>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold mb-1 text-gray-700">Player 2 <span style="color: var(--red-500);">*</span></label>
+                <input type="text" id="proPlayer2" class="input-field text-xs font-mono uppercase" placeholder="PLAYER 2 NAME (EN)" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z\s]/g, ''); clearError(this)">
+                <span id="err-proPlayer2" class="err-msg"></span>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold mb-1 text-gray-700">Player 3 <span style="color: var(--red-500);">*</span></label>
+                <input type="text" id="proPlayer3" class="input-field text-xs font-mono uppercase" placeholder="PLAYER 3 NAME (EN)" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z\s]/g, ''); clearError(this)">
+                <span id="err-proPlayer3" class="err-msg"></span>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold mb-1 text-gray-700">Player 4 <span style="color: var(--red-500);">*</span></label>
+                <input type="text" id="proPlayer4" class="input-field text-xs font-mono uppercase" placeholder="PLAYER 4 NAME (EN)" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z\s]/g, ''); clearError(this)">
+                <span id="err-proPlayer4" class="err-msg"></span>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold mb-1 text-gray-700">Player 5 <span style="color: var(--red-500);">*</span></label>
+                <input type="text" id="proPlayer5" class="input-field text-xs font-mono uppercase" placeholder="PLAYER 5 NAME (EN)" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z\s]/g, ''); clearError(this)">
+                <span id="err-proPlayer5" class="err-msg"></span>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold mb-1 text-gray-700">Player 6 <span style="color: var(--red-500);">*</span></label>
+                <input type="text" id="proPlayer6" class="input-field text-xs font-mono uppercase" placeholder="PLAYER 6 NAME (EN)" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z\s]/g, ''); clearError(this)">
+                <span id="err-proPlayer6" class="err-msg"></span>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold mb-1 text-gray-700">Player 7 <span style="color: var(--red-500);">*</span></label>
+                <input type="text" id="proPlayer7" class="input-field text-xs font-mono uppercase" placeholder="PLAYER 7 NAME (EN)" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z\s]/g, ''); clearError(this)">
+                <span id="err-proPlayer7" class="err-msg"></span>
+              </div>
+            </div>
+            <p class="text-xs font-medium mt-3" style="color: var(--indigo-500);" data-i18n="teamNote">* Max 5 male athletes / Max 2 female athletes.</p>
           </div>
         </form>
       </div>
@@ -405,19 +460,13 @@
   </div>
 
   <script>
-    // ==========================================
-    // Core Logic & State Management (Vanilla JS)
-    // ==========================================
-    
-    // กำหนด URL ของ API ที่เพิ่ง Deploy มา (Google Apps Script Web App URL)
     const API_CONFIG = {
-      GAS_URL: 'https://script.google.com/macros/s/AKfycbwOv1kmiALv9H3fSybiEPwvvojMdcnbNapnYAXrzOWl5qvUFuEIRpWcNljDNnQ-YvfA/exec' // <<<< แก้ไขตรงนี้ (เอา URL จาก Apps Script มาใส่)
+      GAS_URL: 'https://script.google.com/macros/s/AKfycbwOv1kmiALv9H3fSybiEPwvvojMdcnbNapnYAXrzOWl5qvUFuEIRpWcNljDNnQ-YvfA/exec' 
     };
 
-    // Translations Object
     const locales = {
       th: {
-        title: "ระบบรับสมัครออนไลน์", step1: "ข้อมูลส่วนตัว", step2: "เลือกรุ่น", step3: "ยืนยันยอด",
+        title: "ระบบรับสมัครออนไลน์", regTypeIndividual: "สมัครประเภทบุคคล / คู่ (Individual / Doubles)", regTypeTeam: "สมัครประเภททีม (PRO TEAM)", proTeamRoster: "รายชื่อนักกีฬาในทีม 7 คน (PRO TEAM Roster - ชาย 5 หญิง 2)", step1: "ข้อมูลส่วนตัว", step2: "เลือกรุ่น", step3: "ยืนยันยอด",
         infoDesc: "ใช้ชื่อ-นามสกุล และ อีเมล เป็นข้อมูลหลักในการยืนยันตัวตน", engOnly: "* บังคับภาษาอังกฤษตัวพิมพ์ใหญ่เท่านั้น (EN Uppercase Only)",
         fname: "ชื่อ-นามสกุล (Full Name)", email: "อีเมล (Email)", phone: "เบอร์โทรศัพท์ (Phone)", teamClub: "สังกัดทีม / สโมสร (Team/Club Name)", gender: "เพศ (Gender)", male: "ชาย (Male)", female: "หญิง (Female)",
         country: "ประเทศ (Country)", selectCountry: "-- เลือกประเทศ (Select) --", player1: "ผู้เล่นคนที่ 1",
@@ -442,7 +491,7 @@
         paymentPolicy: "* คนไทยต้องโอนชำระค่าสมัครก่อนวันประกาศรายชื่อเท่านั้น และจะไม่คืนค่าสมัครทุกกรณี"
       },
       en: {
-        title: "Online Registration System", step1: "Player Info", step2: "Events", step3: "Payment",
+        title: "Online Registration System", regTypeIndividual: "Individual / Doubles Registration", regTypeTeam: "Team Registration (PRO TEAM)", proTeamRoster: "PRO TEAM Roster - 7 Players (Max 5 Men, 2 Women)", step1: "Player Info", step2: "Events", step3: "Payment",
         infoDesc: "Use Name and Email as your primary identification.", engOnly: "* English Uppercase Only",
         fname: "Full Name", email: "Email", phone: "Phone", teamClub: "Team / Club Name", gender: "Gender", male: "Male", female: "Female",
         country: "Country", selectCountry: "-- Select Country --", player1: "Player 1",
@@ -467,7 +516,7 @@
         paymentPolicy: "* Thai participants must complete the payment before the announcement date. Registration fees are non-refundable in any case."
       },
       zh: {
-        title: "在线报名系统", step1: "个人信息", step2: "比赛项目", step3: "支付确认",
+        title: "在线报名系统", regTypeIndividual: "个人 / 双打报名 (Individual / Doubles)", regTypeTeam: "团队报名 (PRO TEAM)", proTeamRoster: "PRO TEAM 7名队员名单 (最多5男2女)", step1: "个人信息", step2: "比赛项目", step3: "支付确认",
         infoDesc: "请使用姓名和电子邮箱作为主要身份验证信息", engOnly: "* 仅限英文大写字母 (EN Uppercase Only)",
         fname: "全名 (Full Name)", email: "电子邮箱 (Email)", phone: "电话 (Phone)", teamClub: "俱乐部 / 队伍名称 (Team / Club)", gender: "性别 (Gender)", male: "男 (Male)", female: "女 (Female)",
         country: "国家 (Country)", selectCountry: "-- 选择国家 (Select) --", player1: "第一名球员",
@@ -493,12 +542,13 @@
       }
     };
 
-    let currentLang = 'en'; // ตั้งค่าเริ่มต้นเป็น EN
+    let currentLang = 'en'; 
     let currentStep = 1;
     let selectedEvents = [];
     let registeredUsers = []; 
     let currentPartnerErrors = {}; 
-
+    let registrationType = 'individual'; 
+    
     function clearError(el) {
       el.classList.remove('input-error');
       const errSpan = document.getElementById('err-' + el.id);
@@ -510,6 +560,33 @@
        document.querySelectorAll('.readonly-p1-name').forEach(el => {
            el.value = fullName;
        });
+    }
+
+    let registrationType = 'individual'; // 'individual' or 'team'
+    
+    function toggleRegType(type) {
+      registrationType = type;
+      const proTeamContainer = document.getElementById('proTeamDetailsContainer');
+      const p1Inputs = ['proPlayer1', 'proPlayer2', 'proPlayer3', 'proPlayer4', 'proPlayer5', 'proPlayer6', 'proPlayer7'];
+      
+      if (type === 'team') {
+        proTeamContainer.classList.remove('hidden');
+        p1Inputs.forEach(id => {
+          document.getElementById(id).required = true;
+        });
+        document.querySelector('[data-i18n="teamClub"]').innerHTML = t('teamName');
+      } else {
+        proTeamContainer.classList.add('hidden');
+        p1Inputs.forEach(id => {
+          const el = document.getElementById(id);
+          el.required = false;
+          el.value = '';
+          el.classList.remove('input-error');
+          const errSpan = document.getElementById('err-' + id);
+          if (errSpan) errSpan.innerText = '';
+        });
+        document.querySelector('[data-i18n="teamClub"]').innerHTML = t('teamClub');
+      }
     }
 
     function setLang(lang) {
@@ -528,6 +605,11 @@
         const key = el.getAttribute('data-i18n');
         if (t_texts[key]) el.innerHTML = t_texts[key];
       });
+
+      if (registrationType === 'team') {
+        const teamClubSpan = document.querySelector('[data-i18n="teamClub"]');
+        if (teamClubSpan) teamClubSpan.innerHTML = t('teamName');
+      }
 
       const allCats = getAvailableCategories();
       selectedEvents = selectedEvents.map(ev => {
@@ -575,28 +657,67 @@
     function changeStep(dir) {
       if (dir === 1 && !validateStep(currentStep)) return;
       
-      document.getElementById(`step-${currentStep}`).classList.add('hidden');
-      document.getElementById(`circle-${currentStep}`).classList.remove('active');
-      document.getElementById(`circle-${currentStep}`).classList.add('inactive');
+      document.getElementById("step-" + currentStep).classList.add('hidden');
+      document.getElementById("circle-" + currentStep).classList.remove('active');
+      document.getElementById("circle-" + currentStep).classList.add('inactive');
       
-      if(currentStep < 3 && dir === 1) {
-        document.getElementById(`line-${currentStep}`).classList.add('active');
-        document.getElementById(`line-${currentStep}`).classList.remove('inactive');
-      } else if (dir === -1) {
-        document.getElementById(`line-${currentStep-1}`).classList.remove('active');
-        document.getElementById(`line-${currentStep-1}`).classList.add('inactive');
+      let nextStep = currentStep + dir;
+      if (registrationType === 'team') {
+        if (currentStep === 1 && dir === 1) {
+          nextStep = 3;
+          document.getElementById('line-1').classList.add('active');
+          document.getElementById('line-1').classList.remove('inactive');
+          document.getElementById('line-2').classList.add('active');
+          document.getElementById('line-2').classList.remove('inactive');
+        } else if (currentStep === 3 && dir === -1) {
+          nextStep = 1;
+          document.getElementById('line-1').classList.remove('active');
+          document.getElementById('line-1').classList.add('inactive');
+          document.getElementById('line-2').classList.remove('active');
+          document.getElementById('line-2').classList.add('inactive');
+        }
+      } else {
+        if(currentStep < 3 && dir === 1) {
+          document.getElementById("line-" + currentStep).classList.add('active');
+          document.getElementById("line-" + currentStep).classList.remove('inactive');
+        } else if (dir === -1) {
+          document.getElementById("line-" + (currentStep-1)).classList.remove('active');
+          document.getElementById("line-" + (currentStep-1)).classList.add('inactive');
+        }
       }
-
-      currentStep += dir;
       
-      document.getElementById(`step-${currentStep}`).classList.remove('hidden');
-      document.getElementById(`circle-${currentStep}`).classList.add('active');
-      document.getElementById(`circle-${currentStep}`).classList.remove('inactive');
-
+      currentStep = nextStep;
+      
+      document.getElementById("step-" + currentStep).classList.remove('hidden');
+      document.getElementById("circle-" + currentStep).classList.add('active');
+      document.getElementById("circle-" + currentStep).classList.remove('inactive');
+      
       document.getElementById('btnBack').disabled = currentStep === 1;
       if (currentStep === 3) {
         document.getElementById('btnNext').classList.add('hidden');
         document.getElementById('btnSubmit').classList.remove('hidden');
+        
+        if (registrationType === 'team') {
+          selectedEvents = [{
+            id: 'pro_team_event',
+            name: t('openTeamDesc'),
+            category: t('catOpenTeam'),
+            type: 'TEAM',
+            gender: 'ALL',
+            feeThb: 1500,
+            feeUsd: 40,
+            teamName: document.getElementById('teamClub').value.trim(),
+            teamManagerEmail: document.getElementById('email').value.trim(),
+            player1: document.getElementById('proPlayer1').value.trim(),
+            player2: document.getElementById('proPlayer2').value.trim(),
+            player3: document.getElementById('proPlayer3').value.trim(),
+            player4: document.getElementById('proPlayer4').value.trim(),
+            player5: document.getElementById('proPlayer5').value.trim(),
+            player6: document.getElementById('proPlayer6').value.trim(),
+            player7: document.getElementById('proPlayer7').value.trim()
+          }];
+        }
+        
         updateSummary();
       } else {
         document.getElementById('btnNext').classList.remove('hidden');
@@ -632,6 +753,19 @@
                if (errSpan) errSpan.innerText = t('alertReqField');
                valid = false;
            }
+        }
+
+        if (registrationType === 'team') {
+           const proPlayerIds = ['proPlayer1', 'proPlayer2', 'proPlayer3', 'proPlayer4', 'proPlayer5', 'proPlayer6', 'proPlayer7'];
+           proPlayerIds.forEach(id => {
+              const el = document.getElementById(id);
+              if (!el || !el.value.trim()) {
+                  if (el) el.classList.add('input-error');
+                  const errSpan = document.getElementById('err-' + id);
+                  if (errSpan) errSpan.innerText = t('alertReqField');
+                  valid = false;
+              }
+           });
         }
 
         const emailEl = document.getElementById('email');
