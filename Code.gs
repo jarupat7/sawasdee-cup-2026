@@ -107,6 +107,8 @@ function processRegistration(payload) {
   let e2Name = "", e2Partners = "";
   let teamName = "", teamMgr = "", teamPlayers = "";
 
+  const pTeamName = p.teamName || p.teamClub || "";
+
   if (evs.length > 0) {
     e1Name = `${evs[0].category} - ${evs[0].name}`;
     e1Partners = formatPartners(evs[0]);
@@ -123,12 +125,14 @@ function processRegistration(payload) {
     }
   }
 
+  const finalTeamName = teamName || pTeamName;
+
   const row1 = [
     new Date(), tagId, "Pending", payload.totalFeeText,
     p.fullName, p.nationality, p.idNumber,
     p.email, p.phone, p.gender, p.birthYear, p.tshirt,
     e1Name, e1Partners, e2Name, e2Partners,
-    teamName || p.teamName || "", teamMgr, teamPlayers, ""
+    finalTeamName, teamMgr, teamPlayers, ""
   ];
   sheet1.appendRow(row1);
   
@@ -145,7 +149,7 @@ function processRegistration(payload) {
       let p2Age = ev.partnerBirthYear ? 2026 - parseInt(ev.partnerBirthYear) : "";
       let p3Age = ev.partner2BirthYear ? 2026 - parseInt(ev.partner2BirthYear) : "";
 
-      let tName = ev.type === 'TEAM' ? ev.teamName : (p.teamName || "");
+      let tName = (ev.type === 'TEAM' && ev.teamName) ? ev.teamName : pTeamName;
       let tMgr = ev.type === 'TEAM' ? ev.teamManagerEmail : "";
       let tList = ev.type === 'TEAM' ? formatTeamPlayers(ev) : "";
 
