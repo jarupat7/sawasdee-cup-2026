@@ -221,7 +221,9 @@ function sendConfirmationEmail(personal, events, tagId, totalFee) {
         
         <h3 style="color: #ff9800; border-bottom: 1px solid #eee; padding-bottom: 5px;">Payment Details</h3>
         <div style="background: #fff8e1; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-          <p style="margin: 5px 0;"><strong>Bank:</strong> Bangkok Bank Public Company Limited (Si Phraya Branch)</p>
+          <p style="margin: 5px 0;"><strong>Bank Name:</strong> Bangkok Bank Public Company Limited</p>
+          <p style="margin: 5px 0;"><strong>Branch Name:</strong> Si Phraya Branch</p>
+          <p style="margin: 5px 0;"><strong>Branch Address:</strong> 235 Si Phraya Road, Si Phraya, Bang Rak, Bangkok 10500, Thailand</p>
           <p style="margin: 5px 0;"><strong>Account Name:</strong> FYC CLUB</p>
           <p style="margin: 5px 0;"><strong>Account No.:</strong> 170-0-62367-9</p>
           <p style="margin: 5px 0;"><strong>SWIFT Code:</strong> BKKBTHBK</p>
