@@ -401,6 +401,7 @@
                 <div>
                   <h4 class="font-bold mb-1" data-i18n="sentEmail">Details sent to email</h4>
                   <p class="text-sm leading-relaxed" style="color: var(--blue-700);"><span data-i18n="sentEmailDesc">Payment instructions will be sent to your email after confirmation.</span> <span id="summaryConfirmEmail" class="font-bold"></span></p>
+                  <p class="text-xs font-bold mt-2" style="color: #b45309;" data-i18n="spamNote">* If you don't receive the confirmation email in your Inbox, please check your Spam or Junk/Trash folder.</p>
                 </div>
               </div>
            </div>
@@ -439,6 +440,9 @@
             <li data-i18n="stepTransfer">Transfer the fee and include your TAG ID in the memo.</li>
             <li data-i18n="stepSlip">Reply to the email with your payment slip.</li>
           </ol>
+          <div class="mt-3 pt-3 border-t text-xs font-bold" style="color: #b45309; border-color: #bfdbfe;" data-i18n="spamNote">
+            * If you don't receive the confirmation email in your Inbox, please check your Spam or Junk/Trash folder.
+          </div>
         </div>
 
         <!-- BANK DETAILS CARD -->
@@ -501,9 +505,10 @@
         ms: "ชายเดี่ยว (MS)", ws: "หญิงเดี่ยว (WS)", md: "ชายคู่ (MD)", wd: "หญิงคู่ (WD)", xd: "คู่ผสม (XD)", combStr: "รวม", minStr: "อายุขั้นต่ำ",
         openTeamDesc: "PRO TEAM (ชายไม่เกิน 5 หญิงไม่เกิน 2)", teamName: "ชื่อทีม (Team Name)", teamMgrEmail: "อีเมลผู้จัดการทีม (Manager Email)", playerName: "ชื่อนักกีฬา",
         teamNote: "* นักกีฬาชายไม่เกิน 5 คน / หญิงไม่เกิน 2 คน", sentEmail: "ส่งรายละเอียดไปยังอีเมลแล้ว", sentEmailDesc: "ระบบจะทำการส่งรายละเอียดวิธีการชำระเงินไปที่อีเมล ทันทีหลังจากกดยืนยัน",
+        spamNote: "* หากไม่พบอีเมลยืนยันในกล่องข้อความหลัก (Inbox) กรุณาเช็กในโฟลเดอร์ สแปม (Spam) หรือ จดหมายขยะ (Junk / Trash)",
         feeNote: "บุคคล 1,000 บาท/คน (ลงได้สูงสุด 2 รุ่น) | 3x3 1,200 บาท/ทีม | ทีมทั่วไป 1,500 บาท/ทีม", currency: "THB", checkingDb: "กำลังโหลดข้อมูลจากระบบ...", savingData: "กำลังบันทึกข้อมูล...",
         partnerRequired: "กรุณากรอกปีเกิดของคู่แข่งขันในรายการ:", partnerAgeError: "⚠️ ผิดกติกา: อายุคู่แข่งขัน", mustMin: "ต้องไม่ต่ำกว่า", totalAgeError: "⚠️ ผิดกติกา: อายุรวมของคู่คือ", notReach: "ยังไม่ถึงเกณฑ์",
-        regSuccess: "ลงทะเบียนสำเร็จ!", regSuccessDesc: "ข้อมูลของคุณถูกบันทึกเรียบร้อยแล้ว", yourTagId: "รหัสประจำตัวของคุณ (TAG ID)", nextSteps: "ขั้นตอนต่อไป", stepEmail: "ตรวจสอบอีเมลของคุณเพื่อดูรายละเอียดการชำระเงิน", stepTransfer: "โอนเงินและระบุ TAG ID ในช่องบันทึกช่วยจำ (Memo)", stepSlip: "ตอบกลับอีเมลพร้อมแนบสลิปเพื่อยืนยันการชำระเงิน", backHome: "กลับหน้าแรก",
+        regSuccess: "ลงทะเบียนสำเร็จ!", regSuccessDesc: "ข้อมูลของคุณถูกบันทึกเรียบร้อยแล้ว", yourTagId: "รหัสประจำตัวของคุณ (TAG ID)", nextSteps: "ขั้นตอนต่อไป", stepEmail: "ตรวจสอบอีเมลของคุณเพื่อดูรายละเอียดการชำระเงิน (หากไม่พบ กรุณาเช็กในโฟลเดอร์ สแปม/ขยะ)", stepTransfer: "โอนเงินและระบุ TAG ID ในช่องบันทึกช่วยจำ (Memo)", stepSlip: "ตอบกลับอีเมลพร้อมแนบสลิปเพื่อยืนยันการชำระเงิน", backHome: "กลับหน้าแรก",
         agreeRulesText: "ฉันได้อ่านและยอมรับกฎกติกาการแข่งขัน และยืนยันว่ามีสุขภาพร่างกายพร้อมสำหรับการแข่งขัน",
         paymentPolicy: "* คนไทยต้องโอนชำระค่าสมัครก่อนวันประกาศรายชื่อเท่านั้น และจะไม่คืนค่าสมัครทุกกรณี"
       },
@@ -526,9 +531,10 @@
         ms: "Men's Singles (MS)", ws: "Women's Singles (WS)", md: "Men's Doubles (MD)", wd: "Women's Doubles (WD)", xd: "Mixed Doubles (XD)", combStr: "Combined", minStr: "Min Age",
         openTeamDesc: "PRO TEAM (Max 5 Men, 2 Women)", teamName: "Team Name", teamMgrEmail: "Manager Email", playerName: "Player Name",
         teamNote: "* Max 5 male athletes / Max 2 female athletes.", sentEmail: "Details sent to email", sentEmailDesc: "Payment instructions will be sent to your email after confirmation.",
+        spamNote: "* If you don't receive the confirmation email in your Inbox, please check your Spam or Junk/Trash folder.",
         feeNote: "Individual 30 USD/person (Max 2 events) | 3x3 35 USD/team | PRO TEAM 40 USD/team", currency: "USD", checkingDb: "Loading data...", savingData: "Saving your data...",
         partnerRequired: "Please enter partner's birth year for:", partnerAgeError: "⚠️ Age rule violation in:", mustMin: "must be at least", totalAgeError: "⚠️ Combined age violation in:", notReach: "does not meet requirements",
-        regSuccess: "Registration Successful!", regSuccessDesc: "Your information has been saved successfully.", yourTagId: "YOUR TAG ID", nextSteps: "Next Steps", stepEmail: "Check your email for payment details.", stepTransfer: "Transfer the fee and include your TAG ID in the memo.", stepSlip: "Reply to the email with your payment slip.", backHome: "Back to Home",
+        regSuccess: "Registration Successful!", regSuccessDesc: "Your information has been saved successfully.", yourTagId: "YOUR TAG ID", nextSteps: "Next Steps", stepEmail: "Check your email for payment details (please check Spam/Junk folder if not found).", stepTransfer: "Transfer the fee and include your TAG ID in the memo.", stepSlip: "Reply to the email with your payment slip.", backHome: "Back to Home",
         agreeRulesText: "I have read and agree to the tournament rules, and confirm I am physically fit to compete.",
         paymentPolicy: "* Thai participants must complete the payment before the announcement date. Registration fees are non-refundable in any case."
       },
@@ -551,9 +557,10 @@
         ms: "男单 (MS)", ws: "女单 (WS)", md: "男双 (MD)", wd: "女双 (WD)", xd: "混双 (XD)", combStr: "总和", minStr: "最小年龄",
         openTeamDesc: "PRO TEAM (最多5男2女)", teamName: "队伍名称 (Team Name)", teamMgrEmail: "领队电子邮箱 (Manager Email)", playerName: "运动员姓名",
         teamNote: "* 最多 5 名男运动员 / 2 名女运动员", sentEmail: "详情已发送至邮箱", sentEmailDesc: "付款说明将在确认后发送至您的电子邮箱",
+        spamNote: "* 如果未在收件箱找到确认邮件，请检查垃圾邮件/Spam/Junk文件夹。",
         feeNote: "个人 30 USD/人 (最多两项) | 3x3 35 USD/队 | PRO TEAM 40 USD/队", currency: "USD", checkingDb: "加载数据中...", savingData: "正在保存数据...",
         partnerRequired: "请输入搭档的出生年份：", partnerAgeError: "⚠️ 年龄违规：", mustMin: "最小年龄必须为", totalAgeError: "⚠️ 总年龄违规：", notReach: "未达到要求",
-        regSuccess: "报名成功！", regSuccessDesc: "您的信息已成功保存。", yourTagId: "您的专属ID (TAG ID)", nextSteps: "下一步", stepEmail: "检查您的电子邮件以获取付款详情。", stepTransfer: "转账并在备注中注明您的 TAG ID。", stepSlip: "回复邮件并附上付款凭证以确认付款。", backHome: "返回首页",
+        regSuccess: "报名成功！", regSuccessDesc: "您的信息已成功保存。", yourTagId: "您的专属ID (TAG ID)", nextSteps: "下一步", stepEmail: "检查您的电子邮件以获取付款详情（如未收到，请检查垃圾邮件文件夹）。", stepTransfer: "转账并在备注中注明您的 TAG ID。", stepSlip: "回复邮件并附上付款凭证以确认付款。", backHome: "返回首页",
         agreeRulesText: "我已阅读并同意比赛规则，并确认身体健康适合参加比赛。",
         paymentPolicy: "* 泰国籍参赛者必须在公布名单前完成缴费，报名费在任何情况下均不退还。"
       }
