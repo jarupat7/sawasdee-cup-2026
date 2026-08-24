@@ -815,9 +815,8 @@
         const fName = document.getElementById('fullName').value.trim();
         const email = emailEl.value.trim();
         const idVal = document.getElementById('idNumber').value.trim().toUpperCase();
-        const isDup = registeredIds.includes(idVal)
-                   || registeredNames.includes(fName.toUpperCase())
-                   || registeredEmails.includes(email.toLowerCase());
+        // เช็คซ้ำเฉพาะ ID/Passport เท่านั้น (อนุญาตอีเมล/ชื่อซ้ำได้ เช่น ผู้จัดการทีมสมัครแทนหลายคน)
+        const isDup = registeredIds.includes(idVal);
         if (isDup) { alert(t('alertDup')); return false; }
       }
       
