@@ -84,7 +84,7 @@
     .step-line.inactive { background-color: var(--gray-300); }
     
     /* Event Card Options */
-    .event-label { display: flex; items-align: center; padding: 0.75rem; border: 1px solid var(--gray-200); border-radius: 0.375rem; cursor: pointer; transition: all 0.2s; background: white; }
+    .event-label { display: flex; align-items: center; padding: 0.75rem; border: 1px solid var(--gray-200); border-radius: 0.375rem; cursor: pointer; transition: all 0.2s; background: white; }
     .event-label:hover:not(.disabled) { background-color: var(--gray-50); }
     .event-label.selected { background-color: var(--blue-50); border-color: var(--blue-500); box-shadow: 0 0 0 1px var(--blue-500); }
     .event-label.disabled { opacity: 0.5; cursor: not-allowed; }
@@ -485,6 +485,7 @@
     const API_CONFIG = {
       GAS_URL: 'https://script.google.com/macros/s/AKfycbwOv1kmiALv9H3fSybiEPwvvojMdcnbNapnYAXrzOWl5qvUFuEIRpWcNljDNnQ-YvfA/exec' 
     };
+    const TOURNAMENT_YEAR = 2026;  // เปลี่ยนปีที่เดียวจบ
 
     const locales = {
       th: {
@@ -651,20 +652,27 @@
 
     function t(key) { return locales[currentLang][key]; }
 
-    window.onload = () => {
+    let registeredIds = [], registeredNames = [], registeredEmails = [];
+
+    window.onload = async () => {
       document.getElementById('loadingOverlay').classList.remove('hidden');
-      setTimeout(() => {
-        registeredUsers = []; 
-        document.getElementById('loadingOverlay').classList.add('hidden');
-        renderCategories();
-      }, 1000);
-      
-      setLang('en'); 
+      try {
+        const res = await fetch(API_CONFIG.GAS_URL + '?action=getRegistered');
+        const data = await res.json();
+        registeredIds = data.ids || [];
+        registeredNames = data.names || [];
+        registeredEmails = data.emails || [];
+      } catch (err) {
+        console.warn('ไม่สามารถโหลดรายชื่อผู้สมัครเดิม (ข้ามการเช็คซ้ำ):', err);
+      }
+      document.getElementById('loadingOverlay').classList.add('hidden');
+      renderCategories();
+      setLang('en');
     };
 
     function getCurrentAge() {
       const year = parseInt(document.getElementById('birthYear').value) || 0;
-      return 2026 - year;
+      return TOURNAMENT_YEAR - year;
     }
 
     function updateAgeDisplay() {
@@ -806,9 +814,10 @@
         
         const fName = document.getElementById('fullName').value.trim();
         const email = emailEl.value.trim();
-        const isDup = registeredUsers.some(u => 
-          (u.fullName === fName) || (u.email.toLowerCase() === email.toLowerCase())
-        );
+        const idVal = document.getElementById('idNumber').value.trim().toUpperCase();
+        const isDup = registeredIds.includes(idVal)
+                   || registeredNames.includes(fName.toUpperCase())
+                   || registeredEmails.includes(email.toLowerCase());
         if (isDup) { alert(t('alertDup')); return false; }
       }
       
@@ -1069,8 +1078,8 @@
        if (!errDiv) return;
 
        const p1Age = getCurrentAge();
-       const p2Age = ev.partnerBirthYear ? 2026 - parseInt(ev.partnerBirthYear) : 0;
-       const p3Age = ev.partner2BirthYear ? 2026 - parseInt(ev.partner2BirthYear) : 0;
+       const p2Age = ev.partnerBirthYear ? TOURNAMENT_YEAR - parseInt(ev.partnerBirthYear) : 0;
+       const p3Age = ev.partner2BirthYear ? TOURNAMENT_YEAR - parseInt(ev.partner2BirthYear) : 0;
 
        let errorMsg = '';
 
@@ -1321,7 +1330,7 @@
                   is70Plus = partnerEvents.some(e => {
                      if (e.id.startsWith('comb_') || e.type === 'HW') {
                         const pYear = parseInt(e.partnerBirthYear) || 0;
-                        if (pYear > 0 && (2026 - pYear) >= 70) return true;
+                        if (pYear > 0 && (TOURNAMENT_YEAR - pYear) >= 70) return true;
                      }
                      if (e.id.startsWith('am_')) {
                         const parts = e.id.split('_');
