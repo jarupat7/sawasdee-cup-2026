@@ -128,7 +128,7 @@ function processRegistration(payload) {
   const finalTeamName = teamName || pTeamName;
 
   const row1 = [
-    new Date(), tagId, "Pending", payload.totalFeeText,
+    new Date(), tagId, "Pending", payload.totalFeeText || "-",
     p.fullName, p.nationality, p.idNumber,
     p.email, p.phone, p.gender, p.birthYear, p.tshirt,
     e1Name, e1Partners, e2Name, e2Partners,
@@ -219,8 +219,7 @@ function sendConfirmationEmail(personal, events, tagId, totalFee) {
           <h3 style="margin-top: 0; color: #1976D2;">Registration Details</h3>
           <p><strong>TAG ID:</strong> <span style="font-family: monospace; font-size: 1.2em; font-weight: bold; color: #d32f2f;">${tagId}</span></p>
           <p><strong>Registered Events:</strong></p>
-          <ul style="margin-top: 5px;">${eventsListHtml}</ul>
-          <p style="margin-bottom: 0;"><strong>Total Amount Due:</strong> <span style="color: #4CAF50; font-size: 1.4em; font-weight: bold;">${totalFee}</span></p>
+          <ul style="margin-top: 5px; margin-bottom: 0;">${eventsListHtml}</ul>
         </div>
         
         <h3 style="color: #ff9800; border-bottom: 1px solid #eee; padding-bottom: 5px;">Payment Details</h3>
@@ -241,7 +240,7 @@ function sendConfirmationEmail(personal, events, tagId, totalFee) {
         
         <h3 style="color: #333; font-size: 1.1em;">Next Steps for Confirmation:</h3>
         <ol style="padding-left: 20px;">
-          <li>Transfer the exact amount to the bank account provided above.</li>
+          <li>Transfer the registration fee according to tournament rules to the bank account provided above.</li>
           <li>Take a screenshot or photo of the successful payment receipt (transfer slip).</li>
           <li>Reply to this email or send the slip to <strong>fycsawasdeecup@gmail.com</strong>.</li>
           <li>Wait for the final confirmation email from our admin team.</li>

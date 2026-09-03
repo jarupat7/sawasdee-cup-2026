@@ -383,29 +383,14 @@
            </div>
         </div>
 
-        <div class="border rounded-lg shadow-sm overflow-hidden" style="background-color: white; border-color: var(--green-200);">
-           <div class="px-4 py-3 border-b font-semibold flex items-center" style="background-color: var(--green-50); border-color: var(--green-200); color: var(--green-800);">
-             <svg class="icon mr-2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-             <span data-i18n="fee">Total Payment</span>
-           </div>
-           <div class="p-6 text-center">
-              <span class="font-medium mb-3 block" style="color: var(--gray-500);" data-i18n="feeNote">Individual 30 USD/person (Max 2 events) | 3x3 30 USD/team | PRO TEAM 40 USD/team</span>
-              <span id="summaryTotalFee" class="text-4xl font-black block mb-2" style="color: var(--green-700);">0 USD</span>
-               <div id="summaryPromoBadge" class="hidden text-xs font-bold px-3 py-1 rounded-full mb-3 inline-flex items-center gap-1" style="background-color: var(--green-100); color: var(--green-800);"></div>
-              
-              <div class="text-sm font-bold p-3 rounded text-left mb-2 inline-block max-w-lg" style="color: var(--red-700); background-color: var(--red-50); border: 1px solid var(--red-200);" data-i18n="paymentPolicy">
-                 * Thai participants must complete the payment before the announcement date. Registration fees are non-refundable in any case.
-              </div>
-              
-              <div class="p-4 rounded-md inline-flex text-left max-w-lg mt-2" style="background-color: var(--blue-50); color: var(--blue-800);">
-                <svg class="icon-lg mr-3 mt-1" style="color: var(--blue-500); flex-shrink: 0;" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                <div>
-                  <h4 class="font-bold mb-1" data-i18n="sentEmail">Details sent to email</h4>
-                  <p class="text-sm leading-relaxed" style="color: var(--blue-700);"><span data-i18n="sentEmailDesc">Payment instructions will be sent to your email after confirmation.</span> <span id="summaryConfirmEmail" class="font-bold"></span></p>
-                  <p class="text-xs font-bold mt-2" style="color: #b45309;" data-i18n="spamNote">* If you don't receive the confirmation email in your Inbox, please check your Spam or Junk/Trash folder.</p>
-                </div>
-              </div>
-           </div>
+        <!-- Email Confirmation Notice Card -->
+        <div class="mt-6 p-5 rounded-lg border text-left flex items-start" style="background-color: var(--blue-50); border-color: var(--blue-200); color: var(--blue-900);">
+          <svg class="icon-lg mr-3 mt-0.5" style="color: var(--blue-600); flex-shrink: 0;" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <div>
+            <h4 class="font-bold mb-1 text-base" data-i18n="sentEmail">Registration details will be sent to your email</h4>
+            <p class="text-sm leading-relaxed" style="color: var(--blue-700);"><span data-i18n="sentEmailDesc">Registration confirmation and details will be sent to your email after confirmation:</span> <span id="summaryConfirmEmail" class="font-bold" style="color: var(--blue-900);"></span></p>
+            <p class="text-xs font-bold mt-2" style="color: #b45309;" data-i18n="spamNote">* If you don't receive the confirmation email in your Inbox, please check your Spam or Junk/Trash folder.</p>
+          </div>
         </div>
         
         <!-- Agreement Checkbox -->
@@ -489,16 +474,16 @@
 
     const locales = {
       th: {
-        title: "ระบบรับสมัครออนไลน์", promo70Applied: "🎉 ได้รับสิทธิ์เล่นฟรีสำหรับผู้สูงอายุ (อายุ 70 ปีขึ้นไป ในรุ่น Amateur)", regTypeIndividual: "สมัครประเภทบุคคล / คู่ (Individual / Doubles)", regTypeTeam: "สมัครประเภททีม (PRO TEAM)", proTeamRoster: "รายชื่อนักกีฬาในทีม 7 คน (PRO TEAM Roster - ชาย 5 หญิง 2)", step1: "ข้อมูลส่วนตัว", step2: "เลือกรุ่น", step3: "ยืนยันยอด",
+        title: "ระบบรับสมัครออนไลน์", promo70Applied: "🎉 ได้รับสิทธิ์เล่นฟรีสำหรับผู้สูงอายุ (อายุ 70 ปีขึ้นไป ในรุ่น Amateur)", regTypeIndividual: "สมัครประเภทบุคคล / คู่ (Individual / Doubles)", regTypeTeam: "สมัครประเภททีม (PRO TEAM)", proTeamRoster: "รายชื่อนักกีฬาในทีม 7 คน (PRO TEAM Roster - ชาย 5 หญิง 2)", step1: "ข้อมูลส่วนตัว", step2: "เลือกรุ่น", step3: "สรุปและยืนยันข้อมูล",
         infoDesc: "ใช้ชื่อ-นามสกุล และ อีเมล เป็นข้อมูลหลักในการยืนยันตัวตน", engOnly: "* บังคับภาษาอังกฤษตัวพิมพ์ใหญ่เท่านั้น (EN Uppercase Only)",
         fname: "ชื่อ-นามสกุล (Full Name)", email: "อีเมล (Email)", phone: "เบอร์โทรศัพท์ (Phone)", teamClub: "สังกัดทีม / สโมสร (Team/Club Name)", gender: "เพศ (Gender)", male: "ชาย (Male)", female: "หญิง (Female)",
         country: "ประเทศ (Country)", selectCountry: "-- เลือกประเทศ (Select) --", player1: "ผู้เล่นคนที่ 1",
         idCard: "รหัสประชาชน/พาสปอร์ต (ID/Passport)", tshirt: "ไซส์เสื้อ (T-Shirt Size)", tshirtSelect: "-- เลือกไซส์ (Select Size) --",
         birthYear: "ปีเกิด ค.ศ. (Birth Year)", age: "อายุ", yearsOld: "ปี", rule62: "กติกาข้อ 6.2: สมัครเข้าแข่งขันได้ไม่เกิน 2 รุ่น", selected: "เลือกแล้ว",
         partnerInfo: "ข้อมูลผู้ร่วมทีม / ชื่อทีม (Partner / Team Info)", pName: "ชื่อ-นามสกุล", pEmail: "อีเมล (ไม่บังคับ)", pYear: "ปีเกิด ค.ศ.",
-        hwNote: "* รุ่นสามี-ภรรยา ใช้อายุสามีเป็นหลัก และต้องแสดงสำเนาทะเบียนสมรส", summary: "สรุปข้อมูลการสมัคร", fee: "ยอดรวมการชำระเงิน",
+        hwNote: "* รุ่นสามี-ภรรยา ใช้อายุสามีเป็นหลัก และต้องแสดงสำเนาทะเบียนสมรส", summary: "สรุปข้อมูลการสมัคร", fee: "สรุปข้อมูลการสมัคร",
         next: "ถัดไป", back: "ย้อนกลับ", submit: "ยืนยันการสมัครและรับอีเมล", noEvents: "ไม่พบรุ่นที่สามารถลงแข่งขันได้ กรุณาตรวจสอบอายุของท่าน",
-        successMsg: "🎉 สมัครแข่งขันเรียบร้อยแล้ว!\n\nระบบได้ทำการบันทึกข้อมูลและส่งรายละเอียดการชำระเงินไปที่อีเมล:",
+        successMsg: "🎉 สมัครแข่งขันเรียบร้อยแล้ว!\n\nระบบได้ทำการบันทึกข้อมูลและส่งรายละเอียดการสมัครไปที่อีเมล:",
         alertMax: "⚠️ กติกาข้อ 6.2: ผู้เข้าแข่งขันสามารถสมัครได้ไม่เกิน 2 รุ่นเท่านั้น", alertDup: "⚠️ ตรวจพบข้อมูลซ้ำ: ชื่อ-นามสกุล หรือ อีเมลนี้ ได้ทำการลงทะเบียนในระบบไปแล้ว",
         alertReq: "กรุณากรอกข้อมูลให้ครบถ้วนในช่องที่ทำแถบสีแดงไว้", alertCross: "⚠️ กติกาข้อ 6.5: ห้ามลงเล่นประเภทเดียวกัน ซ้ำซ้อนระหว่างรุ่นอายุและรุ่นรวมอายุ",
         alertReqField: "กรุณากรอกข้อมูล", alertEmail: "รูปแบบอีเมลไม่ถูกต้อง", alertSameAmateur: "⚠️ กติกา: ไม่สามารถเลือกลงแข่งขันประเภทเดียวกันซ้ำ ในกลุ่มรุ่นอายุ (Amateur) ได้",
@@ -506,25 +491,25 @@
         catOpenTeam: "ประเภททีมทั่วไป (PRO TEAM) ชิง 100,000.-", catOpenPro: "รุ่นทั่วไป (PRO)", catAmateur: "รุ่นอายุ (Amateur)", catCombined: "รุ่นรวมอายุ (Combined Age)",
         ms: "ชายเดี่ยว (MS)", ws: "หญิงเดี่ยว (WS)", md: "ชายคู่ (MD)", wd: "หญิงคู่ (WD)", xd: "คู่ผสม (XD)", combStr: "รวม", minStr: "อายุขั้นต่ำ",
         openTeamDesc: "PRO TEAM (ชายไม่เกิน 5 หญิงไม่เกิน 2)", teamName: "ชื่อทีม (Team Name)", teamMgrEmail: "อีเมลผู้จัดการทีม (Manager Email)", playerName: "ชื่อนักกีฬา",
-        teamNote: "* นักกีฬาชายไม่เกิน 5 คน / หญิงไม่เกิน 2 คน", sentEmail: "ส่งรายละเอียดไปยังอีเมลแล้ว", sentEmailDesc: "ระบบจะทำการส่งรายละเอียดวิธีการชำระเงินไปที่อีเมล ทันทีหลังจากกดยืนยัน",
+        teamNote: "* นักกีฬาชายไม่เกิน 5 คน / หญิงไม่เกิน 2 คน", sentEmail: "รายละเอียดการสมัครจะถูกส่งไปยังอีเมล", sentEmailDesc: "ระบบจะทำการส่งรายละเอียดการสมัครไปที่อีเมล ทันทีหลังจากกดยืนยัน:",
         spamNote: "* หากไม่พบอีเมลยืนยันในกล่องข้อความหลัก (Inbox) กรุณาเช็กในโฟลเดอร์ สแปม (Spam) หรือ จดหมายขยะ (Junk / Trash)",
-        feeNote: "บุคคล 1,000 บาท/คน (ลงได้สูงสุด 2 รุ่น) | 3x3 1,000 บาท/ทีม | ทีมทั่วไป 1,500 บาท/ทีม", currency: "THB", checkingDb: "กำลังโหลดข้อมูลจากระบบ...", savingData: "กำลังบันทึกข้อมูล...",
+        feeNote: "", currency: "THB", checkingDb: "กำลังโหลดข้อมูลจากระบบ...", savingData: "กำลังบันทึกข้อมูล...",
         partnerRequired: "กรุณากรอกปีเกิดของคู่แข่งขันในรายการ:", partnerAgeError: "⚠️ ผิดกติกา: อายุคู่แข่งขัน", mustMin: "ต้องไม่ต่ำกว่า", totalAgeError: "⚠️ ผิดกติกา: อายุรวมของคู่คือ", notReach: "ยังไม่ถึงเกณฑ์",
-        regSuccess: "ลงทะเบียนสำเร็จ!", regSuccessDesc: "ข้อมูลของคุณถูกบันทึกเรียบร้อยแล้ว", yourTagId: "รหัสประจำตัวของคุณ (TAG ID)", nextSteps: "ขั้นตอนต่อไป", stepEmail: "ตรวจสอบอีเมลของคุณเพื่อดูรายละเอียดการชำระเงิน (หากไม่พบ กรุณาเช็กในโฟลเดอร์ สแปม/ขยะ)", stepTransfer: "โอนเงินและระบุ TAG ID ในช่องบันทึกช่วยจำ (Memo)", stepSlip: "ตอบกลับอีเมลพร้อมแนบสลิปเพื่อยืนยันการชำระเงิน", backHome: "กลับหน้าแรก",
+        regSuccess: "ลงทะเบียนสำเร็จ!", regSuccessDesc: "ข้อมูลของคุณถูกบันทึกเรียบร้อยแล้ว", yourTagId: "รหัสประจำตัวของคุณ (TAG ID)", nextSteps: "ขั้นตอนต่อไป", stepEmail: "ตรวจสอบอีเมลของคุณเพื่อดูรายละเอียดการสมัคร (หากไม่พบ กรุณาเช็กในโฟลเดอร์ สแปม/ขยะ)", stepTransfer: "โอนเงินค่าสมัครตามระเบียบการ และระบุ TAG ID ในช่องบันทึกช่วยจำ (Memo)", stepSlip: "ตอบกลับอีเมลพร้อมแนบสลิปเพื่อยืนยันการชำระเงิน", backHome: "กลับหน้าแรก",
         agreeRulesText: "ฉันได้อ่านและยอมรับกฎกติกาการแข่งขัน และยืนยันว่ามีสุขภาพร่างกายพร้อมสำหรับการแข่งขัน",
         paymentPolicy: "* คนไทยต้องโอนชำระค่าสมัครก่อนวันประกาศรายชื่อเท่านั้น และจะไม่คืนค่าสมัครทุกกรณี"
       },
       en: {
-        title: "Online Registration System", promo70Applied: "🎉 70+ Age Promotion Applied (Free Entry for Amateur Categories)", regTypeIndividual: "Individual / Doubles Registration", regTypeTeam: "Team Registration (PRO TEAM)", proTeamRoster: "PRO TEAM Roster - 7 Players (Max 5 Men, 2 Women)", step1: "Player Info", step2: "Events", step3: "Payment",
+        title: "Online Registration System", promo70Applied: "🎉 70+ Age Promotion Applied (Free Entry for Amateur Categories)", regTypeIndividual: "Individual / Doubles Registration", regTypeTeam: "Team Registration (PRO TEAM)", proTeamRoster: "PRO TEAM Roster - 7 Players (Max 5 Men, 2 Women)", step1: "Player Info", step2: "Events", step3: "Summary & Confirmation",
         infoDesc: "Use Name and Email as your primary identification.", engOnly: "* English Uppercase Only",
         fname: "Full Name", email: "Email", phone: "Phone", teamClub: "Team / Club Name", gender: "Gender", male: "Male", female: "Female",
         country: "Country", selectCountry: "-- Select Country --", player1: "Player 1",
         idCard: "ID Card / Passport", tshirt: "T-Shirt Size", tshirtSelect: "-- Select Size --",
         birthYear: "Birth Year (AD)", age: "Age", yearsOld: "yrs", rule62: "Rule 6.2: Max 2 events per player", selected: "Selected",
         partnerInfo: "Partner / Team Information", pName: "Full Name", pEmail: "Email (Optional)", pYear: "Birth Year",
-        hwNote: "* Husband-Wife category uses husband's age. Marriage cert required.", summary: "Registration Summary", fee: "Total Payment",
-        next: "Next", back: "Back", submit: "Confirm & Receive Email", noEvents: "No eligible events found for your age.",
-        successMsg: "🎉 Registration Complete!\n\nPayment details have been sent to your email:",
+        hwNote: "* Husband-Wife category uses husband's age. Marriage cert required.", summary: "Registration Summary", fee: "Registration Summary",
+        next: "Next", back: "Back", submit: "Confirm Registration", noEvents: "No eligible events found for your age.",
+        successMsg: "🎉 Registration Complete!\n\nRegistration details have been sent to your email:",
         alertMax: "⚠️ Rule 6.2: Maximum of 2 events allowed.", alertDup: "⚠️ Duplicate detected: This Name or Email is already registered.",
         alertReq: "Please fill in all required fields highlighted in red.", alertCross: "⚠️ Rule 6.5: Cannot play the same event type in both age and combined brackets.",
         alertReqField: "This field is required", alertEmail: "Invalid email format", alertSameAmateur: "⚠️ Rule: Cannot register for the same event type across multiple Amateur age groups.",
@@ -532,25 +517,25 @@
         catOpenTeam: "PRO TEAM - 100,000 THB Prize", catOpenPro: "Professional (PRO)", catAmateur: "Amateur Category", catCombined: "Combined Age",
         ms: "Men's Singles (MS)", ws: "Women's Singles (WS)", md: "Men's Doubles (MD)", wd: "Women's Doubles (WD)", xd: "Mixed Doubles (XD)", combStr: "Combined", minStr: "Min Age",
         openTeamDesc: "PRO TEAM (Max 5 Men, 2 Women)", teamName: "Team Name", teamMgrEmail: "Manager Email", playerName: "Player Name",
-        teamNote: "* Max 5 male athletes / Max 2 female athletes.", sentEmail: "Details sent to email", sentEmailDesc: "Payment instructions will be sent to your email after confirmation.",
+        teamNote: "* Max 5 male athletes / Max 2 female athletes.", sentEmail: "Registration details will be sent to email", sentEmailDesc: "Registration confirmation and details will be sent to your email after confirmation:",
         spamNote: "* If you don't receive the confirmation email in your Inbox, please check your Spam or Junk/Trash folder.",
-        feeNote: "Individual 30 USD/person (Max 2 events) | 3x3 30 USD/team | PRO TEAM 40 USD/team", currency: "USD", checkingDb: "Loading data...", savingData: "Saving your data...",
+        feeNote: "", currency: "USD", checkingDb: "Loading data...", savingData: "Saving your data...",
         partnerRequired: "Please enter partner's birth year for:", partnerAgeError: "⚠️ Age rule violation in:", mustMin: "must be at least", totalAgeError: "⚠️ Combined age violation in:", notReach: "does not meet requirements",
-        regSuccess: "Registration Successful!", regSuccessDesc: "Your information has been saved successfully.", yourTagId: "YOUR TAG ID", nextSteps: "Next Steps", stepEmail: "Check your email for payment details (please check Spam/Junk folder if not found).", stepTransfer: "Transfer the fee and include your TAG ID in the memo.", stepSlip: "Reply to the email with your payment slip.", backHome: "Back to Home",
+        regSuccess: "Registration Successful!", regSuccessDesc: "Your information has been saved successfully.", yourTagId: "YOUR TAG ID", nextSteps: "Next Steps", stepEmail: "Check your email for registration details (please check Spam/Junk folder if not found).", stepTransfer: "Transfer the registration fee and include your TAG ID in the memo.", stepSlip: "Reply to the email with your payment slip.", backHome: "Back to Home",
         agreeRulesText: "I have read and agree to the tournament rules, and confirm I am physically fit to compete.",
         paymentPolicy: "* Thai participants must complete the payment before the announcement date. Registration fees are non-refundable in any case."
       },
       zh: {
-        title: "在线报名系统", promo70Applied: "🎉 70岁以上业余组免费优惠已应用", regTypeIndividual: "个人 / 双打报名 (Individual / Doubles)", regTypeTeam: "团队报名 (PRO TEAM)", proTeamRoster: "PRO TEAM 7名队员名单 (最多5男2女)", step1: "个人信息", step2: "比赛项目", step3: "支付确认",
+        title: "在线报名系统", promo70Applied: "🎉 70岁以上业余组免费优惠已应用", regTypeIndividual: "个人 / 双打报名 (Individual / Doubles)", regTypeTeam: "团队报名 (PRO TEAM)", proTeamRoster: "PRO TEAM 7名队员名单 (最多5男2女)", step1: "个人信息", step2: "比赛项目", step3: "确认信息",
         infoDesc: "请使用姓名和电子邮箱作为主要身份验证信息", engOnly: "* 仅限英文大写字母 (EN Uppercase Only)",
         fname: "全名 (Full Name)", email: "电子邮箱 (Email)", phone: "电话 (Phone)", teamClub: "俱乐部 / 队伍名称 (Team / Club)", gender: "性别 (Gender)", male: "男 (Male)", female: "女 (Female)",
         country: "国家 (Country)", selectCountry: "-- 选择国家 (Select) --", player1: "第一名球员",
         idCard: "身份证 / 护照 (ID/Passport)", tshirt: "T恤尺码 (T-Shirt Size)", tshirtSelect: "-- 选择尺码 (Select Size) --",
         birthYear: "出生年份 (AD)", age: "年龄", yearsOld: "岁", rule62: "规则 6.2：每位选手最多报名 2 项", selected: "已选",
         partnerInfo: "搭档 / 团队信息", pName: "全名", pEmail: "邮箱 (选填)", pYear: "出生年份",
-        hwNote: "* 夫妻组以丈夫年龄为准，需提供结婚证", summary: "报名摘要", fee: "总费用",
-        next: "下一步", back: "返回", submit: "确认并接收邮件", noEvents: "未找到符合您年龄的项目",
-        successMsg: "🎉 报名成功！\n\n付款详情已发送至您的邮箱：",
+        hwNote: "* 夫妻组以丈夫年龄为准，需提供结婚证", summary: "报名摘要", fee: "报名摘要",
+        next: "下一步", back: "返回", submit: "确认报名并接收邮件", noEvents: "未找到符合您年龄的项目",
+        successMsg: "🎉 报名成功！\n\n报名详情已发送至您的邮箱：",
         alertMax: "⚠️ 规则 6.2：最多只能报名2项比赛", alertDup: "⚠️ 检测到重复信息：该姓名或邮箱已注册",
         alertReq: "请填写所有红色标记的必填项", alertCross: "⚠️ 规则 6.5：禁止在年龄组和总年龄组中参加相同类型的比赛",
         alertReqField: "此字段为必填项", alertEmail: "电子邮件格式无效", alertSameAmateur: "⚠️ 规则：不能在业余组中参加多个相同类型的比赛。",
@@ -558,11 +543,11 @@
         catOpenTeam: "公开组团队 (PRO TEAM) - 奖金 100,000 泰铢", catOpenPro: "公开组 (PRO)", catAmateur: "业余组 (Amateur)", catCombined: "总年龄组 (Combined Age)",
         ms: "男单 (MS)", ws: "女单 (WS)", md: "男双 (MD)", wd: "女双 (WD)", xd: "混双 (XD)", combStr: "总和", minStr: "最小年龄",
         openTeamDesc: "PRO TEAM (最多5男2女)", teamName: "队伍名称 (Team Name)", teamMgrEmail: "领队电子邮箱 (Manager Email)", playerName: "运动员姓名",
-        teamNote: "* 最多 5 名男运动员 / 2 名女运动员", sentEmail: "详情已发送至邮箱", sentEmailDesc: "付款说明将在确认后发送至您的电子邮箱",
+        teamNote: "* 最多 5 名男运动员 / 2 名女运动员", sentEmail: "报名详情将发送至邮箱", sentEmailDesc: "报名详情和确认信息将在确认后发送至您的电子邮箱：",
         spamNote: "* 如果未在收件箱找到确认邮件，请检查垃圾邮件/Spam/Junk文件夹。",
-        feeNote: "个人 30 USD/人 (最多两项) | 3x3 30 USD/队 | PRO TEAM 40 USD/队", currency: "USD", checkingDb: "加载数据中...", savingData: "正在保存数据...",
+        feeNote: "", currency: "USD", checkingDb: "加载数据中...", savingData: "正在保存数据...",
         partnerRequired: "请输入搭档的出生年份：", partnerAgeError: "⚠️ 年龄违规：", mustMin: "最小年龄必须为", totalAgeError: "⚠️ 总年龄违规：", notReach: "未达到要求",
-        regSuccess: "报名成功！", regSuccessDesc: "您的信息已成功保存。", yourTagId: "您的专属ID (TAG ID)", nextSteps: "下一步", stepEmail: "检查您的电子邮件以获取付款详情（如未收到，请检查垃圾邮件文件夹）。", stepTransfer: "转账并在备注中注明您的 TAG ID。", stepSlip: "回复邮件并附上付款凭证以确认付款。", backHome: "返回首页",
+        regSuccess: "报名成功！", regSuccessDesc: "您的信息已成功保存。", yourTagId: "您的专属ID (TAG ID)", nextSteps: "下一步", stepEmail: "检查您的电子邮件以获取报名详情（如未收到，请检查垃圾邮件文件夹）。", stepTransfer: "按规定转账报名费并在备注中注明您的 TAG ID。", stepSlip: "回复邮件并附上付款凭证以确认付款。", backHome: "返回首页",
         agreeRulesText: "我已阅读并同意比赛规则，并确认身体健康适合参加比赛。",
         paymentPolicy: "* 泰国籍参赛者必须在公布名单前完成缴费，报名费在任何情况下均不退还。"
       }
@@ -1302,76 +1287,6 @@
         list.innerHTML += `<li class="flex flex-col p-3 rounded border" style="background-color: var(--blue-50); color: var(--blue-700); border-color: var(--blue-100);"><div class="flex items-center"><svg class="icon-sm mr-2 flex-shrink-0" style="color: var(--blue-500);" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> <span class="font-medium">${e.category} - ${e.name}</span></div>${det}</li>`;
       });
 
-      let feeThb = 0;
-      let feeUsd = 0;
-      let hasFreePlayer = false;
-
-      if (selectedEvents.some(e => e.type !== '3x3' && e.type !== 'TEAM')) {
-         let p1Id = document.getElementById('idNumber').value.trim();
-         let chargedPlayersCount = 0;
-         
-         uniquePlayers.forEach(pid => {
-            let is70Plus = false;
-            let playsPro = false;
-            let playsIndividual = false;
-            
-            if (pid === p1Id) {
-               playsIndividual = selectedEvents.some(e => e.type !== '3x3' && e.type !== 'TEAM');
-               is70Plus = (getCurrentAge() >= 70);
-               playsPro = selectedEvents.some(e => e.type !== '3x3' && e.type !== 'TEAM' && e.id.startsWith('pro_'));
-            } else {
-               // Partner
-               const partnerEvents = selectedEvents.filter(e => e.type !== '3x3' && e.type !== 'TEAM' && e.partnerId && e.partnerId.trim() === pid);
-               if (partnerEvents.length > 0) {
-                  playsIndividual = true;
-                  playsPro = partnerEvents.some(e => e.id.startsWith('pro_'));
-                  
-                  is70Plus = partnerEvents.some(e => {
-                     if (e.id.startsWith('comb_') || e.type === 'HW') {
-                        const pYear = parseInt(e.partnerBirthYear) || 0;
-                        if (pYear > 0 && (TOURNAMENT_YEAR - pYear) >= 70) return true;
-                     }
-                     if (e.id.startsWith('am_')) {
-                        const parts = e.id.split('_');
-                        if (parts.length >= 3) {
-                           const ageRange = parts[2];
-                           const minAge = parseInt(ageRange.split('-')[0]) || 0;
-                           if (minAge >= 70) return true;
-                        }
-                     }
-                     return false;
-                  });
-               }
-            }
-            
-            if (playsIndividual) {
-               if (is70Plus && !playsPro) {
-                  hasFreePlayer = true;
-               } else {
-                  chargedPlayersCount++;
-               }
-            }
-         });
-         
-         feeThb += chargedPlayersCount * 1000;
-         feeUsd += chargedPlayersCount * 30;
-      }
-      
-      const promoBadge = document.getElementById('summaryPromoBadge');
-      if (promoBadge) {
-         if (hasFreePlayer) {
-            promoBadge.classList.remove('hidden');
-            promoBadge.innerHTML = t('promo70Applied');
-         } else {
-            promoBadge.classList.add('hidden');
-         }
-      }
-      
-      if (has3x3) { feeThb += 1000; feeUsd += 30; }
-      if (hasTeam) { feeThb += 1500; feeUsd += 40; }
-
-      const totalFee = currentLang === 'th' ? feeThb : feeUsd;
-      document.getElementById('summaryTotalFee').innerText = `${totalFee.toLocaleString()} ${t('currency')}`;
     }
 
     async function submitForm() {
@@ -1410,7 +1325,7 @@
                partner2Nat: partner2NatFinal
             };
          }),
-         totalFeeText: document.getElementById('summaryTotalFee').innerText
+         totalFeeText: "-"
       };
 
       try {
