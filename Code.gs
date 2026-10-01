@@ -87,6 +87,28 @@ function doPost(e) {
 }
 
 function doGet(e) {
+  try {
+    const action = e && e.parameter ? e.parameter.action : "";
+    if (action === "getRegistered") {
+      const ss = SpreadsheetApp.openById(CONFIG.SHEET_ID);
+      const sheet1 = ss.getSheetByName(CONFIG.SHEET_NAMES.registrations);
+      if (!sheet1 || sheet1.getLastRow() <= 1) {
+        return ContentService.createTextOutput(JSON.stringify({ ids: [], names: [], emails: [] }))
+          .setMimeType(ContentService.MimeType.JSON);
+      }
+      const data = sheet1.getRange(2, 5, sheet1.getLastRow() - 1, 4).getValues(); // Cols 5(Name), 6(Nat), 7(ID), 8(Email)
+      const ids = [], names = [], emails = [];
+      data.forEach(r => {
+        if (r[2]) ids.push(r[2].toString().trim().toUpperCase());
+        if (r[0]) names.push(r[0].toString().trim().toUpperCase());
+        if (r[3]) emails.push(r[3].toString().trim().toLowerCase());
+      });
+      return ContentService.createTextOutput(JSON.stringify({ ids, names, emails }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+  } catch (err) {
+    Logger.log("doGet error: " + err.message);
+  }
   return ContentService.createTextOutput("Sawasdee Cup 2026 Backend is running.");
 }
 
@@ -96,17 +118,43 @@ function processRegistration(payload) {
     lock.waitLock(30000);
 
     const ss = SpreadsheetApp.openById(CONFIG.SHEET_ID);
-    
-    const sequence = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-    const randomChar = Math.random().toString(36).substring(2, 8).toUpperCase();
-    const tagId = `SC2026-${sequence}-${randomChar}`;
-
     const p = payload.personal;
     const evs = payload.events || [];
     const p1Age = 2026 - (parseInt(p.birthYear) || 0);
 
     // --- บันทึกลง Tab "REGISTRATIONS" ---
     let sheet1 = ss.getSheetByName(CONFIG.SHEET_NAMES.registrations);
+    if (!sheet1) {
+      setupSheetHeaders();
+      sheet1 = ss.getSheetByName(CONFIG.SHEET_NAMES.registrations);
+    }
+
+    // --- ป้องกันการส่งซ้ำในเสี้ยววินาทีเดียวกัน (Deduplication Check) ---
+    const lastRow1 = sheet1.getLastRow();
+    if (lastRow1 > 1) {
+      const checkCount = Math.min(lastRow1 - 1, 15);
+      const startR = lastRow1 - checkCount + 1;
+      const recentRows = sheet1.getRange(startR, 1, checkCount, 8).getValues();
+      const pId = (p.idNumber || "").toString().trim().toUpperCase();
+      const nowMs = new Date().getTime();
+
+      for (let i = recentRows.length - 1; i >= 0; i--) {
+        const rowTime = new Date(recentRows[i][0]).getTime();
+        const rowTag = recentRows[i][1];
+        const rowId = (recentRows[i][6] || "").toString().trim().toUpperCase();
+
+        // หาก ID/Passport เดียวกัน ส่งซ้ำภายใน 60 วินาที ให้ใช้ Tag ID เดิมทันที ไม่สร้างแถวซ้ำ
+        if (pId && rowId === pId && Math.abs(nowMs - rowTime) < 60000) {
+          Logger.log("Duplicate registration detected within 60s. Returning existing tagId: " + rowTag);
+          return { success: true, tagID: rowTag };
+        }
+      }
+    }
+
+    const sequence = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+    const randomChar = Math.random().toString(36).substring(2, 8).toUpperCase();
+    const tagId = `SC2026-${sequence}-${randomChar}`;
+
     let e1Name = "", e1Partners = "";
     let e2Name = "", e2Partners = "";
     let teamName = "", teamMgr = "", teamPlayers = "";
