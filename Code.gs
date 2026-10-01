@@ -91,83 +91,90 @@ function doGet(e) {
 }
 
 function processRegistration(payload) {
-  const ss = SpreadsheetApp.openById(CONFIG.SHEET_ID);
-  
-  const sequence = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-  const randomChar = Math.random().toString(36).substring(2, 8).toUpperCase();
-  const tagId = `SC2026-${sequence}-${randomChar}`;
+  const lock = LockService.getScriptLock();
+  try {
+    lock.waitLock(30000);
 
-  const p = payload.personal;
-  const evs = payload.events || [];
-  const p1Age = 2026 - (parseInt(p.birthYear) || 0);
+    const ss = SpreadsheetApp.openById(CONFIG.SHEET_ID);
+    
+    const sequence = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+    const randomChar = Math.random().toString(36).substring(2, 8).toUpperCase();
+    const tagId = `SC2026-${sequence}-${randomChar}`;
 
-  // --- บันทึกลง Tab "REGISTRATIONS" ---
-  let sheet1 = ss.getSheetByName(CONFIG.SHEET_NAMES.registrations);
-  let e1Name = "", e1Partners = "";
-  let e2Name = "", e2Partners = "";
-  let teamName = "", teamMgr = "", teamPlayers = "";
+    const p = payload.personal;
+    const evs = payload.events || [];
+    const p1Age = 2026 - (parseInt(p.birthYear) || 0);
 
-  const pTeamName = p.teamName || p.teamClub || "";
+    // --- บันทึกลง Tab "REGISTRATIONS" ---
+    let sheet1 = ss.getSheetByName(CONFIG.SHEET_NAMES.registrations);
+    let e1Name = "", e1Partners = "";
+    let e2Name = "", e2Partners = "";
+    let teamName = "", teamMgr = "", teamPlayers = "";
 
-  if (evs.length > 0) {
-    e1Name = `${evs[0].category} - ${evs[0].name}`;
-    e1Partners = formatPartners(evs[0]);
-    if (evs[0].type === 'TEAM') {
-      teamName = evs[0].teamName; teamMgr = evs[0].teamManagerEmail; teamPlayers = formatTeamPlayers(evs[0]);
+    const pTeamName = p.teamName || p.teamClub || "";
+
+    if (evs.length > 0) {
+      e1Name = `${evs[0].category} - ${evs[0].name}`;
+      e1Partners = formatPartners(evs[0]);
+      if (evs[0].type === 'TEAM') {
+        teamName = evs[0].teamName; teamMgr = evs[0].teamManagerEmail; teamPlayers = formatTeamPlayers(evs[0]);
+      }
     }
-  }
 
-  if (evs.length > 1) {
-    e2Name = `${evs[1].category} - ${evs[1].name}`;
-    e2Partners = formatPartners(evs[1]);
-    if (evs[1].type === 'TEAM') {
-      teamName = evs[1].teamName; teamMgr = evs[1].teamManagerEmail; teamPlayers = formatTeamPlayers(evs[1]);
+    if (evs.length > 1) {
+      e2Name = `${evs[1].category} - ${evs[1].name}`;
+      e2Partners = formatPartners(evs[1]);
+      if (evs[1].type === 'TEAM') {
+        teamName = evs[1].teamName; teamMgr = evs[1].teamManagerEmail; teamPlayers = formatTeamPlayers(evs[1]);
+      }
     }
+
+    const finalTeamName = teamName || pTeamName;
+
+    const row1 = [
+      new Date(), tagId, "Pending", payload.totalFeeText || "-",
+      p.fullName, p.nationality, p.idNumber,
+      p.email, p.phone, p.gender, p.birthYear, p.tshirt,
+      e1Name, e1Partners, e2Name, e2Partners,
+      finalTeamName, teamMgr, teamPlayers, ""
+    ];
+    sheet1.appendRow(row1);
+    
+
+    // --- บันทึกลง Tab "ALL DATA" ---
+    let sheet2 = ss.getSheetByName(CONFIG.SHEET_NAMES.allData);
+    if (!sheet2) {
+      setupSheetHeaders();
+      sheet2 = ss.getSheetByName(CONFIG.SHEET_NAMES.allData);
+    }
+
+    if (evs.length > 0) {
+      evs.forEach(ev => {
+        let p2Age = ev.partnerBirthYear ? 2026 - parseInt(ev.partnerBirthYear) : "";
+        let p3Age = ev.partner2BirthYear ? 2026 - parseInt(ev.partner2BirthYear) : "";
+
+        let tName = (ev.type === 'TEAM' && ev.teamName) ? ev.teamName : pTeamName;
+        let tMgr = ev.type === 'TEAM' ? ev.teamManagerEmail : "";
+        let tList = ev.type === 'TEAM' ? formatTeamPlayers(ev) : "";
+
+        const row2 = [
+          new Date(), tagId, "Pending", ev.category, ev.name, tName,
+          p.fullName, p.nationality, p.idNumber, p.email, p.phone, p.gender, p.birthYear, p1Age, p.tshirt,
+          ev.partnerName || "", ev.partnerNat || "", ev.partnerId || "", ev.partnerEmail || "", ev.partnerBirthYear || "", p2Age, ev.partnerTshirt || "",
+          ev.partner2Name || "", ev.partner2Nat || "", ev.partner2Id || "", ev.partner2Email || "", ev.partner2BirthYear || "", p3Age, ev.partner2Tshirt || "",
+          tMgr, tList
+        ];
+        sheet2.appendRow(row2);
+      });
+    }
+    
+    // สั่งส่งอีเมลหาผู้สมัคร
+    sendConfirmationEmail(p, evs, tagId, payload.totalFeeText);
+    
+    return { success: true, tagID: tagId };
+  } finally {
+    lock.releaseLock();
   }
-
-  const finalTeamName = teamName || pTeamName;
-
-  const row1 = [
-    new Date(), tagId, "Pending", payload.totalFeeText || "-",
-    p.fullName, p.nationality, p.idNumber,
-    p.email, p.phone, p.gender, p.birthYear, p.tshirt,
-    e1Name, e1Partners, e2Name, e2Partners,
-    finalTeamName, teamMgr, teamPlayers, ""
-  ];
-  sheet1.appendRow(row1);
-  
-
-  // --- บันทึกลง Tab "ALL DATA" ---
-  let sheet2 = ss.getSheetByName(CONFIG.SHEET_NAMES.allData);
-  if (!sheet2) {
-    setupSheetHeaders();
-    sheet2 = ss.getSheetByName(CONFIG.SHEET_NAMES.allData);
-  }
-
-  if (evs.length > 0) {
-    evs.forEach(ev => {
-      let p2Age = ev.partnerBirthYear ? 2026 - parseInt(ev.partnerBirthYear) : "";
-      let p3Age = ev.partner2BirthYear ? 2026 - parseInt(ev.partner2BirthYear) : "";
-
-      let tName = (ev.type === 'TEAM' && ev.teamName) ? ev.teamName : pTeamName;
-      let tMgr = ev.type === 'TEAM' ? ev.teamManagerEmail : "";
-      let tList = ev.type === 'TEAM' ? formatTeamPlayers(ev) : "";
-
-      const row2 = [
-        new Date(), tagId, "Pending", ev.category, ev.name, tName,
-        p.fullName, p.nationality, p.idNumber, p.email, p.phone, p.gender, p.birthYear, p1Age, p.tshirt,
-        ev.partnerName || "", ev.partnerNat || "", ev.partnerId || "", ev.partnerEmail || "", ev.partnerBirthYear || "", p2Age, ev.partnerTshirt || "",
-        ev.partner2Name || "", ev.partner2Nat || "", ev.partner2Id || "", ev.partner2Email || "", ev.partner2BirthYear || "", p3Age, ev.partner2Tshirt || "",
-        tMgr, tList
-      ];
-      sheet2.appendRow(row2);
-    });
-  }
-  
-  // สั่งส่งอีเมลหาผู้สมัคร
-  sendConfirmationEmail(p, evs, tagId, payload.totalFeeText);
-  
-  return { success: true, tagID: tagId };
 }
 
 function formatPartners(ev) {

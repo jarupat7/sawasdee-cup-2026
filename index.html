@@ -1297,6 +1297,10 @@
         return;
       }
 
+      const btnSubmit = document.getElementById('btnSubmit');
+      if (btnSubmit.disabled) return;
+      btnSubmit.disabled = true;
+
       const loader = document.getElementById('loadingOverlay');
       loader.classList.remove('hidden');
       loader.querySelector('p').innerText = t('savingData');
@@ -1359,10 +1363,12 @@
          } else {
             alert('เกิดข้อผิดพลาดในการบันทึกข้อมูล: ' + result.error);
             loader.classList.add('hidden');
+            if (btnSubmit) btnSubmit.disabled = false;
          }
       } catch (err) {
          alert('การเชื่อมต่อขัดข้อง: ' + err.message);
          loader.classList.add('hidden');
+         if (btnSubmit) btnSubmit.disabled = false;
          console.error(err);
       }
     }
