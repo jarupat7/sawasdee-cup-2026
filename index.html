@@ -482,7 +482,7 @@
         country: "ประเทศ (Country)", selectCountry: "-- เลือกประเทศ (Select) --", player1: "ผู้เล่นคนที่ 1",
         idCard: "รหัสประชาชน/พาสปอร์ต (ID/Passport)", tshirt: "ไซส์เสื้อ (T-Shirt Size)", tshirtSelect: "-- เลือกไซส์ (Select Size) --",
         birthYear: "ปีเกิด ค.ศ. (Birth Year)", age: "อายุ", yearsOld: "ปี", rule62: "กติกาข้อ 6.2: สมัครเข้าแข่งขันได้ไม่เกิน 2 รุ่น", selected: "เลือกแล้ว",
-        partnerInfo: "ข้อมูลผู้ร่วมทีม / ชื่อทีม (Partner / Team Info)", pName: "ชื่อ-นามสกุล", pEmail: "อีเมล (ไม่บังคับ)", pYear: "ปีเกิด ค.ศ.",
+        partnerInfo: "ข้อมูลผู้ร่วมทีม / ชื่อทีม (Partner / Team Info)", pName: "ชื่อ-นามสกุล", pEmail: "อีเมล (ไม่บังคับ)", pYear: "ปีเกิด ค.ศ.", pTeam: "สังกัดทีม / สโมสร (ถ้ามี)",
         hwNote: "* รุ่นสามี-ภรรยา ใช้อายุสามีเป็นหลัก และต้องแสดงสำเนาทะเบียนสมรส", summary: "สรุปข้อมูลการสมัคร", fee: "สรุปข้อมูลการสมัคร",
         next: "ถัดไป", back: "ย้อนกลับ", submit: "ยืนยันการสมัครและรับอีเมล", noEvents: "ไม่พบรุ่นที่สามารถลงแข่งขันได้ กรุณาตรวจสอบอายุของท่าน",
         successMsg: "🎉 สมัครแข่งขันเรียบร้อยแล้ว!\n\nระบบได้ทำการบันทึกข้อมูลและส่งรายละเอียดการสมัครไปที่อีเมล:",
@@ -508,7 +508,7 @@
         country: "Country", selectCountry: "-- Select Country --", player1: "Player 1",
         idCard: "ID Card / Passport", tshirt: "T-Shirt Size", tshirtSelect: "-- Select Size --",
         birthYear: "Birth Year (AD)", age: "Age", yearsOld: "yrs", rule62: "Rule 6.2: Max 2 events per player", selected: "Selected",
-        partnerInfo: "Partner / Team Information", pName: "Full Name", pEmail: "Email (Optional)", pYear: "Birth Year",
+        partnerInfo: "Partner / Team Information", pName: "Full Name", pEmail: "Email (Optional)", pYear: "Birth Year", pTeam: "Team / Club (Optional)",
         hwNote: "* Husband-Wife category uses husband's age. Marriage cert required.", summary: "Registration Summary", fee: "Registration Summary",
         next: "Next", back: "Back", submit: "Confirm Registration", noEvents: "No eligible events found for your age.",
         successMsg: "🎉 Registration Complete!\n\nRegistration details have been sent to your email:",
@@ -534,7 +534,7 @@
         country: "国家 (Country)", selectCountry: "-- 选择国家 (Select) --", player1: "第一名球员",
         idCard: "身份证 / 护照 (ID/Passport)", tshirt: "T恤尺码 (T-Shirt Size)", tshirtSelect: "-- 选择尺码 (Select Size) --",
         birthYear: "出生年份 (AD)", age: "年龄", yearsOld: "岁", rule62: "规则 6.2：每位选手最多报名 2 项", selected: "已选",
-        partnerInfo: "搭档 / 团队信息", pName: "全名", pEmail: "邮箱 (选填)", pYear: "出生年份",
+        partnerInfo: "搭档 / 团队信息", pName: "全名", pEmail: "邮箱 (选填)", pYear: "出生年份", pTeam: "所属队伍 / 俱乐部 (选填)",
         hwNote: "* 夫妻组以丈夫年龄为准，需提供结婚证", summary: "报名摘要", fee: "报名摘要",
         next: "下一步", back: "返回", submit: "确认报名并接收邮件", noEvents: "未找到符合您年龄的项目",
         successMsg: "🎉 报名成功！\n\n报名详情已发送至您的邮箱：",
@@ -1000,7 +1000,7 @@
             }
         }
 
-        selectedEvents.push({ id, name, category, type, feeThb, feeUsd, partnerName: '', partnerNat: '', partnerId: '', partnerEmail: '', partnerBirthYear: '', partnerTshirt: '', partner2Name: '', partner2Nat: '', partner2Id: '', partner2Email: '', partner2BirthYear: '', partner2Tshirt: '', teamName: '', teamManagerEmail: '' });
+        selectedEvents.push({ id, name, category, type, feeThb, feeUsd, partnerName: '', partnerTeam: '', partnerNat: '', partnerId: '', partnerEmail: '', partnerBirthYear: '', partnerTshirt: '', partner2Name: '', partner2Team: '', partner2Nat: '', partner2Id: '', partner2Email: '', partner2BirthYear: '', partner2Tshirt: '', teamName: '', teamManagerEmail: '' });
       } else {
         selectedEvents.splice(existingIdx, 1);
         delete currentPartnerErrors[id]; 
@@ -1023,7 +1023,7 @@
       if (['partnerName', 'partner2Name', 'partnerNat', 'partner2Nat'].includes(field) || field.startsWith('player')) {
         finalVal = val.toUpperCase().replace(/[^A-Z\s]/g, '');
         if (inputElem) inputElem.value = finalVal;
-      } else if (['teamName'].includes(field)) {
+      } else if (['teamName', 'partnerTeam', 'partner2Team'].includes(field)) {
         finalVal = val.toUpperCase().replace(/[^A-Z\s0-9]/g, '');
         if (inputElem) inputElem.value = finalVal;
       } else if (['partnerId', 'partner2Id'].includes(field)) {
@@ -1169,6 +1169,8 @@
               
               <div><label class="block text-xs font-bold mb-1" style="color: var(--indigo-700);"><span style="color: var(--indigo-600); font-weight: bold;">P2</span> ${t('partner1')} <span style="color: var(--red-500);">*</span></label><input type="text" id="p1Name_${ev.id}" class="input-field font-mono uppercase text-sm" placeholder="${t('engOnly')}" value="${ev.partnerName}" oninput="handlePartnerChange('${ev.id}','partnerName',this.value, this); clearError(this)" required></div>
               
+              <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P2</span> ${t('pTeam')}</label><input type="text" id="p1Team_${ev.id}" class="input-field font-mono uppercase text-sm" placeholder="TEAM / CLUB" value="${ev.partnerTeam || ''}" oninput="handlePartnerChange('${ev.id}','partnerTeam',this.value, this)"></div>
+              
               <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P2</span> ${t('country')} <span style="color: var(--red-500);">*</span></label>
               <select id="p1Nat_${ev.id}" class="input-field text-sm font-mono" onchange="toggleOtherPartnerCountry(this, 'p1NatOtherContainer_${ev.id}', '${ev.id}', 'partnerNat'); clearError(this)" required>
                 ${getCountryOptions(ev.partnerNat)}
@@ -1201,6 +1203,8 @@
           html += `
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-4 border-t mt-2" style="border-style: dashed; border-color: var(--indigo-200);">
               <div><label class="block text-xs font-bold mb-1" style="color: var(--indigo-700);"><span style="color: var(--indigo-600); font-weight: bold;">P3</span> ${t('partner2')} <span style="color: var(--red-500);">*</span></label><input type="text" id="p2Name_${ev.id}" class="input-field font-mono uppercase text-sm" placeholder="${t('engOnly')}" value="${ev.partner2Name}" oninput="handlePartnerChange('${ev.id}','partner2Name',this.value, this); clearError(this)" required></div>
+              
+              <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P3</span> ${t('pTeam')}</label><input type="text" id="p2Team_${ev.id}" class="input-field font-mono uppercase text-sm" placeholder="TEAM / CLUB" value="${ev.partner2Team || ''}" oninput="handlePartnerChange('${ev.id}','partner2Team',this.value, this)"></div>
               
               <div><label class="block text-xs font-medium mb-1" style="color: var(--gray-600);"><span style="color: var(--indigo-600); font-weight: bold;">P3</span> ${t('country')} <span style="color: var(--red-500);">*</span></label>
               <select id="p2Nat_${ev.id}" class="input-field text-sm font-mono" onchange="toggleOtherPartnerCountry(this, 'p2NatOtherContainer_${ev.id}', '${ev.id}', 'partner2Nat'); clearError(this)" required>
@@ -1260,10 +1264,13 @@
             det = `<div class="mt-2 text-sm p-3 rounded border w-full bg-white" style="color: var(--amber-800); border-color: var(--amber-200);"><div class="font-bold flex items-center mb-1"><svg class="icon-sm mr-2" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path></svg>${t('teamName')}: <span class="ml-1 font-mono" style="color: var(--amber-600);">${e.teamName}</span></div><div>${t('teamMgrEmail')}: <span class="font-semibold">${e.teamManagerEmail}</span></div></div>`;
         } else if (e.type === '3x3') {
             has3x3 = true;
-            det = `<div class="mt-2 text-sm p-2 rounded border w-fit bg-white flex items-center" style="color: var(--gray-600); border-color: var(--blue-100);"><svg class="icon-sm mr-2" style="color: var(--indigo-500);" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> P2: <span class="ml-1 font-bold font-mono text-gray-800">${e.partnerName}</span> <span class="ml-3">P3: </span><span class="ml-1 font-bold font-mono text-gray-800">${e.partner2Name}</span></div>`;
+            const p2Disp = e.partnerTeam ? `${e.partnerName} (${e.partnerTeam})` : e.partnerName;
+            const p3Disp = e.partner2Team ? `${e.partner2Name} (${e.partner2Team})` : e.partner2Name;
+            det = `<div class="mt-2 text-sm p-2 rounded border w-fit bg-white flex items-center" style="color: var(--gray-600); border-color: var(--blue-100);"><svg class="icon-sm mr-2" style="color: var(--indigo-500);" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> P2: <span class="ml-1 font-bold font-mono text-gray-800">${p2Disp}</span> <span class="ml-3">P3: </span><span class="ml-1 font-bold font-mono text-gray-800">${p3Disp}</span></div>`;
         } else if (e.partnerName) {
             if (e.partnerId) uniquePlayers.add(e.partnerId.trim());
-            det = `<div class="mt-2 text-sm p-2 rounded border w-fit bg-white flex items-center" style="color: var(--gray-600); border-color: var(--blue-100);"><svg class="icon-sm mr-2" style="color: var(--indigo-500);" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Partner: <span class="ml-1 font-bold font-mono text-gray-800">${e.partnerName}</span></div>`;
+            const pDisp = e.partnerTeam ? `${e.partnerName} (${e.partnerTeam})` : e.partnerName;
+            det = `<div class="mt-2 text-sm p-2 rounded border w-fit bg-white flex items-center" style="color: var(--gray-600); border-color: var(--blue-100);"><svg class="icon-sm mr-2" style="color: var(--indigo-500);" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Partner: <span class="ml-1 font-bold font-mono text-gray-800">${pDisp}</span></div>`;
         }
 
         list.innerHTML += `<li class="flex flex-col p-3 rounded border" style="background-color: var(--blue-50); color: var(--blue-700); border-color: var(--blue-100);"><div class="flex items-center"><svg class="icon-sm mr-2 flex-shrink-0" style="color: var(--blue-500);" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> <span class="font-medium">${e.category} - ${e.name}</span></div>${det}</li>`;
@@ -1305,8 +1312,14 @@
          events: selectedEvents.map(ev => {
             const partnerNatFinal = ev.partnerNat === 'OTHER' ? (ev.partnerNatOther || '').trim() : ev.partnerNat;
             const partner2NatFinal = ev.partner2Nat === 'OTHER' ? (ev.partner2NatOther || '').trim() : ev.partner2Nat;
+            const p2Team = (ev.partnerTeam || '').trim();
+            const p2NameFinal = p2Team ? `${(ev.partnerName || '').trim()} (${p2Team})` : (ev.partnerName || '').trim();
+            const p3Team = (ev.partner2Team || '').trim();
+            const p3NameFinal = p3Team ? `${(ev.partner2Name || '').trim()} (${p3Team})` : (ev.partner2Name || '').trim();
             return {
                ...ev,
+               partnerName: p2NameFinal,
+               partner2Name: p3NameFinal,
                partnerNat: partnerNatFinal,
                partner2Nat: partner2NatFinal
             };
