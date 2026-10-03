@@ -639,20 +639,7 @@
 
     function t(key) { return locales[currentLang][key]; }
 
-    let registeredIds = [], registeredNames = [], registeredEmails = [];
-
-    window.onload = async () => {
-      document.getElementById('loadingOverlay').classList.remove('hidden');
-      try {
-        const res = await fetch(API_CONFIG.GAS_URL + '?action=getRegistered');
-        const data = await res.json();
-        registeredIds = data.ids || [];
-        registeredNames = data.names || [];
-        registeredEmails = data.emails || [];
-      } catch (err) {
-        console.warn('ไม่สามารถโหลดรายชื่อผู้สมัครเดิม (ข้ามการเช็คซ้ำ):', err);
-      }
-      document.getElementById('loadingOverlay').classList.add('hidden');
+    window.onload = () => {
       renderCategories();
       setLang('en');
     };
@@ -798,13 +785,6 @@
           alert(t('alertReq')); 
           return false;
         }
-        
-        const fName = document.getElementById('fullName').value.trim();
-        const email = emailEl.value.trim();
-        const idVal = document.getElementById('idNumber').value.trim().toUpperCase();
-        // เช็คซ้ำเฉพาะ ID/Passport เท่านั้น (อนุญาตอีเมล/ชื่อซ้ำได้ เช่น ผู้จัดการทีมสมัครแทนหลายคน)
-        const isDup = registeredIds.includes(idVal);
-        if (isDup) { alert(t('alertDup')); return false; }
       }
       
       if (step === 2) {

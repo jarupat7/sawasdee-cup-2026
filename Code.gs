@@ -143,9 +143,9 @@ function processRegistration(payload) {
         const rowTag = recentRows[i][1];
         const rowId = (recentRows[i][6] || "").toString().trim().toUpperCase();
 
-        // หาก ID/Passport เดียวกัน ส่งซ้ำภายใน 60 วินาที ให้ใช้ Tag ID เดิมทันที ไม่สร้างแถวซ้ำ
-        if (pId && rowId === pId && Math.abs(nowMs - rowTime) < 60000) {
-          Logger.log("Duplicate registration detected within 60s. Returning existing tagId: " + rowTag);
+        // หาก ID/Passport เดียวกัน ส่งซ้ำภายใน 10 วินาที (ป้องกันการกดเบิ้ลขณะโหลด) ให้ใช้ Tag ID เดิมทันที
+        if (pId && rowId === pId && Math.abs(nowMs - rowTime) < 10000) {
+          Logger.log("Duplicate registration detected within 10s. Returning existing tagId: " + rowTag);
           return { success: true, tagID: rowTag };
         }
       }
